@@ -1,0 +1,16 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": "src",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "emitDecoratorMetadata": true,
+    "target": "es5",
+    "types": ["jasmine", "jasminewd2", "node"],
+    "lib": [
+      "es2017",
+      "dom"
+    ]
+  }
+}
