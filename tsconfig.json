@@ -1,0 +1,52 @@
+{
+  "extends": "../../tsconfig.json",
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es5",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2017",
+      "dom"
+    ]
+  }
+}
+
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./dist/out-tsc",
+    "declaration": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowJs": false,
+    "target": "es5",
+    "types": ["jasmine", "jasminewd2", "node"],
+    "lib": ["es2017", "dom"],
+    "baseUrl": "src",
+    "paths": {
+      "@app/*": ["app/*"],
+      "@environments/*": ["environments/*"],
+      "@shared": ["app/shared"],
+      "@shared/*": ["app/shared/*"],
+      "@recipe-list": ["app/recipe-list"],
+      "@recipe-list/*": ["app/recipe-list/*"],
+      "@recipe-meta": ["app/recipe-meta"],
+      "@recipe-meta/*": ["app/recipe-meta/*"],
+      "@recipe-common": ["app/recipe-common"],
+      "@recipe-common/*": ["app/recipe-common/*"],
+      "@guided-cooking": ["app/guided-cooking"],
+      "@guided-cooking/*": ["app/guided-cooking/*"],
+      "@utils": ["utils"],
+      "@utils/*": ["utils/*"]
+    }
+  }
+}
