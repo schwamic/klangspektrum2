@@ -1,0 +1,19 @@
+0 silly input []
+1 silly flags { _: [ 'bootstrap' ],
+1 silly flags   'reject-cycles': false,
+1 silly flags   rejectCycles: false,
+1 silly flags   args: [] }
+2 verbose rootPath /Users/schwamic/Projects/klangspektrum2
+3 info version 2.11.0
+4 silly existsSync /Users/schwamic/Projects/klangspektrum2/VERSION
+5 error EPACKAGES Errored while collecting packages and package graph
+6 error JSONError: Unexpected token y in JSON at position 355 while parsing near '...n": "^1.17.5"  }}yar' in packages/server/package.json
+6 error     at module.exports (/Users/schwamic/Projects/klangspektrum2/node_modules/load-json-file/node_modules/parse-json/index.js:26:19)
+6 error     at parse (/Users/schwamic/Projects/klangspektrum2/node_modules/load-json-file/index.js:8:29)
+6 error     at Function.module.exports.sync.fp [as sync] (/Users/schwamic/Projects/klangspektrum2/node_modules/load-json-file/index.js:11:29)
+6 error     at Function.module.exports.sync (/Users/schwamic/Projects/klangspektrum2/node_modules/lerna/node_modules/read-pkg/index.js:40:25)
+6 error     at /Users/schwamic/Projects/klangspektrum2/node_modules/lerna/lib/PackageUtilities.js:138:47
+6 error     at Array.forEach (<anonymous>)
+6 error     at /Users/schwamic/Projects/klangspektrum2/node_modules/lerna/lib/PackageUtilities.js:132:86
+6 error     at Array.forEach (<anonymous>)
+6 error     at Function.getPackages (/Users/schwamic/Projects/klangspektrum2/node_modules/lerna/lib/PackageUtilities.js:131:22)

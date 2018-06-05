@@ -1,0 +1,28 @@
+{
+  "author": "schwamic",
+  "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "test": "lerna run test",
+    "prepare": "lerna run prepare",
+    "clean": "rimraf **/{node_modules,dist,coverage,.nyc_output}",
+    "dev": "concurrently \"lerna run dev --scope @rdk/web\" \"lerna run start --scope @rdk/server\" -k"
+  },
+  "devDependencies": {
+    "@types/bluebird": "^3.5.20",
+    "@types/hapi": "^17.0.12",
+    "@types/jasmine": "~2.8.6",
+    "@types/jasminewd2": "~2.0.3",
+    "@types/node": "~8.9.4",
+    "concurrently": "^3.5.1",
+    "lerna": "^2.11.0",
+    "rimraf": "^2.6.2",
+    "tslint": "~5.9.1",
+    "typescript": "~2.7.2"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "private": true,
+  "dependencies": {},
+  "license": "UNLICENSED"
+}
