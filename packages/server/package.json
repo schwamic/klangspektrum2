@@ -5,6 +5,7 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/index.js",
+    "dev:2": "nodemon --watch '**/*.ts' --exec 'ts-node' src/index.ts",
     "dev": "concurrently --kill-others \"tsc -w\" \"nodemon dist/index.js\""
   },
   "private": true,
@@ -15,6 +16,7 @@
     "bluebird": "^3.5.1",
     "boom": "^7.2.0",
     "hapi": "^17.5.1",
-    "nodemon": "^1.17.5"
+    "nodemon": "^1.17.5",
+    "qs": "^6.5.2"
   }
 }
