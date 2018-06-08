@@ -1,4 +1,3 @@
-import { Statuscodes } from '../../../../utils/http-utils'
 import * as Hapi from 'hapi'
 import * as qs from 'qs'
 
@@ -13,8 +12,6 @@ export const LoginHandler = {
       show_dialog: true
     }
     const redirectUrl = `https://accounts.spotify.com/authorize?${qs.stringify(queryParams)}`
-    console.log(queryParams.state)
-    h.state('data', {'spotify_auth_state': queryParams.state})
-    return h.redirect(redirectUrl).code(Statuscodes.OK)
+    return h.redirect(redirectUrl).state('data', {'state': queryParams.state})
   }
 }
