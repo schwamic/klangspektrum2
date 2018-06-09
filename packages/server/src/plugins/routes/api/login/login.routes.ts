@@ -1,7 +1,6 @@
 import * as httpUtils from '../../../../utils/http-utils'
 import { LoginHandler } from './login.handler'
 import { ServerRoute } from 'hapi'
-import * as Joi from 'joi'
 
 export const loginRoute: ServerRoute = {
   method: httpUtils.Methods.GET,

@@ -1,7 +1,9 @@
 import { Server } from 'hapi'
-import { RoutesPlugin } from './plugins/routes/routes.plugins'
-import * as InertPlugin from 'inert'
+import * as Inert from 'inert'
+import * as Good from 'good'
+
 import { distDir } from '@ks/web'
+import { RoutesPlugin } from './plugins/routes/routes.plugins'
 
 // create a server with a host and port
 const server: Server = new Server({
@@ -10,7 +12,7 @@ const server: Server = new Server({
   router: {
     stripTrailingSlash: true
   },
-  // init static file server - app files
+  // init static file server - static files
   routes: {
     files: {
       relativeTo: distDir
@@ -19,18 +21,34 @@ const server: Server = new Server({
   app: {}
 })
 
+// todo https://futurestud.io/tutorials/learn-hapi-add-csrf-protection-on-forms-and-api-endpoints
 async function start() {
   try {
-    await server.register(InertPlugin)
-    await server.register(RoutesPlugin)
+    await server.register([
+      Inert,
+      RoutesPlugin,
+      {
+        plugin: Good,
+        options: {
+          reporters: {
+            myConsoleReporter: [{
+              module: 'good-squeeze',
+              name: 'Squeeze',
+              args: [{log: '*', response: '*', request: '*'}]
+            }, {
+              module: 'good-console'
+            }, 'stdout']
+          }
+        }
+      }
+    ])
     await server.start()
   }
-  catch (err) {
-    console.error(err)
+  catch (error) {
+    server.log('error', error)
     process.exit(1)
   }
-  console.log('Server running at: ', server.info.uri)
+  server.log('info', 'Server running at: ' + server.info.uri)
 }
 
 start()
-
