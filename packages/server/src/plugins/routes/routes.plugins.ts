@@ -1,6 +1,6 @@
-import { api } from './api/index'
 import { Plugin, Server, ServerOptions } from 'hapi'
 import { distDir } from '@ks/web'
+import { api } from './api/index'
 import { Statuscodes } from '../../utils/http-utils'
 
 export const RoutesPlugin: Plugin<any> = {

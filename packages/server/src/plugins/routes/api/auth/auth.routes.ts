@@ -4,7 +4,6 @@ import * as Joi from 'joi'
 import * as httpUtils from './../../../../utils/http-utils'
 import { AuthHandler } from './auth.handler'
 
-
 export const authRoute: ServerRoute = {
   method: httpUtils.Methods.GET,
   path: '/api/auth',

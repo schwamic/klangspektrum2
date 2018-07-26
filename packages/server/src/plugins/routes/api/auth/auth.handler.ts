@@ -18,27 +18,32 @@ export const AuthHandler = {
 
       if(error) {
         request.log(['error', 'auth-handler:index'], error)
-        return h.redirect(`../?${qs.stringify({error: Statuscodes.Unauthorized})}`)
+        // return h.redirect(`../?${qs.stringify({error: Statuscodes.Unauthorized})}`)
+        return {error: Statuscodes.Unauthorized}
       }
 
       else if (state !== storedState) {
         request.log(['error', 'auth-handler:index'], 'State !== storedState')
-        return h.redirect(`../?${qs.stringify({error: Statuscodes.Unauthorized})}`)
+        // return h.redirect(`../?${qs.stringify({error: Statuscodes.Unauthorized})}`)
+        return {error: Statuscodes.Unauthorized}
       }
 
       else {
         const tokens = await getTokens(code, process.env.ks_redirect_uri, process.env.ks_client_id, process.env.ks_client_secret)
         if (!tokens) {
           request.log(['error', 'auth-handler:index'], 'getTokens()') // todo log real error
-          return h.redirect(`../?${qs.stringify({error: Statuscodes.Unauthorized})}`)
+          // return h.redirect(`../?${qs.stringify({error: Statuscodes.Unauthorized})}`)
+          return {error: Statuscodes.Unauthorized}
         } else {
-          return h.redirect(`../?${qs.stringify(tokens)}`)
+          return {'tokens': tokens}
+          // return h.redirect(`../?${qs.stringify(tokens)}`)
         }
       }
     }
     catch(error){
       request.log(['error', 'auth-handler:index'], error)
-      return h.redirect(`../?${qs.stringify({error: Statuscodes.InternalServerError})}`)
+      // return h.redirect(`../?${qs.stringify({error: Statuscodes.InternalServerError})}`)
+      return {error: Statuscodes.InternalServerError}
     }
   }
 }
