@@ -1,6 +1,7 @@
 import { Server } from 'hapi'
 import * as Inert from 'inert'
 import * as Good from 'good'
+import * as Crumb from 'crumb'
 
 import { distDir } from '@ks/web'
 import { RoutesPlugin } from './plugins/routes/routes.plugins'
@@ -21,11 +22,20 @@ const server: Server = new Server({
   app: {}
 })
 
+
 // todo https://futurestud.io/tutorials/learn-hapi-add-csrf-protection-on-forms-and-api-endpoints
 async function start() {
   try {
     await server.register([
       Inert,
+      // {
+      //   plugin: Crumb,
+      //   options: {
+      //     cookieOptions: {
+      //       isSecure: process.env.NODE_ENV === 'production'
+      //     }
+      //   }
+      // },
       RoutesPlugin,
       {
         plugin: Good,

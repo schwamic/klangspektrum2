@@ -1,5 +1,6 @@
 import * as Hapi from 'hapi'
 import * as qs from 'qs'
+import { randomString } from 'cryptiles'
 
 export const LoginHandler = {
   index: async (request: Hapi.Request, h: Hapi.ResponseToolkit) => {
@@ -8,7 +9,7 @@ export const LoginHandler = {
       client_id: process.env.ks_client_id,
       redirect_uri: process.env.ks_redirect_uri,
       scope: 'user-read-private user-read-email playlist-read-private playlist-read-collaborative user-library-read user-top-read',
-      state: Math.floor(Math.random() * 100000000),
+      state: randomString(10),
       show_dialog: true
     }
     const redirectUrl = `https://accounts.spotify.com/authorize?${qs.stringify(queryParams)}`

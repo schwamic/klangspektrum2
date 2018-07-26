@@ -16,6 +16,8 @@
     "axios": "^0.18.0",
     "bluebird": "^3.5.1",
     "boom": "^7.2.0",
+    "crumb": "^7.1.0",
+    "cryptiles": "^4.1.1",
     "good": "^8.1.1",
     "good-console": "^7.1.0",
     "good-squeeze": "^5.1.0",

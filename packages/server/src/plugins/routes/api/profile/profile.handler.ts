@@ -7,9 +7,20 @@ import * as qs from 'qs'
  */
 export const ProfileHandler = {
   index: async (request: Hapi.Request, h: Hapi.ResponseToolkit) => {
-    const access_token = request.query['access_token']
-    const cookie = request.state.data
-    return h.response({'profile': cookie})
-    // return h.response('token' + access_token)
+    const access_token = request.payload['token']
+    const user = request.payload['user']
+    const options = {
+      url: 'https://api.spotify.com/v1/me',
+      headers: { 'Authorization': 'Bearer ' + access_token },
+      json: true
+    }
+
+
+    // 1. save tokens in frontend
+    // 2. post tokens to backend via guard to load profile-data
+    // 3. response to frontend
+
+
+    return {'profile': access_token+', '+user}
   }
 }
