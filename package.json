@@ -3,7 +3,7 @@
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "build": "lerna run build",
-    "test": "lerna run test",
+    "test": "lerna run test --scope @ks/web",
     "clean": "lerna run clean && rimraf **/{node_modules,dist,coverage,.nyc_output}",
     "start": "lerna run start --scope @trecha/web-server",
     "dev": "concurrently \"lerna run dev --scope @ks/web\" \"lerna run dev --scope @ks/server\" -k",
