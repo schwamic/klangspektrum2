@@ -10,14 +10,46 @@
       "prefix": "ks",
       "schematics": {
         "@schematics/angular:component": {
-          "styleext": "scss"
+          "styleext": "scss",
+          "spec": false
+        },
+        "@ngrx/schematics:container": {
+          "styleext": "scss",
+          "spec": false
+        },
+        "@ngrx/schematics:effect": {
+          "spec": false
+        },
+        "@ngrx/schematics:entity": {
+          "spec": false
+        },
+        "@ngrx/schematics:feature": {
+          "spec": false
+        },
+        "@ngrx/schematics:reducer": {
+          "spec": false
+        },
+        "@ngrx/schematics:store": {
+          "spec": false
+        },
+        "@ngrx/schematics:service": {
+          "spec": false
+        },
+        "@ngrx/schematics:pipe": {
+          "spec": false
+        },
+        "@ngrx/schematics:guard": {
+          "spec": false
+        },
+        "@ngrx/schematics:directive": {
+          "spec": false
         }
       },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/web",
+            "outputPath": "dist",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
