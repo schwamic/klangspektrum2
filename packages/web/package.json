@@ -47,7 +47,7 @@
     "@angular/platform-browser": "^6.0.2",
     "@angular/platform-browser-dynamic": "^6.0.2",
     "@angular/router": "^6.0.2",
-    "@ks/common": "1.0.0",
+    "@angular/cdk": "^6.4.1",
     "@ngrx/effects": "^6.0.1",
     "@ngrx/entity": "^6.0.1",
     "@ngrx/router-store": "^6.0.1",
@@ -69,8 +69,5 @@
     "ts-node": "~5.0.1",
     "web-animations-js": "^2.3.1",
     "zone.js": "^0.8.26"
-  },
-  "dependencies": {
-    "@angular/cdk": "^6.4.1"
   }
 }

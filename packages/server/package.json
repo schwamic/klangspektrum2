@@ -10,13 +10,12 @@
   },
   "private": true,
   "license": "UNLICENSED",
-  "devDependencies": {
-    "@ks/common": "*",
+  "devDependencies": {},
+  "dependencies": {
     "@ks/web": "*",
     "axios": "^0.18.0",
     "bluebird": "^3.5.1",
     "boom": "^7.2.0",
-    "crumb": "^7.1.0",
     "cryptiles": "^4.1.1",
     "good": "^8.1.1",
     "good-console": "^7.1.0",
@@ -27,6 +26,5 @@
     "joi": "^13.4.0",
     "nodemon": "^1.17.5",
     "qs": "^6.5.2"
-  },
-  "dependencies": {}
+  }
 }
