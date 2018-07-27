@@ -16,6 +16,9 @@ jobs:
 
     working_directory: ~/repo
 
+    steps:
+    - checkout
+
     # Download and cache dependencies
     - restore_cache:
         keys:
@@ -33,7 +36,6 @@ jobs:
     # run tests!
     - run: yarn test
 
-
-  # HINT
+      # HINT
   # alias for workflows
   # commit / run / ...
