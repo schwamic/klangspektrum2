@@ -32,3 +32,8 @@ jobs:
 
     # run tests!
     - run: yarn test
+
+
+  # HINT
+  # alias for workflows
+  # commit / run / ...
