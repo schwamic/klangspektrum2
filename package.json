@@ -5,9 +5,10 @@
     "build": "lerna run build",
     "test": "lerna run test --scope @ks/web",
     "clean": "lerna run clean && rimraf **/{node_modules,dist,coverage,.nyc_output}",
-    "start": "lerna run start --scope @trecha/web-server",
-    "dev": "concurrently \"lerna run dev --scope @ks/web\" \"lerna run dev --scope @ks/server\" -k",
-    "heroku-postbuild": "yarn bootstrap && yarn build"
+    "start": "lerna run start --scope @server",
+    "dev": "lerna run dev --scope @ks/web",
+    "heroku-postbuild": "yarn bootstrap && yarn build",
+    "dev:old": "concurrently \"lerna run dev --scope @ks/web\" \"lerna run dev --scope @ks/server\" -k"
   },
   "devDependencies": {
     "@types/bluebird": "^3.5.20",

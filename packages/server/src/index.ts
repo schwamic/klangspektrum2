@@ -1,10 +1,8 @@
 import { Server } from 'hapi'
-import * as Inert from 'inert'
-import * as Good from 'good'
-import * as Crumb from 'crumb'
+import * as Inert from 'inert' // serving static files
+// import * as Good from 'good' // logger
 
 import { distDir } from '@ks/web'
-import { RoutesPlugin } from './plugins/routes/routes.plugins'
 
 // create a server with a host and port
 const server: Server = new Server({
@@ -22,35 +20,10 @@ const server: Server = new Server({
   app: {}
 })
 
-
-// todo https://futurestud.io/tutorials/learn-hapi-add-csrf-protection-on-forms-and-api-endpoints
 async function start() {
   try {
     await server.register([
       Inert,
-      // {
-      //   plugin: Crumb,
-      //   options: {
-      //     cookieOptions: {
-      //       isSecure: process.env.NODE_ENV === 'production'
-      //     }
-      //   }
-      // },
-      RoutesPlugin,
-      {
-        plugin: Good,
-        options: {
-          reporters: {
-            myConsoleReporter: [{
-              module: 'good-squeeze',
-              name: 'Squeeze',
-              args: [{log: '*', response: '*', request: '*'}]
-            }, {
-              module: 'good-console'
-            }, 'stdout']
-          }
-        }
-      }
     ])
     await server.start()
   }
@@ -62,3 +35,5 @@ async function start() {
 }
 
 start()
+
+// todo serve angular-app
