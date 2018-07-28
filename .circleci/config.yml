@@ -1,7 +1,8 @@
 # Javascript Node CircleCI 2.0 configuration file
 #
 # Check https://circleci.com/docs/2.0/language-javascript/ for more details
-#
+# Basics https://circleci.com/docs/2.0/concepts/
+
 version: 2
 jobs:
   build:
@@ -37,7 +38,3 @@ jobs:
 
     # run tests!
     - run: yarn test
-
-      # HINT
-  # alias for workflows
-  # commit / run / ...
