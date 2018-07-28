@@ -2,6 +2,7 @@
   "author": "schwamic",
   "scripts": {
     "bootstrap": "lerna bootstrap",
+    "postinstall": "yarn bootstrap",
     "build": "lerna run build",
     "test": "lerna run test --scope @ks/web",
     "clean": "lerna run clean && rimraf **/{node_modules,dist,coverage,.nyc_output}",

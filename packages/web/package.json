@@ -7,7 +7,7 @@
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test --watch false",
-    "test:dev": "npx ng test",
+    "test:dev": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "bundlesize": "bundlesize",
