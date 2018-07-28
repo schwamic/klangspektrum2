@@ -6,6 +6,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:prod": "ng build --target production --build-optimizer --vendor-chunk",
     "test": "ng test --browser ChromeHeadless --single-run",
     "test:watch": "ng test --browser ChromeHeadless",
     "lint": "ng lint",
