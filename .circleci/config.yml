@@ -28,6 +28,7 @@ jobs:
         - v1-dependencies-
 
     - run: yarn
+    - run: yarn bootstrap
 
     - save_cache:
         paths:
