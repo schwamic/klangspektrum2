@@ -1,5 +1,7 @@
+import { } from 'node';
 import { writeFile } from 'fs';
 import { argv } from 'yargs';
+// @ts-ignore
 require('dotenv').config();
 
 /**
@@ -14,6 +16,7 @@ require('dotenv').config();
 
 const isProd = argv.environment === 'prod';
 const targetPath = `./src/environments/environment.ts`;
+// @ts-ignore
 const envConfigFile = `
 export const environment = {
   production: ${isProd},

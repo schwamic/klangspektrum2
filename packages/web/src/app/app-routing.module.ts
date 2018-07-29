@@ -5,17 +5,14 @@ import {NotFoundComponent} from '@app/core/components/not-found/not-found.compon
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
-  {path: 'home', loadChildren: './modules/home//home.module#HomeModule'},
-  {
-    path: 'visualization',
-    loadChildren: './modules/visualization/visualization.module#VisualizationModule'
-  },
+  {path: 'home', loadChildren: './home/home.module#HomeModule'},
   {path: '**', component: NotFoundComponent}
 ]
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: []
 })
 
 export class AppRoutingModule {
