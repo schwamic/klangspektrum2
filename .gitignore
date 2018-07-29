@@ -3,7 +3,7 @@
 # Environment
 .env
 .source
-.variables
+environment.ts
 
 .docker
 
