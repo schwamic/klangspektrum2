@@ -1,4 +1,5 @@
 export const environment = {
   production: true,
-  test: process.env.HOME,
+  test1: 'test',
+  test2: process.env.HOME
 };
