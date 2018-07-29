@@ -3,6 +3,7 @@
 # Environment
 .env
 .source
+.variables
 
 .docker
 
