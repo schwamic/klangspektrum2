@@ -1,19 +1,17 @@
 import { Server } from 'hapi'
 import * as Inert from 'inert'
 import * as Good from 'good'
-import * as Crumb from 'crumb'
-
 import { distDir } from '@ks/web'
-import { RoutesPlugin } from './plugins/routes/routes.plugins'
+import { RouterPlugin } from './plugins/router.plugin'
 
-// create a server with a host and port
+// create server
 const server: Server = new Server({
   host: '0.0.0.0',
   port: 3000,
   router: {
-    stripTrailingSlash: true
+    stripTrailingSlash: false
   },
-  // init static file server - static files
+  // set root directory for static files
   routes: {
     files: {
       relativeTo: distDir
@@ -22,21 +20,11 @@ const server: Server = new Server({
   app: {}
 })
 
-
-// todo https://futurestud.io/tutorials/learn-hapi-add-csrf-protection-on-forms-and-api-endpoints
-async function start() {
+async function liftOff() {
   try {
     await server.register([
       Inert,
-      // {
-      //   plugin: Crumb,
-      //   options: {
-      //     cookieOptions: {
-      //       isSecure: process.env.NODE_ENV === 'production'
-      //     }
-      //   }
-      // },
-      RoutesPlugin,
+      RouterPlugin,
       {
         plugin: Good,
         options: {
@@ -61,4 +49,4 @@ async function start() {
   server.log('info', 'Server running at: ' + server.info.uri)
 }
 
-start()
+liftOff()

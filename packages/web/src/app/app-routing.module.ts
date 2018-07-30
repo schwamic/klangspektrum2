@@ -1,18 +1,19 @@
-import { NgModule } from '@angular/core'
-import { RouterModule, Routes } from '@angular/router'
-import { FirstComponent } from './first/components/first.component'
-import { SecondComponent } from './second/components/second.component'
+import {RouterModule, Routes} from '@angular/router'
+import {NgModule} from '@angular/core'
+import {NotFoundComponent} from '@app/core/components/not-found/not-found.component'
+
 
 const routes: Routes = [
-  {path: 'first', component: FirstComponent},
-  {path: 'second', component: SecondComponent},
-  // {path: '', redirectTo: 'main', pathMatch: 'full'},
-  {path: '**', redirectTo: 'first'}
+  {path: '', redirectTo: 'home', pathMatch: 'full'},
+  {path: 'home', loadChildren: './home/home.module#HomeModule'},
+  {path: '**', component: NotFoundComponent}
 ]
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: []
 })
+
 export class AppRoutingModule {
 }
