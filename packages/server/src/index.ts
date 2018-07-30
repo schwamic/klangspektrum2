@@ -1,17 +1,17 @@
 import { Server } from 'hapi'
-import * as Inert from 'inert' // serving static files
-// import * as Good from 'good' // logger
-
+import * as Inert from 'inert'
+import * as Good from 'good'
 import { distDir } from '@ks/web'
+import { RouterPlugin } from './plugins/router.plugin'
 
-// create a server with a host and port
+// create server
 const server: Server = new Server({
   host: '0.0.0.0',
   port: 3000,
   router: {
-    stripTrailingSlash: true
+    stripTrailingSlash: false
   },
-  // init static file server - static files
+  // set root directory for static files
   routes: {
     files: {
       relativeTo: distDir
@@ -20,10 +20,25 @@ const server: Server = new Server({
   app: {}
 })
 
-async function start() {
+async function liftOff() {
   try {
     await server.register([
       Inert,
+      RouterPlugin,
+      {
+        plugin: Good,
+        options: {
+          reporters: {
+            myConsoleReporter: [{
+              module: 'good-squeeze',
+              name: 'Squeeze',
+              args: [{log: '*', response: '*', request: '*'}]
+            }, {
+              module: 'good-console'
+            }, 'stdout']
+          }
+        }
+      }
     ])
     await server.start()
   }
@@ -34,6 +49,4 @@ async function start() {
   server.log('info', 'Server running at: ' + server.info.uri)
 }
 
-start()
-
-// todo serve angular-app
+liftOff()
