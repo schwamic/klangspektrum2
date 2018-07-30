@@ -1,5 +1,4 @@
 import { Plugin, Server, ServerOptions } from 'hapi'
-import { distDir } from '@ks/web'
 import * as httpUtils from '../http-utils'
 
 export const RouterPlugin: Plugin<any> = {
