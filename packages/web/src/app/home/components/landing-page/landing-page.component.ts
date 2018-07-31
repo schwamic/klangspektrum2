@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ApiService} from '@app/core/services/api.service'
 
 @Component({
   selector: 'ks-landing-page',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LandingPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private api: ApiService) { }
 
   ngOnInit() {
   }
 
+  login(){
+    this.api.login()
+  }
 }
