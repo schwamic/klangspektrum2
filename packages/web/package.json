@@ -7,7 +7,7 @@
     "env": "ts-node set-env.ts",
     "dev": "yarn env && ng serve --port 8020 --host 0.0.0.0 --aot",
     "build": "yarn env --environment=prod  && ng build --configuration production",
-    "test": "ng test --watch=false",
+    "test": "yarn env && ng test --watch=false",
     "test:watch": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
