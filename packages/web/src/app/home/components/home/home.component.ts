@@ -3,10 +3,10 @@ import {ApiService} from '@app/core/services/api.service'
 
 @Component({
   selector: 'ks-landing-page',
-  templateUrl: './landing-page.component.html',
-  styleUrls: ['./landing-page.component.scss']
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss']
 })
-export class LandingPageComponent implements OnInit {
+export class HomeComponent implements OnInit {
 
   constructor(private api: ApiService) { }
 
