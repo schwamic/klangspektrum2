@@ -1,5 +1,11 @@
 {
+  "name": "klangspektrum2",
+  "version": "1.0.0",
   "author": "schwamic",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/schwamic/klangspektrum2.git"
+  },
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "build": "lerna run build",
