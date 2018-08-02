@@ -29,3 +29,6 @@ export function reducer(state = initialState, action: MetaActions): State {
       return state;
   }
 }
+
+export const getAccessToken = (state: State) => state.access_token
+export const getTokenType = (state: State) => state.token_type
