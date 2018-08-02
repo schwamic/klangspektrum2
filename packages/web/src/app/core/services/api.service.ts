@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core'
-import {HttpClient, HttpParams} from "@angular/common/http"
+import {HttpClient, HttpHeaders, HttpParams, HttpRequest} from "@angular/common/http"
 import {environment} from "@env/environment"
 import * as uuid from 'uuid'
 import * as qs from 'qs'
+import {Observable, throwError} from "rxjs";
+import {catchError} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +22,7 @@ export class ApiService {
         response_type: 'token',
         client_id: environment.clientId,
         redirect_uri: environment.redirectUri,
-        scope: 'user-read-private user-read-email playlist-read-private playlist-read-collaborative user-library-read user-top-read',
+        scope: 'user-read-private user-read-birthdate user-read-email playlist-read-private playlist-read-collaborative user-library-read user-top-read',
         state: this.state,
         show_dialog: 'true'
     }
@@ -28,14 +30,17 @@ export class ApiService {
     window.location.href = redirectUrl
   }
 
-  // todo add callback -> guard -> load data
   // todo add interceptor to set header
-  profile(access_token){
-    const options = {
-      params: new HttpParams()
-        .set('headers', qs.stringify({'Authorization': `Bearer ${access_token}`}))
-        .set('json', 'true')
-    }
-    this.http.get('https://api.spotify.com/v1/me', options)
+  profile(access_token): Observable<any>{
+
+    const headers = new HttpHeaders()
+      .set('Authorization', `Bearer ${access_token}`)
+
+    return this.http
+      .get('https://api.spotify.com/v1/me', {headers})
+      .pipe(catchError(error => throwError(error.json())))
   }
+
+  library(){}
 }
+
