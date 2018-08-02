@@ -5,7 +5,7 @@ import {Meta} from "@app/shared/models/meta.model";
 import {Store} from "@ngrx/store";
 import * as fromCore from '@app/core/store'
 import {AddMeta} from "@app/core/store/meta.actions";
-import {map} from "rxjs/operators";
+import {catchError, map} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -19,14 +19,15 @@ export class MetaGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> {
     return this.getMeta().pipe(
-      map(meta => {
+      map((meta: Meta) => {
         const valid = this.isValid(meta)
         if (valid) {
           this.store.dispatch(new AddMeta({...meta}))
           this.router.navigate(['visualization'])
         }
         return !valid
-      })
+      }),
+      catchError(() => of(true))
     )
   }
 

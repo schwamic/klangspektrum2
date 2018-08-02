@@ -1,11 +1,24 @@
 import { Action } from '@ngrx/store';
+import {Profile} from "@app/shared/models/profile.model";
 
 export enum ProfileActionTypes {
-  LoadProfiles = '[Profile] Load Profiles'
+  LoadProfile = '[Profile] Load Profiles',
+  LoadProfileSuccess = '[Profile] Load Profiles Success',
+  LoadProfileFail = '[Profile] Load Profiles Fail'
 }
 
-export class LoadProfiles implements Action {
-  readonly type = ProfileActionTypes.LoadProfiles;
+export class LoadProfile implements Action {
+  readonly type = ProfileActionTypes.LoadProfile;
 }
 
-export type ProfileActions = LoadProfiles;
+export class LoadProfileSuccess implements Action {
+  readonly type = ProfileActionTypes.LoadProfileSuccess;
+  constructor(public payload: {profile: Profile}){}
+}
+
+export class LoadProfileFail implements Action {
+  readonly type = ProfileActionTypes.LoadProfileFail;
+  constructor(public payload: {error: any}){}
+}
+
+export type ProfileActions = LoadProfile | LoadProfileSuccess | LoadProfileFail;
