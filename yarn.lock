@@ -209,9 +209,9 @@
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/@ngrx/router-store/-/router-store-6.0.1.tgz#1c5c77b138eaed030b58f4203bf921e88cc51112"
 
-"@ngrx/schematics@^6.0.1":
-  version "6.0.1"
-  resolved "https://registry.yarnpkg.com/@ngrx/schematics/-/schematics-6.0.1.tgz#f6ff797faf1f46d5cdb980719d97b9991cca515f"
+"@ngrx/schematics@^6.1.0":
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/@ngrx/schematics/-/schematics-6.1.0.tgz#4e784da5502829700895ca87d4cc5da93bf3ec84"
 
 "@ngrx/store-devtools@^6.0.1":
   version "6.0.1"
@@ -5297,6 +5297,10 @@ normalize-path@^2.0.0, normalize-path@^2.0.1, normalize-path@^2.1.1:
 normalize-range@^0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/normalize-range/-/normalize-range-0.1.2.tgz#2d10c06bdfd312ea9777695a4d28439456b75942"
+
+normalizr@^3.2.4:
+  version "3.2.4"
+  resolved "https://registry.yarnpkg.com/normalizr/-/normalizr-3.2.4.tgz#16aafc540ca99dc1060ceaa1933556322eac4429"
 
 npm-bundled@^1.0.1:
   version "1.0.3"
