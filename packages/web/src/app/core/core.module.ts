@@ -8,14 +8,17 @@ import {metaReducers, reducers} from "@app/core/store";
 import {environment} from "@env/environment";
 import {StoreDevtoolsModule} from "@ngrx/store-devtools";
 import {ProfileEffects} from "@app/core/store/profile.effects";
+import {TrackEffects} from "@app/core/store/track.effects";
+import {httpInterceptorProviders} from "@app/core/http-interceptors";
 
 @NgModule({
   imports: [
     CommonModule,
     StoreModule.forRoot(reducers, { metaReducers }),
-    EffectsModule.forRoot([ProfileEffects]),
+    EffectsModule.forRoot([ProfileEffects, TrackEffects]),
     !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
-  declarations: [HeaderComponent, NotFoundComponent]
+  declarations: [HeaderComponent, NotFoundComponent],
+  providers: [httpInterceptorProviders]
 })
 export class CoreModule { }
