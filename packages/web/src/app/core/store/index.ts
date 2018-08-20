@@ -1,22 +1,27 @@
 import {
-  ActionReducer,
   ActionReducerMap,
   createFeatureSelector,
   createSelector,
   MetaReducer
-} from '@ngrx/store';
-import { environment } from '@env/environment';
-import * as fromMeta from './meta.reducer';
-import * as fromProfile from './profile.reducer';
+} from '@ngrx/store'
+import { environment } from '@env/environment'
+import * as fromMeta from './meta.reducer'
+import * as fromProfile from './profile.reducer'
+import * as fromTrack from './track.reducer'
+import * as fromArtist from './artist.reducer'
 
 export interface State {
   meta: fromMeta.State,
-  profile: fromProfile.State
+  profile: fromProfile.State,
+  tracks: fromTrack.State,
+  artists: fromArtist.State
 }
 
 export const reducers: ActionReducerMap<State> = {
   meta: fromMeta.reducer,
-  profile: fromProfile.reducer
+  profile: fromProfile.reducer,
+  tracks: fromTrack.reducer,
+  artists: fromArtist.reducer
 };
 
 export const metaReducers: MetaReducer<State>[] = !environment.production ? [] : [];
@@ -34,3 +39,19 @@ export const selectProfile = createFeatureSelector<fromProfile.State>(
 )
 export const selectProfileLoaded = createSelector(selectProfile, fromProfile.getLoaded)
 
+// Tracks
+export const selectTrack = createFeatureSelector<fromTrack.State>(
+  'tracks'
+)
+export const selectTrackLoaded = createSelector(selectTrack, fromTrack.getLoaded)
+
+// Artists
+export const selectArtist = createFeatureSelector<fromArtist.State>(
+  'tracks'
+)
+export const selectArtistLoaded = createSelector(selectArtist, fromArtist.getLoaded)
+
+// Combination
+export const selectExtendedProfile = createSelector(selectProfile, selectAccessToken, (profile, token) => {
+  return {...profile, token}
+});
