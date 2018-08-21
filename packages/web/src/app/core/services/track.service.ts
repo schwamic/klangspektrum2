@@ -2,8 +2,8 @@ import {Injectable} from '@angular/core'
 import {HttpClient} from '@angular/common/http'
 import {Store} from "@ngrx/store"
 import * as fromStore from '@app/core/store'
-import {combineLatest, forkJoin, from, merge, Observable, of, throwError} from "rxjs";
-import {catchError, mergeMap, map, switchMap, take, first, retry, scan} from "rxjs/operators";
+import {forkJoin, from, merge, Observable, of, throwError} from "rxjs";
+import {catchError, mergeMap, map, switchMap, take, first, retry, scan, tap} from "rxjs/operators"
 import {Track} from "@app/shared/models/track.model"
 
 @Injectable({
@@ -18,17 +18,15 @@ export class TrackService {
   constructor(private http: HttpClient, private store: Store<fromStore.State>) {
   }
 
-  // INFO: Store has no duplicates because ids from spotify are used in ngrx-adapter
-  // https://stackoverflow.com/questions/43027201/is-there-a-way-to-manage-concurrency-with-rxjs
-  // + mergeMap(concurrently:number) or merge(concurrently:number)
-  // + forkJoin() is like Promise.all()
+  /**
+   * INFO: Store has no duplicates because ids from spotify are also used as id in ngrx-adapter
+   * https://stackoverflow.com/questions/43027201/is-there-a-way-to-manage-concurrency-with-rxjs
+   * mergeMap(concurrently:number) or merge(concurrently:number) -> ensure to load not too much in parallel
+   */
 
   // TODO
   // + in new ecma release-> save navigator available
-  // + use pluck, mapTo and optimize logic
-  // + load features
-  // + load artists -> only because of genres -> load lazy during viz is running
-
+  // + error-handling + types
 
   getAllTracks(): Observable<any> {
     return forkJoin(
@@ -39,51 +37,39 @@ export class TrackService {
 
   getSavedTracks(): Observable<Track[]> {
     return this.getData(this.urlMe(0)).pipe(
-      take(1),
+      first(),
       switchMap(res => {
           if (res['total'] > 50) {
             return from(Array.apply(null, Array(Math.ceil(res['total'] / 50))).map((x, i) => {
               return i * 50
             })).pipe(
               mergeMap(offset => this.getData(this.urlMe(offset)), null, 10),
-              map(res => Object.values(res['items']).map(item => this.mapTrack(item['track']))),
-              take(Math.ceil(res['total'] / 50))
+              map(res => Object.values(res['items']).map(item => this.mapTrack(item['track'])))
             )
           } else {
             return of(res).pipe(
-              map(res => Object.values(res['items']).map(item => this.mapTrack(item['track']))),
-              first()
+              map(res => Object.values(res['items']).map(item => this.mapTrack(item['track'])))
             )
           }
         }
-      )
-    )
-  }
-
-  loadPlaylists(offset): Observable<any> {
-    return this.store.select(fromStore.selectProfile).pipe(
-      take(1),
-      switchMap(profile => this.getData(this.urlPlaylist(profile.id, offset))
       )
     )
   }
 
   getPlaylists(): Observable<any> {
     return this.loadPlaylists(0).pipe(
-      take(1),
+      first(),
       switchMap(res => {
           if (res.total > 50) {
             return from(Array.apply(null, Array(Math.ceil(res.total / 50))).map((x, i) => {
               return i * 50
             })).pipe(
               mergeMap(offset => this.loadPlaylists(offset), null, 10),
-              map(res => Object.values(res.items).map(item => item['tracks'])),
-              take(Math.ceil(res.total / 50))
+              map(res => Object.values(res.items).map(item => item['tracks']))
             )
           } else {
             return of(res).pipe(
               map(res => Object.values(res.items).map(item => item['tracks'])),
-              first()
             )
           }
         }
@@ -91,34 +77,30 @@ export class TrackService {
     )
   }
 
-  loadPlaylistTracks(playlist) {
-    return from(playlist).pipe(
-      mergeMap(tracks => Array.apply(null, Array(Math.ceil(tracks['total'] / 100))).map((x, i) => {
-        return {href: tracks['href'], offset: i * 100}
-      })),
-      mergeMap(tracks => this.getData(this.urlPlaylistTracks(tracks['href'], tracks['offset'])), null, 10
-      ),
-      map(res => Object.values(res['items']).map(item => this.mapTrack(item['track'])))
-    )
-  }
-
-  getPlaylistTracks() {
-    // todo bug if only use getPlaylists()
-    return combineLatest(this.store.select(fromStore.selectAccessToken).pipe(first()), this.getPlaylists(), (token, playlist) => {
-      return {token, playlist}
-    }).pipe(
+  getPlaylistTracks(): Observable<Track[]> {
+    return this.getPlaylists().pipe(
       first(),
-      mergeMap(({token, playlist}) => this.loadPlaylistTracks(playlist)),
+      mergeMap(playlist => from(playlist).pipe(
+        mergeMap(tracks => Array.apply(null, Array(Math.ceil(tracks['total'] / 100))).map((x, i) => {
+          return {href: tracks['href'], offset: i * 100}
+        })),
+        mergeMap(tracks => this.getData(this.urlPlaylistTracks(tracks['href'], tracks['offset'])), null, 10
+        ),
+        map(res => Object.values(res['items']).map(item => this.mapTrack(item['track'])))
+      ), null, 10),
     )
   }
 
   /**
-   * helper to map response to track-object
-   * @param data
+   * helper to load a set of users playlists
+   * @param offset
    */
-  mapTrack(data): Track {
-    const {album, available_markets, external_urls, external_ids, explicit, ...track} = data
-    return track
+  loadPlaylists(offset): Observable<any> {
+    return this.store.select(fromStore.selectProfile).pipe(
+      first(),
+      switchMap(profile => this.getData(this.urlPlaylist(profile.id, offset))
+      )
+    )
   }
 
   /**
@@ -133,5 +115,14 @@ export class TrackService {
         first(),
         catchError(error => throwError(error))
       )
+  }
+
+  /**
+   * helper to map response to track-object
+   * @param data
+   */
+  mapTrack(data): Track {
+    const {album, available_markets, external_urls, external_ids, explicit, ...track} = data
+    return track
   }
 }

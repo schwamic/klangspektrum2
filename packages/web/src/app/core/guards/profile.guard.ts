@@ -1,12 +1,12 @@
-import {Injectable} from '@angular/core';
-import {CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router} from '@angular/router';
-import {forkJoin, Observable, of} from 'rxjs';
-import {ApiService} from "@app/core/services/api.service";
-import {Store} from "@ngrx/store";
+import {Injectable} from '@angular/core'
+import {CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot} from '@angular/router'
+import {Observable, of} from 'rxjs'
+import {ApiService} from '@app/core/services/api.service'
+import {Store} from '@ngrx/store'
 import * as fromCore from '@app/core/store'
-import {catchError, filter, map, switchMap, take, tap} from "rxjs/operators";
-import {LoadProfile} from "@app/core/store/profile.actions";
-import {LoadTrack} from "@app/core/store/track.actions";
+import {catchError, filter, first, map, switchMap, tap} from 'rxjs/operators'
+import {LoadProfile} from '@app/core/store/profile.actions'
+import {LoadTrack} from '@app/core/store/track.actions'
 
 @Injectable({
   providedIn: 'root'
@@ -33,7 +33,7 @@ export class ProfileGuard implements CanActivate {
         }
       }),
       filter(loaded => loaded),
-      take(1)
+      first()
     )
   }
 
@@ -45,7 +45,12 @@ export class ProfileGuard implements CanActivate {
         }
       }),
       filter(loaded => loaded),
-      take(1)
+      first()
     )
+  }
+
+  // todo
+  ensureFeaturesLoaded(): Observable<boolean> {
+    return of(true)
   }
 }

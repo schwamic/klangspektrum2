@@ -14,10 +14,18 @@ export class TrackEffects {
   @Effect()
   loadTrack$ = this.actions$.pipe(
     ofType<LoadTrack>(TrackActionTypes.LoadTrack),
-    tap(() => console.log('test')),
     switchMap(() => this.api.tracks().pipe(
       map(tracks => new LoadTrackSuccess({tracks})),
       catchError(error => of(new LoadTrackFail(error)))
+    ))
+  )
+
+  // todo move to feature
+  @Effect({dispatch: false})
+  loadFeatures = this.actions$.pipe(
+    ofType<LoadTrackSuccess>(TrackActionTypes.LoadTrackSuccess),
+    switchMap(() => this.api.features().pipe(
+      tap(f => console.log(f))
     ))
   )
 }

@@ -22,12 +22,11 @@ export class ProfileEffects {
   @Effect()
   loadProfile$ = this.actions$.pipe(
     ofType<LoadProfile>(ProfileActionTypes.LoadProfile),
-    switchMap(() => this.store.select(fromCore.selectAccessToken).pipe(
-      switchMap(token => this.api.profile(token).pipe(
-        map(profile => new LoadProfileSuccess({profile})),
-        catchError(error => of(new LoadProfileFail(error)))
-      ))
+    switchMap(() => this.api.profile().pipe(
+      map(profile => new LoadProfileSuccess({profile})),
+      catchError(error => of(new LoadProfileFail(error)))
     ))
   )
+
 
 }
