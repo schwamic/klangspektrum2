@@ -1,8 +1,4 @@
-import {Features} from "@app/shared/models/features.model"
-
 export interface Track {
-  artists: string[],
-  features: Features,
   disc_number: number,
   duration_ms: number,
   href: string,
