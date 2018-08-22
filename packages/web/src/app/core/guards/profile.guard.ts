@@ -7,6 +7,7 @@ import * as fromCore from '@app/core/store'
 import {catchError, filter, first, map, switchMap, tap} from 'rxjs/operators'
 import {LoadProfile} from '@app/core/store/profile.actions'
 import {LoadTrack} from '@app/core/store/track.actions'
+import {LoadFeatures} from "@app/core/store/features.actions";
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,13 @@ export class ProfileGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean> {
 
     return this.ensureProfileLoaded().pipe(
-      switchMap(() => this.ensureTracksLoaded().pipe(map(() => true))),
+      switchMap(() => this.ensureTracksLoaded().pipe(
+        switchMap(() => this.ensureFeaturesLoaded().pipe(
+          map(() => true),
+          catchError(() => of(false))
+        )),
+        catchError(() => of(false))
+      )),
       catchError(() => of(false))
     )
   }
@@ -49,8 +56,15 @@ export class ProfileGuard implements CanActivate {
     )
   }
 
-  // todo
   ensureFeaturesLoaded(): Observable<boolean> {
-    return of(true)
+    return this.store.select(fromCore.selectFeaturesLoaded).pipe(
+      tap(loaded => {
+        if (!loaded) {
+          this.store.dispatch(new LoadFeatures())
+        }
+      }),
+      filter(loaded => loaded),
+      first()
+    )
   }
 }
