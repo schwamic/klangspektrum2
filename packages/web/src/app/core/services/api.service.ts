@@ -50,16 +50,17 @@ export class ApiService {
       .pipe(catchError(error => throwError(error)))
   }
 
+  // todo cleanup
   features(): Observable<any> {
     return forkJoin(this.store.select(fromStore.selectTrack).pipe(
       first(),
       switchMap(tracks => from(chunk(tracks.ids, 100)).pipe(
-        mergeMap(chunk => this.http.get(`https://api.spotify.com/v1/audio-features?ids=${join(chunk, '%')}`), null, 1),
+        mergeMap(chunk => this.http.get(`https://api.spotify.com/v1/audio-features?ids=${join(chunk, ',')}`), null, 1),
         scan((acc, features) => [...acc, ...features], [])
         )
       )
     )).pipe(
-      map(features => flatten(features[0].map(a => a.audio_features)))
+      map(features => flatten(features[0].map(a => a.audio_features)).filter(feature=>!!feature))
     )
   }
 
