@@ -3,7 +3,7 @@ import {HttpEvent, HttpInterceptor, HttpHandler, HttpRequest} from '@angular/com
 import {Observable} from 'rxjs'
 import {Store} from "@ngrx/store";
 import * as fromStore from "../store"
-import {first, map, switchMap} from "rxjs/operators";
+import {first, map, switchMap, tap} from "rxjs/operators";
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
