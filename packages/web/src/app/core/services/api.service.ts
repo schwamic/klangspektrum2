@@ -3,13 +3,14 @@ import {HttpClient} from '@angular/common/http'
 import {environment} from '@env/environment'
 import * as uuid from 'uuid'
 import * as qs from 'qs'
-import {from, Observable, throwError} from 'rxjs'
-import {catchError, first, map, mergeMap, switchMap, take, tap} from 'rxjs/operators'
+import {forkJoin, from, Observable, of, throwError} from 'rxjs'
+import {catchError, first, map, mergeMap, scan, switchMap, tap} from 'rxjs/operators'
 import {TrackService} from '@app/core/services/track.service'
 import {Track} from '@app/shared/models/track.model'
 import {Store} from '@ngrx/store'
 import * as fromStore from '../store'
 import * as chunk from 'lodash/chunk'
+import * as flatten from 'lodash/flatten'
 import * as join from 'lodash/join'
 
 @Injectable({
@@ -40,7 +41,7 @@ export class ApiService {
 
   profile(): Observable<any> {
     return this.http
-      .get('https://api.spotify.com/v1/me' )
+      .get('https://api.spotify.com/v1/me')
       .pipe(catchError(error => throwError(error)))
   }
 
@@ -49,13 +50,16 @@ export class ApiService {
       .pipe(catchError(error => throwError(error)))
   }
 
-  // todo -> load after tracks are saved
-  features(): Observable<any>{
-    return this.store.select(fromStore.selectTrack).pipe(
+  features(): Observable<any> {
+    return forkJoin(this.store.select(fromStore.selectTrack).pipe(
       first(),
       switchMap(tracks => from(chunk(tracks.ids, 100)).pipe(
-        mergeMap(chunk => this.http.get(`https://api.spotify.com/v1/audio-features/?ids=${join(chunk, ',')})`), null, 10)
-      )),
+        mergeMap(chunk => this.http.get(`https://api.spotify.com/v1/audio-features?ids=${join(chunk, '%')}`), null, 1),
+        scan((acc, features) => [...acc, ...features], [])
+        )
+      )
+    )).pipe(
+      map(features => flatten(features[0].map(a => a.audio_features)))
     )
   }
 

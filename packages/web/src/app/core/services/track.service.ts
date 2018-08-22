@@ -31,7 +31,7 @@ export class TrackService {
   getAllTracks(): Observable<any> {
     return forkJoin(
       merge(this.getPlaylistTracks(), this.getSavedTracks())
-        .pipe(scan((pTracks, sTracks) => [...pTracks, ...sTracks], []),)
+        .pipe(scan((acc, tracks) => [...acc, ...tracks], []))
     ).pipe(map(tracks => tracks[0]))
   }
 

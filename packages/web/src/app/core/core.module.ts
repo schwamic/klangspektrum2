@@ -10,12 +10,13 @@ import {StoreDevtoolsModule} from "@ngrx/store-devtools";
 import {ProfileEffects} from "@app/core/store/profile.effects";
 import {TrackEffects} from "@app/core/store/track.effects";
 import {httpInterceptorProviders} from "@app/core/http-interceptors";
+import {FeaturesEffects} from "@app/core/store/features.effects";
 
 @NgModule({
   imports: [
     CommonModule,
     StoreModule.forRoot(reducers, { metaReducers }),
-    EffectsModule.forRoot([ProfileEffects, TrackEffects]),
+    EffectsModule.forRoot([ProfileEffects, TrackEffects, FeaturesEffects]),
     !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
   declarations: [HeaderComponent, NotFoundComponent],
