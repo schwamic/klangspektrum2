@@ -4,7 +4,9 @@ import {HttpClientModule} from '@angular/common/http'
 import {AppRoutingModule} from './app-routing.module'
 import {AppComponent} from './app.component'
 import {SharedModule} from '@app/shared/shared.module'
-import {CoreModule} from '@app/core/core.module'
+import {CoreModule} from '@app/core/core.module';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment'
 
 @NgModule({
   declarations: [
@@ -15,7 +17,8 @@ import {CoreModule} from '@app/core/core.module'
     HttpClientModule,
     AppRoutingModule,
     SharedModule,
-    CoreModule
+    CoreModule,
+    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -50,6 +50,7 @@
     "@angular/platform-browser": "^6.0.2",
     "@angular/platform-browser-dynamic": "^6.0.2",
     "@angular/router": "^6.0.2",
+    "@angular/service-worker": "^6.1.4",
     "@ngrx/effects": "^6.0.1",
     "@ngrx/entity": "^6.0.1",
     "@ngrx/router-store": "^6.0.1",
@@ -59,6 +60,7 @@
     "bundlesize": "^0.17.0",
     "codelyzer": "~4.2.1",
     "core-js": "^2.5.4",
+    "dexie": "^2.0.4",
     "dotenv": "^6.0.0",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",
@@ -79,6 +81,7 @@
     "zone.js": "^0.8.26"
   },
   "dependencies": {
+    "@angular/pwa": "^0.7.5",
     "normalizr": "^3.2.4"
   }
 }
