@@ -1,15 +1,23 @@
 import {
+  ActionReducer,
   ActionReducerMap,
   createFeatureSelector,
   createSelector,
   MetaReducer
 } from '@ngrx/store'
+import { localStorageSync } from 'ngrx-store-localstorage'
+
 import { environment } from '@env/environment'
 import * as fromMeta from './meta.reducer'
 import * as fromProfile from './profile.reducer'
 import * as fromTrack from './track.reducer'
 import * as fromFeatures from './features.reducer'
 import * as fromArtist from './artist.reducer'
+
+
+export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
+  return localStorageSync({keys: ['meta', 'profile', 'tracks', 'features', 'artists'], rehydrate: true})(reducer)
+}
 
 export interface State {
   meta: fromMeta.State,
@@ -25,9 +33,9 @@ export const reducers: ActionReducerMap<State> = {
   tracks: fromTrack.reducer,
   features: fromFeatures.reducer,
   artists: fromArtist.reducer
-};
+}
 
-export const metaReducers: MetaReducer<State>[] = !environment.production ? [] : [];
+export const metaReducers: Array<MetaReducer<any, any>> = !environment.production ? [localStorageSyncReducer] : [localStorageSyncReducer]
 
 // Meta
 export const selectMeta = createFeatureSelector<fromMeta.State>('meta')
@@ -53,4 +61,4 @@ export const selectArtistLoaded = createSelector(selectArtist, fromArtist.getLoa
 // Combination
 export const selectExtendedProfile = createSelector(selectProfile, selectAccessToken, (profile, token) => {
   return {...profile, token}
-});
+})
