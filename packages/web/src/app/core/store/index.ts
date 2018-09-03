@@ -7,16 +7,22 @@ import {
 } from '@ngrx/store'
 import { localStorageSync } from 'ngrx-store-localstorage'
 
-import { environment } from '@env/environment'
 import * as fromMeta from './meta.reducer'
 import * as fromProfile from './profile.reducer'
 import * as fromTrack from './track.reducer'
 import * as fromFeatures from './features.reducer'
 import * as fromArtist from './artist.reducer'
 
-
+// + How to save only part of deeply nested state:
+//   {keys: [{parent: [{child: ['grandchild', 'grandchild2'], 'parentProperty']}]}
+// + Use SessionStorage instead of LocalStorage
+// + lifetime: https://github.com/btroncone/ngrx-store-localstorage/issues/83
 export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
-  return localStorageSync({keys: ['meta', 'profile', 'tracks', 'features', 'artists'], rehydrate: true})(reducer)
+  return localStorageSync({
+    keys: ['meta', 'profile', 'tracks', 'features', 'artists'],
+    rehydrate: true,
+    storage: sessionStorage
+  })(reducer)
 }
 
 export interface State {
@@ -35,7 +41,7 @@ export const reducers: ActionReducerMap<State> = {
   artists: fromArtist.reducer
 }
 
-export const metaReducers: Array<MetaReducer<any, any>> = !environment.production ? [localStorageSyncReducer] : [localStorageSyncReducer]
+export const metaReducers: MetaReducer<State>[] = [localStorageSyncReducer]
 
 // Meta
 export const selectMeta = createFeatureSelector<fromMeta.State>('meta')
