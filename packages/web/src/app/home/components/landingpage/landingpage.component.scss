@@ -1,0 +1,10 @@
+@import "../../../../variables";
+
+:host{
+  display: block;
+  margin-top: -64px;
+  padding-top: 64px;
+  min-height: calc(100vh - 64px);
+  background: $dark-gray;
+  color: white;
+}

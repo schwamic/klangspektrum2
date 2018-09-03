@@ -1,0 +1,8 @@
+@import "../../../../variables";
+
+mat-toolbar {
+  position: relative;
+  z-index: 4;
+  background: $dark-gray;
+  color: white;
+}
