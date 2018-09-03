@@ -1,9 +1,15 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "./font";
+@import "./grid";
+@import "./variables";
 
 body {
   font-family: Roboto, Arial, sans-serif;
   margin: 0;
 }
+
+// COLOR
+$ks-dark-gray: #616161;
 
 // FONT
 
