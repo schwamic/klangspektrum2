@@ -60,9 +60,7 @@ export class ApiService {
       map(features => flatten(features[0].map(a => a.audio_features)).filter(feature => !!feature)))
   }
 
-  // todo load artists -> only because of genres -> load lazy during viz is running
-  artists() {
-
-  }
+  // do not load artists -> for version 2 there will be no genres anymore. Only Playlist
+  // Concentration on Analysis with Music/Playlist. Feat: Save as Playlist
 }
 

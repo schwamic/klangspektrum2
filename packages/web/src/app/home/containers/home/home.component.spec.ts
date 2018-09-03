@@ -1,21 +1,16 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-import {HomeComponent} from './home.component';
-import {ApiService} from "@app/core/services/api.service";
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { HomeComponent } from './home.component';
 
-class MockApiService {
-}
-
-describe('HomeComponent', () => {
+describe('LandingpageComponent', () => {
   let component: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [HomeComponent],
-      providers: [{provide: ApiService, useClass: MockApiService}]
+      declarations: [ HomeComponent ]
     })
-      .compileComponents();
+    .compileComponents();
   }));
 
   beforeEach(() => {

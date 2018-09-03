@@ -1,3 +1,10 @@
-<p>
-  visualization works!
-</p>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav>
+    Start
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <button mat-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </mat-sidenav-content>
+</mat-sidenav-container>

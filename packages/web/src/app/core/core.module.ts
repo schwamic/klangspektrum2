@@ -11,7 +11,6 @@ import { TrackEffects } from '@app/core/store/track.effects'
 import { FeaturesEffects } from '@app/core/store/features.effects'
 import { httpInterceptorProviders } from '@app/core/http-interceptors'
 import { environment } from '@env/environment'
-import { HeaderComponent } from './components/header/header.component'
 import { NotFoundComponent } from './components/not-found/not-found.component'
 
 
@@ -22,7 +21,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component'
     EffectsModule.forRoot([ProfileEffects, TrackEffects, FeaturesEffects]),
     !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
-  declarations: [HeaderComponent, NotFoundComponent],
+  declarations: [NotFoundComponent],
   providers: [httpInterceptorProviders]
 })
 export class CoreModule {}
