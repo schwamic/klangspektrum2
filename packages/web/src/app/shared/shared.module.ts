@@ -8,9 +8,11 @@ import { MaterialModule } from './material.module'
     CommonModule,
     MaterialModule
   ],
+  declarations: [
+    ErrorComponent
+  ],
   exports: [
     MaterialModule
-  ],
-  declarations: [ErrorComponent]
+  ]
 })
 export class SharedModule {}
