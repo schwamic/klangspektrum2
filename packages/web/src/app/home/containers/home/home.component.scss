@@ -1,8 +1,13 @@
 @import "../../../../variables";
+@import "../../../../font";
+@import "../../../../grid";
 
 mat-toolbar {
   position: relative;
   z-index: 4;
   background: $dark-gray;
   color: white;
+  @include for-size(phone-only ){
+    padding: 0;
+  }
 }
