@@ -1,0 +1,30 @@
+@import "../../../../variables";
+@import "../../../../font";
+@import "../../../../grid";
+
+:host{
+  display: block;
+  min-height: 100vh;
+}
+
+mat-sidenav{
+  width: 300px;
+}
+
+mat-toolbar{
+  justify-content: space-between;
+  button{
+    min-width: 0;
+  }
+  img{
+    height: 60%;
+    padding: 0 16px;
+  }
+}
+
+.container{
+  height: calc(100vh - 64px);
+  @include for-size(phone-only ){
+    height: calc(100vh - 56px);
+  }
+}
