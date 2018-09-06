@@ -1,10 +1,46 @@
-<mat-sidenav-container>
+<mat-sidenav-container hasBackdrop="false">
+
   <mat-sidenav #sidenav>
-    Start
+    <mat-list>
+      <mat-list-item>
+        <button mat-button (click)="sidenav.toggle()">
+          <mat-icon>clear</mat-icon>
+        </button>
+        account
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-icon>settings</mat-icon>
+      <h3 mat-subheader>Settings</h3>
+      <mat-list-item>
+        ...
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>
+        <button mat-button>
+          <mat-icon>info</mat-icon>
+          <span>Information</span>
+        </button>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>
+        <button mat-button>
+          <mat-icon>highlight_off</mat-icon>
+          <span>Logout</span>
+        </button>
+      </mat-list-item>
+    </mat-list>
   </mat-sidenav>
+
   <mat-sidenav-content>
-    <button mat-button (click)="sidenav.toggle()">
-      <mat-icon>menu</mat-icon>
-    </button>
+    <mat-toolbar class="mat-elevation-z4">
+      <button mat-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <img src="assets/logo/klangspektrumLogo.svg"/>
+    </mat-toolbar>
+    <section class="container">
+      container
+    </section>
   </mat-sidenav-content>
+
 </mat-sidenav-container>
