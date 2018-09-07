@@ -1,34 +1,44 @@
 <mat-sidenav-container hasBackdrop="false">
-
   <mat-sidenav #sidenav>
-    <mat-list>
-      <mat-list-item>
-        <button mat-button (click)="sidenav.toggle()">
+    <section class="list">
+      <div class="item item--account">
+        <button mat-button class="close-btn" (click)="sidenav.toggle()">
           <mat-icon>clear</mat-icon>
         </button>
-        account
-      </mat-list-item>
+        <div class="user">
+          <div class="avatar"></div>
+          <p>user@klangspektrum.music</p>
+        </div>
+      </div>
+
       <mat-divider></mat-divider>
-      <mat-icon>settings</mat-icon>
-      <h3 mat-subheader>Settings</h3>
-      <mat-list-item>
-        ...
-      </mat-list-item>
+
+      <div class="item item--settings">
+        <div class="title">
+          <mat-icon>settings</mat-icon>
+          <span>Settings</span>
+        </div>
+        <ks-filter></ks-filter>
+      </div>
+
       <mat-divider></mat-divider>
-      <mat-list-item>
-        <button mat-button>
+
+      <div class="item item--nav">
+        <button class="nav-btn">
           <mat-icon>info</mat-icon>
           <span>Information</span>
         </button>
-      </mat-list-item>
+      </div>
+
       <mat-divider></mat-divider>
-      <mat-list-item>
-        <button mat-button>
+
+      <div class="item item--nav">
+        <button class="nav-btn">
           <mat-icon>highlight_off</mat-icon>
           <span>Logout</span>
         </button>
-      </mat-list-item>
-    </mat-list>
+      </div>
+    </section>
   </mat-sidenav>
 
   <mat-sidenav-content>

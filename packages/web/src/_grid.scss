@@ -11,3 +11,9 @@
     @media (min-width: 1800px) { @content; }
   }
 }
+
+@for $i from 1 through 10 {
+  .col-#{$i}{
+    width: 10% * $i;
+  }
+}

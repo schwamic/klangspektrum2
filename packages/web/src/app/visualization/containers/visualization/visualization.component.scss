@@ -2,29 +2,104 @@
 @import "../../../../font";
 @import "../../../../grid";
 
-:host{
+:host {
   display: block;
   min-height: 100vh;
 }
 
-mat-sidenav{
-  width: 300px;
+mat-sidenav {
+  width: 320px;
 }
 
-mat-toolbar{
+mat-toolbar {
   justify-content: space-between;
-  button{
+  button {
     min-width: 0;
   }
-  img{
+  img {
     height: 60%;
     padding: 0 16px;
   }
 }
 
-.container{
+.list {
+  font-size: 14px;
+  .item {
+    min-height: 52px;
+    padding: 0 15px;
+
+    &--account {
+      position: relative;
+      background: $dark-gray;
+      height: 110px;
+      padding: 15px;
+      .close-btn{
+        position: absolute;
+        color: $white;
+        top: 0;
+        right: 0;
+        &:hover{
+          background: transparent;
+        }
+      }
+      .user {
+        .avatar {
+          height: 64px;
+          width: 64px;
+          border-radius: 100%;
+          background: $light-gray;
+        }
+        p{
+          font-size: 14px;
+          color: $white;
+        }
+      }
+    }
+
+    &--settings{
+      padding: 15px 15px 0 15px;
+      .title{
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        span{
+          margin-left: 10px;
+        }
+      }
+    }
+
+    &--nav {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      .nav-btn {
+        display: flex;
+        align-items: center;
+        height: 52px;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        border: 0;
+        text-align: left;
+        span {
+          font-size: 14px;
+          margin-left: 10px;
+        }
+        &:focus {
+          outline: 0;
+        }
+        &:hover {
+          cursor: pointer;
+          color: $dark-gray;
+        }
+      }
+    }
+  }
+}
+
+.container {
   height: calc(100vh - 64px);
-  @include for-size(phone-only ){
+  @include for-size(phone-only) {
     height: calc(100vh - 56px);
   }
 }
