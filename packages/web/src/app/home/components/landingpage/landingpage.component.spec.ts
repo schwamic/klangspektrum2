@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing'
 import { LandingpageComponent } from './landingpage.component'
 import { ApiService } from '@app/core/services/api.service'
+import { NO_ERRORS_SCHEMA } from '@angular/core'
 
 
 class MockApiService {
@@ -13,6 +14,7 @@ describe('LandingpageComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [LandingpageComponent],
+      schemas: [NO_ERRORS_SCHEMA],
       providers: [{provide: ApiService, useClass: MockApiService}]
     })
       .compileComponents()
