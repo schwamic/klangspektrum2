@@ -23,9 +23,31 @@ mat-toolbar {
 }
 
 .list {
-  font-size: 14px;
+  font-size: 13px;
+  mat-expansion-panel {
+    box-shadow: none !important;
+    mat-expansion-panel-header{
+      padding: 0 15px;
+      .title{
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        span{
+          font-size: 13px;
+          margin-left: 10px;
+        }
+      }
+    }
+    ::ng-deep .mat-expansion-panel-body{
+      padding: 0 17px;
+      background-color: $light-gray
+    }
+    ::ng-deep .mat-expanded{
+      background-color: $light-gray
+    }
+  }
   .item {
-    min-height: 52px;
+    height: 48px;
     padding: 0 15px;
 
     &--account {
@@ -38,6 +60,8 @@ mat-toolbar {
         color: $white;
         top: 0;
         right: 0;
+        min-width: 0;
+        padding: 0 11px;
         &:hover{
           background: transparent;
         }
@@ -50,20 +74,8 @@ mat-toolbar {
           background: $light-gray;
         }
         p{
-          font-size: 14px;
+          font-size: 13px;
           color: $white;
-        }
-      }
-    }
-
-    &--settings{
-      padding: 15px 15px 0 15px;
-      .title{
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        span{
-          margin-left: 10px;
         }
       }
     }
@@ -75,14 +87,14 @@ mat-toolbar {
       .nav-btn {
         display: flex;
         align-items: center;
-        height: 52px;
+        height: 48px;
         width: 100%;
         padding: 0;
         margin: 0;
         border: 0;
         text-align: left;
         span {
-          font-size: 14px;
+          font-size: 13px;
           margin-left: 10px;
         }
         &:focus {
