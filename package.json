@@ -23,6 +23,7 @@
     "@types/jasmine": "~2.8.6",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "8.9.4",
+    "@types/three": "^0.92.18",
     "concurrently": "^3.5.1",
     "lerna": "^2.11.0",
     "rimraf": "^2.6.2",

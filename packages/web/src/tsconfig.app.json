@@ -5,6 +5,10 @@
     "module": "es2015",
     "types": []
   },
+  "include": [
+    "../src/**/*",
+    "../../../node_modules/fast-simplex-noise/src/index.ts"
+  ],
   "exclude": [
     "src/test.ts",
     "**/*.spec.ts"
