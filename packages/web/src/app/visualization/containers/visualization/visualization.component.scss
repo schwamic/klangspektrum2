@@ -4,7 +4,7 @@
 
 :host {
   display: block;
-  min-height: 100vh;
+  height: 100vh;
 }
 
 mat-sidenav {
@@ -12,6 +12,8 @@ mat-sidenav {
 }
 
 mat-toolbar {
+  position: relative;
+  z-index: 5;
   justify-content: space-between;
   button {
     min-width: 0;
@@ -111,6 +113,7 @@ mat-toolbar {
 
 .container {
   height: calc(100vh - 64px);
+  width: 100vw;
   @include for-size(phone-only) {
     height: calc(100vh - 56px);
   }
