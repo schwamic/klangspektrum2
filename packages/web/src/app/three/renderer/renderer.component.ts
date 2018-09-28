@@ -1,10 +1,11 @@
 import { AfterViewInit, Component, ElementRef, HostListener } from '@angular/core'
-import { AmbientLight, Color, Scene, WebGLRenderer } from 'three'
+import { AmbientLight, Color, Octree, Raycaster, Scene, Vector2, WebGLRenderer } from 'three'
 import * as Detector from 'three/examples/js/Detector.js'
 import * as P5 from 'p5/lib/p5.js'
 import * as Stats from 'stats.js/src/Stats.js'
 import { CircleObject } from '@app/three/objects/circle.object'
 import { Camera } from '../camera/orthographic.camera'
+import { Throttle } from 'lodash-decorators'
 
 /**
  * Animation-Lib p5.js
@@ -26,7 +27,19 @@ export class RendererComponent implements AfterViewInit {
   p5 = new P5()
   meshArray = []
 
-  constructor(private ele: ElementRef) {
+
+
+  raycaster = new Raycaster()
+  domMouse = {
+    down: false,
+    x: 0,
+    y: 0,
+    indexes: undefined,
+    ray: undefined
+  }
+  mouse = new Vector2()
+
+  constructor(public ele: ElementRef) {
   }
 
   ngAfterViewInit() {
@@ -45,7 +58,7 @@ export class RendererComponent implements AfterViewInit {
     this.camera = new Camera(this.ele.nativeElement, this.scene)
     this.renderer = new WebGLRenderer()
     this.renderer.setSize(this.ele.nativeElement.offsetWidth, this.ele.nativeElement.offsetHeight)
-    this.renderer.setPixelRatio(3)
+    this.renderer.setPixelRatio(1)
     this.ele.nativeElement.appendChild(this.renderer.domElement)
 
     /** Init test-objects */
@@ -82,6 +95,13 @@ export class RendererComponent implements AfterViewInit {
     this.meshArray.forEach((circle: CircleObject) => {
       circle.randomWalk(this.ele.nativeElement.offsetWidth, this.ele.nativeElement.offsetHeight)
     })
+
+    this.raycaster.setFromCamera(this.mouse, this.camera.current)
+    const intersects = this.raycaster.intersectObjects( this.meshArray.map(obj => obj.mesh), false)
+    for ( let i = 0; i < intersects.length; i++ ) {
+      // @ts-ignore
+      intersects[ i ].object.material.color.set( 0xff0000 )
+    }
   }
 
   render() {
@@ -97,6 +117,15 @@ export class RendererComponent implements AfterViewInit {
       const warning = Detector.getWebGLErrorMessage()
       this.ele.nativeElement.appendChild(warning)
     }
+  }
+
+  @HostListener('mousemove', ['$event'])
+  @Throttle(100)
+  setMouseCoordinates(e) {
+    this.mouse.x = (e.clientX / this.ele.nativeElement.offsetWidth) * 2 - 1
+    this.mouse.y = -(e.clientY / this.ele.nativeElement.offsetHeight) * 2 + 1
+    this.domMouse.x = e.clientX
+    this.domMouse.y = e.clientY
   }
 
   /** Resopnsive render-output */
