@@ -45,7 +45,6 @@ export const initialState: State = {
 export function reducer(state = initialState, action: ProfileActions): State {
   switch (action.type) {
     case ProfileActionTypes.LoadProfileSuccess: {
-      console.log(action.payload)
       return {
         ...state,
         ...action.payload.profile,

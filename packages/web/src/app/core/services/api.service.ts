@@ -1,46 +1,66 @@
-import { Injectable } from '@angular/core'
-import {HttpClient, HttpHeaders, HttpParams, HttpRequest} from "@angular/common/http"
-import {environment} from "@env/environment"
+import {Injectable} from '@angular/core'
+import {HttpClient} from '@angular/common/http'
+import {environment} from '@env/environment'
 import * as uuid from 'uuid'
 import * as qs from 'qs'
-import {Observable, throwError} from "rxjs";
-import {catchError} from "rxjs/operators";
+import {forkJoin, from, Observable, of, throwError} from 'rxjs'
+import {catchError, first, map, mergeMap, scan, switchMap} from 'rxjs/operators'
+import {TrackService} from '@app/core/services/track.service'
+import {Track} from '@app/shared/models/track.model'
+import {Store} from '@ngrx/store'
+import * as fromStore from '../store'
+import * as chunk from 'lodash/chunk'
+import * as flatten from 'lodash/flatten'
+import * as join from 'lodash/join'
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
-  state: string
+  constructor(
+    private http: HttpClient,
+    private trackService: TrackService,
+    private store: Store<fromStore.State>) {
+  }
 
-  constructor(private http: HttpClient) { }
-
-  login(){
-    this.state = uuid()
-    localStorage.setItem('xsrf-token', this.state)
+  login(): void {
+    const state = uuid()
+    localStorage.setItem('xsrf-token', state)
     const params = {
-        response_type: 'token',
-        client_id: environment.clientId,
-        redirect_uri: environment.redirectUri,
-        scope: 'user-read-private user-read-birthdate user-read-email playlist-read-private playlist-read-collaborative user-library-read user-top-read',
-        state: this.state,
-        show_dialog: 'true'
+      response_type: 'token',
+      client_id: environment.clientId,
+      redirect_uri: environment.redirectUri,
+      scope: 'user-read-private user-read-birthdate user-read-email playlist-read-private playlist-read-collaborative user-library-read user-top-read',
+      state: state,
+      show_dialog: 'true'
     }
     const redirectUrl = `https://accounts.spotify.com/authorize?${qs.stringify(params)}`
     window.location.href = redirectUrl
   }
 
-  // todo add interceptor to set header
-  profile(access_token): Observable<any>{
-
-    const headers = new HttpHeaders()
-      .set('Authorization', `Bearer ${access_token}`)
-
+  profile(): Observable<any> {
     return this.http
-      .get('https://api.spotify.com/v1/me', {headers})
-      .pipe(catchError(error => throwError(error.json())))
+      .get('https://api.spotify.com/v1/me')
+      .pipe(catchError(error => throwError(error)))
   }
 
-  library(){}
+  tracks(): Observable<Track[]> {
+    return this.trackService.getAllTracks().pipe(catchError(error => throwError(error)))
+  }
+
+  features(): Observable<any> {
+    return forkJoin(this.store.select(fromStore.selectTrack).pipe(
+      first(),
+      switchMap(tracks => from(chunk(tracks.ids, 100)).pipe(
+        mergeMap(chunk => this.http.get(`https://api.spotify.com/v1/audio-features?ids=${join(chunk, ',')}`), null, 10),
+        scan((acc, features) => [...acc, ...features], []))
+      ))
+    ).pipe(
+      map(features => flatten(features[0].map(a => a.audio_features)).filter(feature => !!feature)))
+  }
+
+  // do not load artists -> for version 2 there will be no genres anymore. Only Playlist
+  // Concentration on Analysis with Music/Playlist. Feat: Save as Playlist
 }
 

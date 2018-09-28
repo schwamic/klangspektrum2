@@ -1,1 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "./font";
+@import "./grid";
+@import "./variables";
+
+body {
+  margin: 0;
+}
+
+// p5 fix
+.p5Canvas{
+  display: none;
+}

@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'ks-detail-view',
   templateUrl: './detail-view.component.html',
-  styleUrls: ['./detail-view.component.css']
+  styleUrls: ['./detail-view.component.scss']
 })
 export class DetailViewComponent implements OnInit {
 
