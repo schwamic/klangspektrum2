@@ -15,9 +15,10 @@ import { Throttle } from 'lodash-decorators'
  * Header-height-fix
  * Set stats-position
  *
- * Missing:
+ * Currently missing:
  * Octree and Buffer
  */
+
 @Component({
   selector: 'three-ray',
   template: '',
@@ -49,37 +50,35 @@ export class RaycastingTestComponent implements AfterViewInit {
   raycaster = new Raycaster()
   mouse = new Vector2()
 
-  constructor(public ele: ElementRef) {
-  }
+  constructor(public ele: ElementRef) {}
 
+  /** Start Three.js */
   ngAfterViewInit() {
-    /** Init stats to show performance-information */
+    // Init stats to show performance-information
     let statsDom = this.ele.nativeElement.appendChild(this.stats.dom)
     statsDom.classList.add('stats')
-
-    // Start Three.js
     this.readyForTakeoff()
   }
 
   init() {
-    /** Setup three.js: scene, camera and renderer are always needed */
+    // Setup three.js: scene, camera and renderer are always needed */
     this.scene = new Scene()
     this.scene.background = new Color(0xf5f5f5)
 
-    /** Use orthographic-camera for 2D-renderings */
+    // Use orthographic-camera for 2D-renderings
     this.camera = new Camera(this.ele.nativeElement, this.scene)
     this.renderer = new WebGLRenderer()
     this.renderer.setSize(this.ele.nativeElement.offsetWidth, this.ele.nativeElement.offsetHeight)
     this.renderer.setPixelRatio(window.devicePixelRatio)
     this.ele.nativeElement.appendChild(this.renderer.domElement)
 
-    /** Init test-objects */
+    // Init test-objects
     for (let i = 0; i < 100; i++) {
       const circle = new CircleObject(this.p5, this.ele.nativeElement.offsetWidth, this.ele.nativeElement.offsetHeight, 5, '#2884C7')
       this.scene.add(circle.mesh)
       this.meshArray.push(circle)
     }
-    /** Place mesh to scene and light */
+    // Place mesh to scene and light
     const ambientLight = new AmbientLight(Math.random() * 0x10)
     this.scene.add(ambientLight)
 
@@ -99,7 +98,7 @@ export class RaycastingTestComponent implements AfterViewInit {
 
   /** All calculations in animation-loop */
   update() {
-    /** Animate cicles via p5.js */
+    // Animate cicles via p5.js
     this.meshArray.forEach(circle => {
       if (this.intersected != circle.mesh) {
         circle.randomWalk(this.ele.nativeElement.offsetWidth, this.ele.nativeElement.offsetHeight)
@@ -107,7 +106,7 @@ export class RaycastingTestComponent implements AfterViewInit {
       }
     })
 
-    /** Catch circles with mouse */
+    // Catch circles with mouse
     this.raycaster.setFromCamera(this.mouse, this.camera.current)
     const intersects = this.raycaster.intersectObjects(this.meshArray.map(obj => obj.mesh, false))
     if (intersects.length > 0) {
@@ -135,10 +134,13 @@ export class RaycastingTestComponent implements AfterViewInit {
     }
   }
 
-  /** To get correct calculation you have to reduce the clientY with the header-height! */
+  /**
+   * To get correct calculation you have to reduce the clientY with the header-height!
+   * @param {*} e
+   */
   @HostListener('mousemove', ['$event'])
   @Throttle(50)
-  setMouseCoordinates(e) {
+  setMouseCoordinates(e: MouseEvent) {
     this.mouse.x = (e.clientX / this.ele.nativeElement.offsetWidth) * 2 - 1
     this.mouse.y = -((e.clientY - 64) / this.ele.nativeElement.offsetHeight) * 2 + 1 // add height of header-menu
   }
