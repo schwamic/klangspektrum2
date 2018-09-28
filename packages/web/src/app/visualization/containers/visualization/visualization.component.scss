@@ -1,0 +1,120 @@
+@import "../../../../variables";
+@import "../../../../font";
+@import "../../../../grid";
+
+:host {
+  display: block;
+  height: 100vh;
+}
+
+mat-sidenav {
+  width: 320px;
+}
+
+mat-toolbar {
+  position: relative;
+  z-index: 5;
+  justify-content: space-between;
+  button {
+    min-width: 0;
+  }
+  img {
+    height: 60%;
+    padding: 0 16px;
+  }
+}
+
+.list {
+  font-size: 13px;
+  mat-expansion-panel {
+    box-shadow: none !important;
+    mat-expansion-panel-header{
+      padding: 0 15px;
+      .title{
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        span{
+          font-size: 13px;
+          margin-left: 10px;
+        }
+      }
+    }
+    ::ng-deep .mat-expansion-panel-body{
+      padding: 0 17px;
+      background-color: $light-gray
+    }
+    ::ng-deep .mat-expanded{
+      background-color: $light-gray
+    }
+  }
+  .item {
+    height: 48px;
+    padding: 0 15px;
+
+    &--account {
+      position: relative;
+      background: $dark-gray;
+      height: 110px;
+      padding: 15px;
+      .close-btn{
+        position: absolute;
+        color: $white;
+        top: 0;
+        right: 0;
+        min-width: 0;
+        padding: 0 11px;
+        &:hover{
+          background: transparent;
+        }
+      }
+      .user {
+        .avatar {
+          height: 64px;
+          width: 64px;
+          border-radius: 100%;
+          background: $light-gray;
+        }
+        p{
+          font-size: 13px;
+          color: $white;
+        }
+      }
+    }
+
+    &--nav {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      .nav-btn {
+        display: flex;
+        align-items: center;
+        height: 48px;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        border: 0;
+        text-align: left;
+        span {
+          font-size: 13px;
+          margin-left: 10px;
+        }
+        &:focus {
+          outline: 0;
+        }
+        &:hover {
+          cursor: pointer;
+          color: $dark-gray;
+        }
+      }
+    }
+  }
+}
+
+.container {
+  height: calc(100vh - 64px);
+  width: 100vw;
+  @include for-size(phone-only) {
+    height: calc(100vh - 56px);
+  }
+}

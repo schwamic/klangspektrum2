@@ -5,8 +5,6 @@ import {ProfileGuard} from "@app/core/guards/profile.guard";
 import {VisualizationComponent} from "@app/visualization/containers/visualization/visualization.component";
 import {DetailViewComponent} from "@app/visualization/containers/detail-view/detail-view.component";
 
-
-
 const routes: Routes = [
   {path: '', canActivate: [ProfileGuard], component: VisualizationComponent},
   {path: ':attribute/:value', canActivate: [ProfileGuard], component: DetailViewComponent},
