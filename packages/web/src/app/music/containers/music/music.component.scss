@@ -139,8 +139,8 @@ mat-toolbar {
 
 ::ng-deep mat-tab-group {
   background-color: $white;
+}
 
-  .mat-tab-labels {
-    justify-content: center;
-  }
+::ng-deep mat-tab-header {
+  margin: 0 40px;
 }
