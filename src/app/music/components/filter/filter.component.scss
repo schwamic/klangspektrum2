@@ -1,0 +1,38 @@
+@import "../../../../styles/variables";
+@import "../../../../styles/font";
+@import "../../../../styles/grid";
+
+.list {
+  h4 {
+    margin: 0;
+  }
+}
+
+.item {
+  display: flex;
+  flex-direction: row;
+  min-height: 50px;
+  &--center {
+    align-items: center;
+  }
+  &--options {
+    margin: 16px 0px;
+    align-items: flex-start;
+  }
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+}
+
+mat-slider {
+  width: 100%;
+}
+
+mat-checkbox {
+  margin: 7px 0px;
+  &:first-of-type {
+    margin-top: 0;
+  }
+}

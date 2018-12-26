@@ -1,0 +1,21 @@
+:host {
+  display: block;
+  height: calc(100vh - 113px);
+
+  @media screen and (max-width: 600px) {
+    height: calc(100vh - 121px);
+  }
+}
+
+.chart {
+  width: calc(50% - 2rem);
+  padding: 1rem;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: calc(100% - 80px);
+  margin: 0 40px;
+}

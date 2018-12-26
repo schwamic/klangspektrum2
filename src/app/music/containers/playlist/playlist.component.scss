@@ -1,0 +1,20 @@
+@import '../../../../styles/variables';
+
+:host {
+  display: block;
+  height: calc(100vh - 113px);
+
+  @media screen and (max-width: 600px) {
+    height: calc(100vh - 121px);
+  }
+}
+
+table {
+  width: calc(100% - 80px);
+  margin: 0 40px;
+  background: $white;
+}
+
+.track {
+  cursor: pointer;
+}
