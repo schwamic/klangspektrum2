@@ -4,6 +4,7 @@
 .env
 .source
 environment.ts
+environment.prod.ts
 
 .docker
 
