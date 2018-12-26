@@ -3,7 +3,8 @@
 # Environment
 .env
 .source
-environments/**/*
+environment.ts
+environment.prod.ts
 
 .docker
 
