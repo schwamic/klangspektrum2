@@ -1,0 +1,70 @@
+<mat-sidenav-container hasBackdrop="false">
+  <mat-sidenav #sidenav>
+    <section class="list">
+      <div class="item item--account">
+        <button mat-button class="close-btn" (click)="sidenav.toggle()">
+          <mat-icon>clear</mat-icon>
+        </button>
+        <div class="user">
+          <div class="avatar"></div>
+          <p>user@klangspektrum.music</p>
+        </div>
+      </div>
+
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <div class="title">
+              <mat-icon>settings</mat-icon>
+              <span>Settings</span>
+            </div>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <ks-filter></ks-filter>
+      </mat-expansion-panel>
+
+      <mat-divider></mat-divider>
+
+      <div class="item item--nav">
+        <button class="nav-btn">
+          <mat-icon>info</mat-icon>
+          <span>Information</span>
+        </button>
+      </div>
+
+      <mat-divider></mat-divider>
+
+      <div class="item item--nav">
+        <button class="nav-btn">
+          <mat-icon>highlight_off</mat-icon>
+          <span>Logout</span>
+        </button>
+      </div>
+    </section>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar class="mat-elevation-z2">
+      <button mat-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <img src="assets/logo/klangspektrumLogo.svg" />
+    </mat-toolbar>
+    <section class="container">
+      <mat-tab-group>
+        <mat-tab label="Tracks">
+          <ng-template matTabContent>
+            <ks-playlist></ks-playlist>
+          </ng-template>
+        </mat-tab>
+        <mat-tab label="Data">
+          <ng-template matTabContent>
+            <ks-visualization></ks-visualization>
+          </ng-template>
+        </mat-tab>
+      </mat-tab-group>
+
+    </section>
+  </mat-sidenav-content>
+
+</mat-sidenav-container>

@@ -1,20 +1,26 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "module": "commonjs",
-    "target": "es6",
-    "declaration": true,
+    "baseUrl": "./",
+    "paths": {
+      "@app/*": ["src/app/*"],
+      "@env/*": ["src/environments/*"]
+    },
+    "outDir": "./dist/out-tsc",
     "sourceMap": true,
-    "experimentalDecorators": true,
-    "allowJs": true,
+    "declaration": false,
+    "module": "commonjs",
     "moduleResolution": "node",
-    "typeRoots": ["node_modules/@types"]
-
-  },
-  "exclude": [
-    "node_modules",
-    "packages/*/node_modules",
-    "packages/*/dist",
-    "packages/*/coverage"
-  ]
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es5",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2018",
+      "dom"
+    ]
+  }
 }

@@ -1,0 +1,18 @@
+<div class="navbar">
+  <button mat-button class="navbar-btn">
+    <mat-icon class="navbar-icon">shuffle</mat-icon>
+    <div class="dot"></div>
+  </button>
+
+  <button mat-button class="navbar-btn"><mat-icon class="navbar-icon">skip_previous</mat-icon></button>
+
+  <button mat-button *ngIf="isPlaying" class="navbar-btn"><mat-icon class="navbar-icon">pause</mat-icon></button>
+  <button mat-button *ngIf="!isPlaying" class="navbar-btn"><mat-icon class="navbar-icon">play_arrow</mat-icon></button>
+
+  <button mat-button class="navbar-btn"><mat-icon class="navbar-icon">skip_next</mat-icon></button>
+
+  <button mat-button class="navbar-btn">
+    <mat-icon class="navbar-icon">repeat</mat-icon>
+    <div class="dot"></div>
+  </button>
+</div>
