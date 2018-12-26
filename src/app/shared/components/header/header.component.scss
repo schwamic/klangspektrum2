@@ -28,6 +28,10 @@ mat-toolbar {
         background-position: center;
         background-size: cover;
     }
+
+    mat-icon {
+        color: $dark-gray;
+    }
 }
 
 .logo {
