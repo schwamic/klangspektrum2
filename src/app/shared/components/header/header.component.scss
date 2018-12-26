@@ -40,9 +40,24 @@ mat-toolbar {
 }
 
 a {
-    color: gray;
+    color: $gray;
 
     &.active {
         color: $dark-gray;
+    }
+}
+
+// Overwrite
+.mat-menu-item {
+    display: flex;
+    align-items: center;
+
+    .title {
+        color: $dark-gray;
+        text-decoration: none;
+    }
+
+    .mat-icon {
+        margin-right: 6px;
     }
 }
