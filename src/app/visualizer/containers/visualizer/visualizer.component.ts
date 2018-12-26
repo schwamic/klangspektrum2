@@ -1,11 +1,11 @@
-import { Component } from '@angular/core'
+import { Component, OnInit } from '@angular/core'
 
 @Component({
-  selector: 'ks-visualization',
-  templateUrl: './visualization.component.html',
-  styleUrls: ['./visualization.component.scss']
+  selector: 'app-visualizer',
+  templateUrl: './visualizer.component.html',
+  styleUrls: ['./visualizer.component.scss']
 })
-export class VisualizationComponent {
+export class VisualizerComponent implements OnInit {
   chartOptions = {
     responsive: true
   }
@@ -24,4 +24,7 @@ export class VisualizationComponent {
     '0.8 - 0.9',
     '0.9 - 1'
   ]
+  constructor() {}
+
+  ngOnInit() {}
 }

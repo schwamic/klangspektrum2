@@ -1,0 +1,50 @@
+<app-header></app-header>
+
+<div class="container">
+    <div class="list">
+        <div class="surface"></div>
+        <table mat-table [dataSource]="tracks$">
+            <!-- Index Column -->
+            <ng-container matColumnDef="index">
+                <th mat-header-cell *matHeaderCellDef> # </th>
+                <td mat-cell *matCellDef="let element; let i = index;">
+                    <div class="table-item">
+                        <p>{{i+1}}</p>
+                    </div>
+                </td>
+            </ng-container>
+
+            <!-- Track Column -->
+            <ng-container matColumnDef="tracks">
+                <th mat-header-cell *matHeaderCellDef> Tracks </th>
+                <td mat-cell *matCellDef="let element">
+                    <div class="table-item">
+                        <p class="artist">{{element.artists[0]?.name}} </p>
+                        <p class="title">{{element.name}}</p>
+                    </div>
+                </td>
+            </ng-container>
+
+            <!-- Time Column -->
+            <ng-container matColumnDef="duration_ms">
+                <th mat-header-cell *matHeaderCellDef> Time </th>
+                <td mat-cell *matCellDef="let element">
+                    <div class="table-item">
+                        {{element.duration_ms | time}}
+                    </div>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="['index', 'tracks', 'duration_ms']; sticky: true;"></tr>
+            <tr class="table-track" mat-row *matRowDef="let row; columns: ['index', 'tracks', 'duration_ms']; let i = index"></tr>
+        </table>
+    </div>
+    <div class="sidenav">
+        <mat-card class="player">
+            <app-music-player></app-music-player>
+        </mat-card>
+        <mat-card class="settings">
+            <app-filter></app-filter>
+        </mat-card>
+    </div>
+</div>

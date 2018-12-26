@@ -1,0 +1,28 @@
+<div style="background-image: url('assets/fink.jpg')" class="cover"></div>
+
+<div class="nav">
+  <button mat-button>
+    <mat-icon class="nav-icon">shuffle</mat-icon>
+    <div class="dot"></div>
+  </button>
+
+  <button mat-button>
+    <mat-icon class="nav-icon">skip_previous</mat-icon>
+  </button>
+
+  <button mat-button *ngIf="isPlaying">
+    <mat-icon class="nav-icon">pause</mat-icon>
+  </button>
+  <button mat-button *ngIf="!isPlaying">
+    <mat-icon class="nav-icon">play_arrow</mat-icon>
+  </button>
+
+  <button mat-button>
+    <mat-icon class="nav-icon">skip_next</mat-icon>
+  </button>
+
+  <button mat-button>
+    <mat-icon class="nav-icon">repeat</mat-icon>
+    <div class="dot"></div>
+  </button>
+</div>

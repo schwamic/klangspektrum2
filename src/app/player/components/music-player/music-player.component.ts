@@ -2,20 +2,17 @@ import { Component, OnInit } from '@angular/core'
 
 import { PlayerService } from '../../../core/services/player.service'
 
-interface Player {}
-
 @Component({
-  selector: 'ks-player',
-  templateUrl: './player.component.html',
-  styleUrls: ['./player.component.scss']
+  selector: 'app-music-player',
+  templateUrl: './music-player.component.html',
+  styleUrls: ['./music-player.component.scss']
 })
-export class PlayerComponent implements OnInit {
-  player: Player
+export class MusicPlayerComponent implements OnInit {
+  player
   constructor(private playerService: PlayerService) {}
   isPlaying = false
   isShuffle = false
   isRepeat = false
-
 
   ngOnInit() {
     // this.playerService.isLoaded().then(res => {
@@ -25,7 +22,7 @@ export class PlayerComponent implements OnInit {
     this.playerService.isLoaded().then(() => {
       this.playerService.isConnected().subscribe(player => {
         this.player = player
-        console.log({ player })
+        // console.log({ player })
       })
     })
   }

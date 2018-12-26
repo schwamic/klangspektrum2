@@ -7,7 +7,16 @@ mat-toolbar {
   z-index: 4;
   background: $dark-gray;
   color: white;
-  @include for-size(phone-only ){
+
+  @include for-size(phone-only) {
     padding: 0;
+  }
+}
+
+a {
+  color: $gray;
+
+  &.active {
+    color: $white;
   }
 }

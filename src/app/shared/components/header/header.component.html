@@ -1,0 +1,21 @@
+<mat-toolbar class="mat-elevation-z2">
+  <span class="navigation">
+    <span class="account">
+      <button mat-button [matMenuTriggerFor]="menu">
+        <div class="account-avatar">
+          <div class="avatar-image" style="background-image: url('./assets/fink.jpg')"></div>
+          <mat-icon>expand_more</mat-icon>
+        </div>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+          <mat-icon>highlight_off</mat-icon>
+          <a routerLink="/home" routerLinkActive="active">Logout</a>
+        </button>
+      </mat-menu>
+    </span>
+    <a mat-button routerLink="/player" routerLinkActive="active">Player</a>
+    <a mat-button routerLink="/visualizer" routerLinkActive="active">Visualizer</a>
+  </span>
+  <img class="logo" src="assets/logo/klangspektrumLogo.svg" />
+</mat-toolbar>
