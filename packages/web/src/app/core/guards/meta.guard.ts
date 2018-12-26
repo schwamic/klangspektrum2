@@ -1,11 +1,13 @@
-import {Injectable} from '@angular/core';
-import {CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router} from '@angular/router';
+import * as fromCore from '@app/core/store'
+
+import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '@angular/router';
 import {Observable, of} from 'rxjs';
+import {catchError, map} from "rxjs/operators";
+
+import {AddMeta} from "@app/core/store/meta.actions";
+import {Injectable} from '@angular/core';
 import {Meta} from "@app/shared/models/meta.model";
 import {Store} from "@ngrx/store";
-import * as fromCore from '@app/core/store'
-import {AddMeta} from "@app/core/store/meta.actions";
-import {catchError, map} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +25,7 @@ export class MetaGuard implements CanActivate {
         const valid = this.isValid(meta)
         if (valid) {
           this.store.dispatch(new AddMeta({...meta}))
-          this.router.navigate(['visualization'])
+          this.router.navigate(['music'])
         }
         return !valid
       }),

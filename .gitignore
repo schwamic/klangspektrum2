@@ -43,3 +43,7 @@ testrail
 # System files
 .DS_Store
 Thumbs.db
+
+# VS-Code
+.history/
+.idea/

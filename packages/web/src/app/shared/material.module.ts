@@ -1,31 +1,32 @@
-import { NgModule } from '@angular/core'
 import {
+  MatAutocompleteModule,
   MatButtonModule,
-  MatMenuModule,
-  MatToolbarModule,
-  MatIconModule,
   MatCardModule,
+  MatCheckboxModule,
+  MatChipsModule,
+  MatDialogModule,
+  MatExpansionModule,
   MatGridListModule,
+  MatIconModule,
+  MatInputModule,
+  MatListModule,
+  MatMenuModule,
+  MatPaginatorModule,
+  MatProgressSpinnerModule,
+  MatRadioModule,
+  MatSelectModule,
   MatSidenavModule,
+  MatSlideToggleModule,
+  MatSliderModule,
   MatSortModule,
   MatTableModule,
-  MatInputModule,
-  MatSelectModule,
-  MatSliderModule,
-  MatRadioModule,
-  MatListModule,
-  MatProgressSpinnerModule,
-  MatChipsModule,
-  MatTooltipModule,
-  MatExpansionModule,
-  MatDialogModule,
-  MatAutocompleteModule,
   MatTabsModule,
-  MatSlideToggleModule,
-  MatPaginatorModule,
-  MatCheckboxModule,
+  MatToolbarModule,
+  MatTooltipModule,
   MatTreeModule
 } from '@angular/material'
+
+import { NgModule } from '@angular/core'
 
 @NgModule({
   imports: [

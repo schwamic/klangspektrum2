@@ -1,6 +1,6 @@
-@import "../../../../variables";
-@import "../../../../font";
-@import "../../../../grid";
+@import "../../../../styles/variables";
+@import "../../../../styles/font";
+@import "../../../../styles/grid";
 
 :host {
   display: block;
@@ -116,5 +116,11 @@ mat-toolbar {
   width: 100vw;
   @include for-size(phone-only) {
     height: calc(100vh - 56px);
+  }
+}
+
+::ng-deep mat-tab-group {
+  .mat-tab-labels {
+    justify-content: center;
   }
 }

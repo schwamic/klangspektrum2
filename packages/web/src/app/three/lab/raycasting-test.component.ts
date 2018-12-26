@@ -1,10 +1,12 @@
-import { AfterViewInit, Component, ElementRef, HostListener } from '@angular/core'
-import { AmbientLight, Color, Raycaster, Scene, Vector2, WebGLRenderer } from 'three'
 import * as Detector from 'three/examples/js/Detector.js'
 import * as P5 from 'p5/lib/p5.js'
 import * as Stats from 'stats.js/src/Stats.js'
-import { CircleObject } from '../objects/circle.object'
+
+import { AfterViewInit, Component, ElementRef, HostListener } from '@angular/core'
+import { AmbientLight, Color, Raycaster, Scene, Vector2, WebGLRenderer } from 'three'
+
 import { Camera } from '../camera/orthographic.camera'
+import { CircleObject } from '../objects/circle-three.object'
 import { Throttle } from 'lodash-decorators'
 
 /**
@@ -16,7 +18,7 @@ import { Throttle } from 'lodash-decorators'
  * Set stats-position
  *
  * Currently missing:
- * Octree and Buffer
+ * Octree and InstancedBuffer
  */
 
 @Component({

@@ -60,9 +60,12 @@
               "src/manifest.json"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles/index.scss"
             ],
-            "scripts": []
+            "scripts": [
+            "../../node_modules/chart.js/dist/Chart.min.js",
+            "../../node_modules/three/build/three.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -104,7 +107,7 @@
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
             "styles": [
-              "src/styles.scss"
+              "src/styles/index.scss"
             ],
             "scripts": [],
             "assets": [

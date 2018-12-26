@@ -1,5 +1,4 @@
-import { OrthographicCamera } from 'three'
-
+declare const THREE
 /**
  * Camera
  * Use orthographic-camera for 2D-renderings
@@ -9,7 +8,7 @@ import { OrthographicCamera } from 'three'
  */
 
 export class Camera {
-  public camera: OrthographicCamera
+  public camera: THREE.OrthographicCamera
   public ratio
   readonly FRUSTUM = 1000
   readonly FAR = 2000
@@ -17,7 +16,7 @@ export class Camera {
 
   constructor(canvas, scene) {
     this.ratio = canvas.offsetWidth / canvas.offsetHeight
-    this.camera = new OrthographicCamera(this.FRUSTUM * this.ratio / -2, this.FRUSTUM * this.ratio / 2, this.FRUSTUM / 2, this.FRUSTUM / -2, this.NEAR, this.FAR)
+    this.camera = new THREE.OrthographicCamera(this.FRUSTUM * this.ratio / -2, this.FRUSTUM * this.ratio / 2, this.FRUSTUM / 2, this.FRUSTUM / -2, this.NEAR, this.FAR)
     this.camera.position.z = 400
     this.camera.lookAt(scene.position)
   }

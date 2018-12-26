@@ -51,7 +51,19 @@
       <img src="assets/logo/klangspektrumLogo.svg"/>
     </mat-toolbar>
     <section class="container">
-      <three-ray></three-ray>
+      <mat-tab-group>
+        <mat-tab label="Playlist">
+          <ng-template matTabContent>
+            <ks-playlist></ks-playlist>
+          </ng-template>
+        </mat-tab>
+        <mat-tab label="Visualization">
+          <ng-template matTabContent>
+            <ks-visualization></ks-visualization>
+          </ng-template>
+        </mat-tab>
+      </mat-tab-group>
+
     </section>
   </mat-sidenav-content>
 

@@ -1,17 +1,18 @@
-import {
-  ActionReducer,
-  ActionReducerMap,
-  createFeatureSelector,
-  createSelector,
-  MetaReducer
-} from '@ngrx/store'
-import { localStorageSync } from 'ngrx-store-localstorage'
-
+import * as fromArtist from './artist.reducer'
+import * as fromFeatures from './features.reducer'
 import * as fromMeta from './meta.reducer'
 import * as fromProfile from './profile.reducer'
 import * as fromTrack from './track.reducer'
-import * as fromFeatures from './features.reducer'
-import * as fromArtist from './artist.reducer'
+
+import {
+  ActionReducer,
+  ActionReducerMap,
+  MetaReducer,
+  createFeatureSelector,
+  createSelector
+} from '@ngrx/store'
+
+import { localStorageSync } from 'ngrx-store-localstorage'
 
 // + How to save only part of deeply nested state:
 //   {keys: [{parent: [{child: ['grandchild', 'grandchild2'], 'parentProperty']}]}
@@ -55,6 +56,7 @@ export const selectProfileLoaded = createSelector(selectProfile, fromProfile.get
 // Tracks
 export const selectTrack = createFeatureSelector<fromTrack.State>('tracks')
 export const selectTrackLoaded = createSelector(selectTrack, fromTrack.getLoaded)
+export const { selectAll: selectAllTracks } = fromTrack.adapter.getSelectors(selectTrack)
 
 // Features
 export const selectFeatures = createFeatureSelector<fromFeatures.State>('features')
