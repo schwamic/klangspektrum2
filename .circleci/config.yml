@@ -28,7 +28,6 @@ jobs:
             - v1-dependencies-
 
       - run: yarn
-      - run: yarn env
 
       - save_cache:
           paths:
@@ -36,4 +35,4 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       # run lab!
-      - run: yarn test
+      - run: yarn build
