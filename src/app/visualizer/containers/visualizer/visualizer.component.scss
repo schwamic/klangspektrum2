@@ -1,0 +1,17 @@
+@import '../../../../styles/mixins/container';
+
+::ng-deep body {
+    background-color: $light-gray;
+}
+
+.chart {
+    width: calc(50% - 2rem);
+    padding: 1rem;
+}
+
+.container {
+    @include container();
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}

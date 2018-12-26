@@ -1,0 +1,6 @@
+@import './../variables';
+
+@mixin container {
+    width: calc(100% - 60px);
+    margin: 20px 30px;
+}

@@ -1,31 +1,27 @@
 import * as fromCore from '@app/core/store'
 
-import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '@angular/router';
-import {Observable, of} from 'rxjs';
-import {catchError, map} from "rxjs/operators";
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router'
+import { Observable, of } from 'rxjs'
+import { catchError, map } from 'rxjs/operators'
 
-import {AddMeta} from "@app/core/store/meta.actions";
-import {Injectable} from '@angular/core';
-import {Meta} from "@app/shared/models/meta.model";
-import {Store} from "@ngrx/store";
+import { AddMeta } from '@app/core/store/meta.actions'
+import { Injectable } from '@angular/core'
+import { Meta } from '@app/shared/models/meta.model'
+import { Store } from '@ngrx/store'
 
 @Injectable({
   providedIn: 'root'
 })
 export class MetaGuard implements CanActivate {
+  constructor(private router: Router, private store: Store<fromCore.State>) {}
 
-  constructor(private router: Router, private store: Store<fromCore.State>) {
-  }
-
-  canActivate(
-    next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean> {
+  canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
     return this.getMeta().pipe(
       map((meta: Meta) => {
         const valid = this.isValid(meta)
         if (valid) {
-          this.store.dispatch(new AddMeta({...meta}))
-          this.router.navigate(['music'])
+          this.store.dispatch(new AddMeta({ ...meta }))
+          this.router.navigate(['player'])
         }
         return !valid
       }),
@@ -38,9 +34,9 @@ export class MetaGuard implements CanActivate {
    * @return Observable<Meta>
    */
   getMeta(): Observable<Meta> {
-    let hash = window.location.hash.substr(1)
-    let meta = {} as Meta
-    hash.split('&').forEach(a => meta[a.split('=')[0]] = a.split('=')[1])
+    const hash = window.location.hash.substr(1)
+    const meta = {} as Meta
+    hash.split('&').forEach(a => (meta[a.split('=')[0]] = a.split('=')[1]))
     return of(meta)
   }
 

@@ -1,0 +1,82 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins/container';
+
+::ng-deep body {
+    background-color: $light-gray;
+}
+
+.container {
+    display: flex;
+    @include container();
+}
+
+.surface {
+    position: sticky;
+    display: block;
+    width: 100%;
+    height: 20px;
+    margin-bottom: -20px;
+    top: 0;
+    background: $light-gray;
+}
+
+.list {
+    position: relative;
+    width: calc(100% - 10px);
+    margin-right: 10px;
+
+    table {
+        width: 100%;
+        background: $light-gray;
+
+        .table-item {
+            margin: 10px 0;
+
+            .title {
+                font-size: 12px;
+                margin: 0;
+            }
+
+            .artist {
+                margin: 0;
+            }
+        }
+
+        .table-track {
+            cursor: pointer;
+        }
+    }
+}
+
+.sidenav {
+    width: 400px;
+    margin-left: 10px;
+
+    .player {
+        padding: 0;
+        overflow: hidden;
+    }
+
+    .settings {
+        position: sticky;
+        margin-top: 20px;
+        top: 20px;
+    }
+}
+
+// Overwrites
+tr.mat-header-row {
+    height: 25px !important;
+}
+
+.mat-header-cell {
+    top: 20px !important;
+}
+
+td.mat-cell:first-of-type,
+td.mat-footer-cell:first-of-type,
+th.mat-header-cell:first-of-type {
+    width: 10%;
+    min-width: 40px;
+    max-width: 60px;
+}
