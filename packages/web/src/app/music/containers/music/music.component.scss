@@ -15,9 +15,11 @@ mat-toolbar {
   position: relative;
   z-index: 5;
   justify-content: space-between;
+
   button {
     min-width: 0;
   }
+
   img {
     height: 60%;
     padding: 0 16px;
@@ -26,28 +28,35 @@ mat-toolbar {
 
 .list {
   font-size: 13px;
+
   mat-expansion-panel {
     box-shadow: none !important;
-    mat-expansion-panel-header{
+
+    mat-expansion-panel-header {
       padding: 0 15px;
-      .title{
+
+      .title {
         display: flex;
         align-items: center;
         justify-content: flex-start;
-        span{
+
+        span {
           font-size: 13px;
           margin-left: 10px;
         }
       }
     }
-    ::ng-deep .mat-expansion-panel-body{
+
+    ::ng-deep .mat-expansion-panel-body {
       padding: 0 17px;
       background-color: $light-gray
     }
-    ::ng-deep .mat-expanded{
+
+    ::ng-deep .mat-expanded {
       background-color: $light-gray
     }
   }
+
   .item {
     height: 48px;
     padding: 0 15px;
@@ -57,17 +66,20 @@ mat-toolbar {
       background: $dark-gray;
       height: 110px;
       padding: 15px;
-      .close-btn{
+
+      .close-btn {
         position: absolute;
         color: $white;
         top: 0;
         right: 0;
         min-width: 0;
         padding: 0 11px;
-        &:hover{
+
+        &:hover {
           background: transparent;
         }
       }
+
       .user {
         .avatar {
           height: 64px;
@@ -75,7 +87,8 @@ mat-toolbar {
           border-radius: 100%;
           background: $light-gray;
         }
-        p{
+
+        p {
           font-size: 13px;
           color: $white;
         }
@@ -86,6 +99,7 @@ mat-toolbar {
       display: flex;
       justify-content: flex-start;
       align-items: center;
+
       .nav-btn {
         display: flex;
         align-items: center;
@@ -95,13 +109,16 @@ mat-toolbar {
         margin: 0;
         border: 0;
         text-align: left;
+
         span {
           font-size: 13px;
           margin-left: 10px;
         }
+
         &:focus {
           outline: 0;
         }
+
         &:hover {
           cursor: pointer;
           color: $dark-gray;
@@ -114,12 +131,15 @@ mat-toolbar {
 .container {
   height: calc(100vh - 64px);
   width: 100vw;
+
   @include for-size(phone-only) {
     height: calc(100vh - 56px);
   }
 }
 
 ::ng-deep mat-tab-group {
+  background-color: $white;
+
   .mat-tab-labels {
     justify-content: center;
   }

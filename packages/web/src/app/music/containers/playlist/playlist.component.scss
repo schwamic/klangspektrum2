@@ -1,3 +1,5 @@
+@import '../../../../styles/variables';
+
 :host {
   display: block;
   height: calc(100vh - 113px);
@@ -10,5 +12,9 @@
 table {
   width: calc(100% - 80px);
   margin: 0 40px;
-  background: transparent;
+  background: $white;
+}
+
+.track {
+  cursor: pointer;
 }
