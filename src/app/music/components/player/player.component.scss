@@ -5,12 +5,13 @@
   bottom: 0;
   width: 100vw;
 }
+
 .navbar {
   display: flex;
   flex-direction: row;
   justify-content: center;
   width: 100%;
-  height: 80px;
+  height: 64px;
   background-color: $dark-gray;
 
   &-btn {
@@ -28,19 +29,18 @@
   }
 }
 
-.dot-wrapper{
+.dot-wrapper {
   position: relative;
 }
+
 .dot {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 15px;
+  bottom: 10px;
   height: 4px;
   width: 4px;
   margin: 0 auto;
   border-radius: 100%;
   background-color: $white;
 }
-
-
