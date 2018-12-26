@@ -10,7 +10,7 @@
     @include container();
 }
 
-.surface {
+.mask {
     position: sticky;
     display: block;
     width: 100%;
@@ -21,8 +21,7 @@
 }
 
 .list {
-    position: relative;
-    width: calc(100% - 10px);
+    width: calc(64% - 10px);
     margin-right: 10px;
 
     table {
@@ -34,6 +33,7 @@
 
             .title {
                 font-size: 12px;
+                line-height: 14px;
                 margin: 0;
             }
 
@@ -49,7 +49,8 @@
 }
 
 .sidenav {
-    width: 400px;
+    width: calc(36% - 10px);
+    min-width: 360px;
     margin-left: 10px;
 
     .player {
