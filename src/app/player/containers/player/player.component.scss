@@ -31,13 +31,14 @@
         .table-item {
             margin: 10px 0;
 
-            .title {
+            .title,
+            .artist {
                 font-size: 12px;
                 line-height: 14px;
                 margin: 0;
             }
 
-            .artist {
+            .track {
                 margin: 0;
             }
         }

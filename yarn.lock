@@ -4775,6 +4775,11 @@ ng2-charts@^1.6.0:
   dependencies:
     chart.js "^2.6.0"
 
+ng2-nouislider@^1.7.13:
+  version "1.7.13"
+  resolved "https://registry.yarnpkg.com/ng2-nouislider/-/ng2-nouislider-1.7.13.tgz#65ad53f34f3efc39bb654f1ae85aa1d8b458a718"
+  integrity sha512-qMJwh3xpAeY6NlZ0tuz4rMJ+fBy5Bcwp5Blt+n9XRedjfbNGT6OsJkk/7iFa6TxNJpZUE4IcoWM7F9Wt+UpqhA==
+
 ngrx-store-localstorage@^5.1.0:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/ngrx-store-localstorage/-/ngrx-store-localstorage-5.1.0.tgz#02e2e2c061c5ebacbe10c848ba8d4853aaa911ed"
@@ -4930,6 +4935,11 @@ normalize-range@^0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/normalize-range/-/normalize-range-0.1.2.tgz#2d10c06bdfd312ea9777695a4d28439456b75942"
   integrity sha1-LRDAa9/TEuqXd2laTShDlFa3WUI=
+
+nouislider@^12.1.0:
+  version "12.1.0"
+  resolved "https://registry.yarnpkg.com/nouislider/-/nouislider-12.1.0.tgz#a4416b4b3357e77e52217f8ecf060eb14a855f59"
+  integrity sha512-SAOabF6hBm8201c6LDbkVOVhgwY49+/ms72ZLUF2qkN5RCf7FfUvEh/hGZ7XcwZHU+I/grlicPmcSk1/rrMnOw==
 
 npm-bundled@^1.0.1:
   version "1.0.5"

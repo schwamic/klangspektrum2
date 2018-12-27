@@ -1,63 +1,58 @@
 <section role="list" class="list">
-  <div class="item item--center">
-    <div class="col-3">
-      <h4>Scale:</h4>
+  <div class="slider">
+    <div class="slider-title">
+      <p class="yellow">Acousticness</p>
+      <p class="yellow">{{accousticness.range | range}}</p>
     </div>
-    <div class="col-7">
-      <mat-slider thumbLabel tickInterval="1" min="1" max="100"></mat-slider>
-    </div>
+    <app-slider #accousticness></app-slider>
   </div>
-<div class="item item--center">
-  <div class="col-3">
-    <h4>Interval:</h4>
+
+  <div class="slider">
+    <div class="slider-title">
+      <p class="cyan">Speechiness</p>
+      <p class="cyan">{{speechiness.range | range}}</p>
+    </div>
+    <app-slider #speechiness></app-slider>
   </div>
-  <div class="col-7">
-    <mat-slider thumbLabel tickInterval="1" min="1" max="100"></mat-slider>
+
+  <div class="slider">
+    <div class="slider-title">
+      <p class="blue">Liveness</p>
+      <p class="blue">{{liveness.range | range}}</p>
+    </div>
+    <app-slider #liveness></app-slider>
   </div>
-</div>
-  <div class="item item--center">
-    <div class="col-3">
-      <h4>Steps:</h4>
+
+  <div class="slider">
+    <div class="slider-title">
+      <p class="red">Danceability</p>
+      <p class="red">{{danceability.range | range}}</p>
     </div>
-    <div class="col-7">
-      <mat-slider thumbLabel tickInterval="1" min="1" max="100"></mat-slider>
-    </div>
+    <app-slider #danceability></app-slider>
   </div>
-  <div class="item item--options">
-    <div class="col-3">
-      <h4>Filter:</h4>
+
+  <div class="slider">
+    <div class="slider-title">
+      <p class="orange">Instrumentalness</p>
+      <p class="orange">{{instrumentalness.range | range}}</p>
     </div>
-    <div class="options col-7">
-      <mat-checkbox>Speechiness</mat-checkbox>
-      <mat-checkbox>Acousticness</mat-checkbox>
-      <mat-checkbox>Liveness</mat-checkbox>
-      <mat-checkbox>Danceability</mat-checkbox>
-      <mat-checkbox>Instrumentalness</mat-checkbox>
-      <mat-checkbox>Mood</mat-checkbox>
-      <mat-checkbox>Energy</mat-checkbox>
-    </div>
+    <app-slider #instrumentalness></app-slider>
   </div>
-  <div class="item item--center">
-    <div class="col-3">
-      <h4>Sort:</h4>
+
+  <div class="slider">
+    <div class="slider-title">
+      <p class="green">Mood</p>
+      <p class="green">{{mood.range | range}}</p>
     </div>
-    <div class="col-7">
-      <mat-slide-toggle></mat-slide-toggle>
-    </div>
+    <app-slider #mood></app-slider>
   </div>
-  <div class="item item--center">
-    <div class="col-3">
-      <h4>Sound:</h4>
+
+  <div class="slider">
+    <div class="slider-title">
+      <p class="purple">Energy</p>
+      <p class="purple">{{energy.range | range}}</p>
     </div>
-    <div class="col-7">
-      <mat-slide-toggle></mat-slide-toggle>
-    </div>
+    <app-slider #energy></app-slider>
   </div>
+
 </section>
-
-
-
-
-
-
-

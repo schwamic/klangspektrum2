@@ -2,37 +2,40 @@
 @import "../../../../styles/font";
 @import "../../../../styles/grid";
 
-.list {
-  h4 {
-    margin: 0;
-  }
+.slider {
+  margin-bottom: 20px;
 }
 
-.item {
+.slider-title {
   display: flex;
-  flex-direction: row;
-  min-height: 50px;
-  &--center {
-    align-items: center;
-  }
-  &--options {
-    margin: 16px 0px;
-    align-items: flex-start;
-  }
+  justify-content: space-between;
+  margin-bottom: -18px;
 }
 
-.options {
-  display: flex;
-  flex-direction: column;
+.yellow {
+  color: $yellow;
 }
 
-mat-slider {
-  width: 100%;
+.cyan {
+  color: $cyan;
 }
 
-mat-checkbox {
-  margin: 7px 0px;
-  &:first-of-type {
-    margin-top: 0;
-  }
+.blue {
+  color: $blue;
+}
+
+.red {
+  color: $red;
+}
+
+.orange {
+  color: $orange;
+}
+
+.green {
+  color: $green;
+}
+
+.purple {
+  color: $purple;
 }

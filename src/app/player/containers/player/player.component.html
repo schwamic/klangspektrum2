@@ -9,7 +9,7 @@
                 <th mat-header-cell *matHeaderCellDef> # </th>
                 <td mat-cell *matCellDef="let element; let i = index;">
                     <div class="table-item">
-                        <p>{{i+1}}</p>
+                        <p class="title">{{i+1}}</p>
                     </div>
                 </td>
             </ng-container>
@@ -19,8 +19,8 @@
                 <th mat-header-cell *matHeaderCellDef> Tracks </th>
                 <td mat-cell *matCellDef="let element">
                     <div class="table-item">
+                        <p class="track">{{element.name}}</p>
                         <p class="artist">{{element.artists[0]?.name}} </p>
-                        <p class="title">{{element.name}}</p>
                     </div>
                 </td>
             </ng-container>
@@ -30,7 +30,7 @@
                 <th mat-header-cell *matHeaderCellDef> Time </th>
                 <td mat-cell *matCellDef="let element">
                     <div class="table-item">
-                        {{element.duration_ms | time}}
+                        <p class="title">{{element.duration_ms | time}}</p>
                     </div>
                 </td>
             </ng-container>
