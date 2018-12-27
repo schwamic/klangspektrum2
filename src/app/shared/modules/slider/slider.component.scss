@@ -1,0 +1,62 @@
+@import '../../../../styles/variables';
+
+nouislider {
+    width: calc(100% - 14px);
+    margin-left: 7px;
+    margin-right: 7px;
+}
+
+::ng-deep .noUi-connects {
+    height: 2px;
+    background: $gray;
+    border-radius: 0;
+}
+
+::ng-deep .noUi-target {
+    height: 2px;
+    border: none;
+}
+
+::ng-deep .noUi-connect {
+    background: $dark-gray;
+}
+
+// Hanlde
+::ng-deep .noUi-handle:after {
+    display: none;
+}
+
+::ng-deep .noUi-handle:before {
+    display: none;
+}
+
+::ng-deep .noUi-horizontal .noUi-handle {
+    background: $dark-gray;
+    box-shadow: none;
+    border: none;
+    left: 0;
+    right: -7px !important;
+    top: -6px;
+    width: 14px;
+    height: 14px;
+    border-radius: 100%;
+    cursor: pointer;
+    transform: scale(1);
+    transition: all 150ms ease-out;
+
+    &:active {
+        outline: 0;
+        transform: scale(1.3);
+    }
+
+    &:hover {
+        outline: 0;
+        transform: scale(1.3);
+    }
+
+    &:focus {
+        outline: 0;
+        transform: scale(1.3);
+
+    }
+}
