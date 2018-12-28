@@ -9,26 +9,18 @@
 
   <div class="slider">
     <div class="slider-title">
-      <p class="cyan">Speechiness</p>
-      <p class="cyan">{{speechiness.range | range}}</p>
-    </div>
-    <app-slider #speechiness></app-slider>
-  </div>
-
-  <div class="slider">
-    <div class="slider-title">
-      <p class="blue">Liveness</p>
-      <p class="blue">{{liveness.range | range}}</p>
-    </div>
-    <app-slider #liveness></app-slider>
-  </div>
-
-  <div class="slider">
-    <div class="slider-title">
       <p class="red">Danceability</p>
       <p class="red">{{danceability.range | range}}</p>
     </div>
     <app-slider #danceability></app-slider>
+  </div>
+
+  <div class="slider">
+    <div class="slider-title">
+      <p class="purple">Energy</p>
+      <p class="purple">{{energy.range | range}}</p>
+    </div>
+    <app-slider #energy></app-slider>
   </div>
 
   <div class="slider">
@@ -41,18 +33,26 @@
 
   <div class="slider">
     <div class="slider-title">
-      <p class="green">Mood</p>
-      <p class="green">{{mood.range | range}}</p>
+      <p class="blue">Liveness</p>
+      <p class="blue">{{liveness.range | range}}</p>
     </div>
-    <app-slider #mood></app-slider>
+    <app-slider #liveness></app-slider>
   </div>
 
   <div class="slider">
     <div class="slider-title">
-      <p class="purple">Energy</p>
-      <p class="purple">{{energy.range | range}}</p>
+      <p class="cyan">Speechiness</p>
+      <p class="cyan">{{speechiness.range | range}}</p>
     </div>
-    <app-slider #energy></app-slider>
+    <app-slider #speechiness></app-slider>
+  </div>
+
+  <div class="slider">
+    <div class="slider-title">
+      <p class="green">Valence</p>
+      <p class="green">{{valence.range | range}}</p>
+    </div>
+    <app-slider #valence></app-slider>
   </div>
 
 </section>
