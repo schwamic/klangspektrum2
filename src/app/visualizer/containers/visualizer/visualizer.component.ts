@@ -3,6 +3,7 @@ import { Store, select } from '@ngrx/store'
 import * as fromRoot from '@app/core/store'
 import { map } from 'rxjs/operators'
 import { Chart } from 'chart.js'
+import { chartsData } from './charts-data'
 
 @Component({
   selector: 'app-visualizer',
@@ -11,71 +12,7 @@ import { Chart } from 'chart.js'
 })
 export class VisualizerComponent implements OnInit {
   // Default chart data
-  charts = [
-    {
-      title: 'Acousticness',
-      chartData: [{ data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], label: 'All' }],
-      chartColors: [
-        {
-          backgroundColor: '#F9B127'
-        }
-      ]
-    },
-    {
-      title: 'Danceability',
-      chartData: [{ data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], label: 'All' }],
-      chartColors: [
-        {
-          backgroundColor: '#E82C4F'
-        }
-      ]
-    },
-    {
-      title: 'Energy',
-      chartData: [{ data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], label: 'All' }],
-      chartColors: [
-        {
-          backgroundColor: '#62509C'
-        }
-      ]
-    },
-    {
-      title: 'Instrumentalness',
-      chartData: [{ data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], label: 'All' }],
-      chartColors: [
-        {
-          backgroundColor: '#EB6617'
-        }
-      ]
-    },
-    {
-      title: 'Liveness',
-      chartData: [{ data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], label: 'All' }],
-      chartColors: [
-        {
-          backgroundColor: '#2884C7'
-        }
-      ]
-    },
-    {
-      title: 'Speechiness',
-      chartData: [{ data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], label: 'All' }],
-      chartColors: [
-        {
-          backgroundColor: '#26A69A'
-        }
-      ]
-    },
-    {
-      title: 'Valence',
-      chartData: [{ data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], label: 'All' }],
-      chartColors: [
-        {
-          backgroundColor: '#66BB6A'
-        }
-      ]
-    }
-  ]
+  charts = chartsData
 
   // Chart options
   chartOptions = {
