@@ -1,24 +1,9 @@
 <app-header></app-header>
-
 <div class="container">
-    <div class="chart">
-        <h2>Danceability</h2>
-        <canvas baseChart [chartType]="'bar'" [datasets]="chartData" [labels]="chartLabels" [options]="chartOptions"
-            [legend]="false">
-        </canvas>
-    </div>
-
-    <div class="chart">
-        <h2>Accousticness</h2>
-        <canvas baseChart [chartType]="'bar'" [datasets]="chartData" [labels]="chartLabels" [options]="chartOptions"
-            [legend]="false">
-        </canvas>
-    </div>
-
-    <div class="chart">
-        <h2>Liveness</h2>
-        <canvas baseChart [chartType]="'bar'" [datasets]="chartData" [labels]="chartLabels" [options]="chartOptions"
-            [legend]="false">
+    <div *ngFor="let chart of charts" class="chart">
+        <p>{{chart.title}}</p>
+        <canvas baseChart [chartType]="'bar'" [datasets]="chart.chartData" [labels]="chartLabels" [options]="chartOptions"
+            [legend]="false" [colors]='chart.chartColors'>
         </canvas>
     </div>
 </div>
