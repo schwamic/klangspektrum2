@@ -1,16 +1,18 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, OnDestroy } from '@angular/core'
 import { Store, select } from '@ngrx/store'
 import * as fromRoot from '@app/core/store'
 import { map } from 'rxjs/operators'
 import { Chart } from 'chart.js'
 import { chartsData } from './charts-data'
+import { Subscription } from 'rxjs'
 
 @Component({
   selector: 'app-visualizer',
   templateUrl: './visualizer.component.html',
   styleUrls: ['./visualizer.component.scss']
 })
-export class VisualizerComponent implements OnInit {
+export class VisualizerComponent implements OnInit, OnDestroy {
+  subscription: Subscription
   // Default chart data
   charts = chartsData
 
@@ -40,7 +42,7 @@ export class VisualizerComponent implements OnInit {
     Chart.defaults.global.defaultFontColor = '#000'
 
     // Map features-data for charts
-    this.store
+    this.subscription = this.store
       .pipe(
         select(fromRoot.selectFeatures),
         map(features => {
@@ -59,6 +61,10 @@ export class VisualizerComponent implements OnInit {
         })
       )
       .subscribe()
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe()
   }
 
   /**

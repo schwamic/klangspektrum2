@@ -1,10 +1,9 @@
-import {createEntityAdapter, EntityAdapter, EntityState} from '@ngrx/entity'
-import {Features} from '@app/shared/models/features.model'
-import {FeaturesActions, FeaturesActionTypes} from "@app/core/store/features.actions";
+import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity'
+import { Features } from '@app/shared/models/features.model'
+import { FeaturesActions, FeaturesActionTypes } from '@app/core/store/features.actions'
 
-
-export interface State extends EntityState<Features>{
-  loaded: boolean,
+export interface State extends EntityState<Features> {
+  loaded: boolean
   error: string
 }
 
@@ -17,9 +16,8 @@ export const initialState: State = adapter.getInitialState({
 
 export function reducer(state = initialState, action: FeaturesActions): State {
   switch (action.type) {
-
     case FeaturesActionTypes.LoadFeaturesSuccess: {
-      return adapter.addMany(action.payload.features, {...state, loaded: true})
+      return adapter.addMany(action.payload.features, { ...state, loaded: true })
     }
 
     case FeaturesActionTypes.LoadFeaturesFail: {
@@ -31,7 +29,7 @@ export function reducer(state = initialState, action: FeaturesActions): State {
     }
 
     default:
-      return state;
+      return state
   }
 }
 

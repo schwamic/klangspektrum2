@@ -13,11 +13,10 @@ import { httpInterceptorProviders } from '@app/core/http-interceptors'
 import { environment } from '@env/environment'
 import { NotFoundComponent } from './components/not-found/not-found.component'
 
-
 @NgModule({
   imports: [
     CommonModule,
-    StoreModule.forRoot(reducers, {metaReducers}),
+    StoreModule.forRoot(reducers, { metaReducers }),
     EffectsModule.forRoot([ProfileEffects, TrackEffects, FeaturesEffects]),
     !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
