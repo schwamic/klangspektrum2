@@ -1,27 +1,27 @@
-import {ProfileActions, ProfileActionTypes} from "@app/core/store/profile.actions";
-import {Profile} from "@app/shared/models/profile.model";
+import { ProfileActions, ProfileActionTypes } from '@app/core/store/profile.actions'
+import { Profile } from '@app/shared/models/profile.model'
 
 interface Image {
-  height: number,
-  url: string,
+  height: number
+  url: string
   width: number
 }
 
 export interface State {
   // todo use normalize to add a flat state? or map opject in guard?
-  birthdate: string,
-  country: string,
-  display_name: string,
-  email: string,
-  external_urls: {},
-  followers: {},
-  href: string,
-  id: string,
-  images: [{}],
-  product: string,
-  type: string,
-  uri: string,
-  loaded: boolean,
+  birthdate: string
+  country: string
+  display_name: string
+  email: string
+  external_urls: {}
+  followers: {}
+  href: string
+  id: string
+  images: [{}]
+  product: string
+  type: string
+  uri: string
+  loaded: boolean
   error: string
 }
 
@@ -40,7 +40,7 @@ export const initialState: State = {
   uri: null,
   loaded: false,
   error: null
-};
+}
 
 export function reducer(state = initialState, action: ProfileActions): State {
   switch (action.type) {
@@ -60,7 +60,7 @@ export function reducer(state = initialState, action: ProfileActions): State {
       }
     }
     default:
-      return state;
+      return state
   }
 }
 

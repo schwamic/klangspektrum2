@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store'
-import {Features} from '@app/shared/models/features.model'
+import { Features } from '@app/shared/models/features.model'
 
 export enum FeaturesActionTypes {
   LoadFeatures = '[Features] Load Features',
@@ -18,7 +18,7 @@ export class LoadFeaturesSuccess implements Action {
 
 export class LoadFeaturesFail implements Action {
   readonly type = FeaturesActionTypes.LoadFeaturesFail
-  constructor(public payload: { error: any}){}
+  constructor(public payload: { error: any }) {}
 }
 
 export type FeaturesActions = LoadFeatures | LoadFeaturesSuccess | LoadFeaturesFail
