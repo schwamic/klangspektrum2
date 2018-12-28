@@ -1,9 +1,11 @@
 <app-header></app-header>
 <div class="container">
-    <div *ngFor="let chart of charts" class="chart">
-        <p><strong>{{chart.title}}</strong><br>{{chart.description}}</p>
-        <canvas baseChart [chartType]="'bar'" [datasets]="chart.chartData" [labels]="chartLabels" [options]="chartOptions"
-            [legend]="false" [colors]='chart.chartColors'>
-        </canvas>
-    </div>
+    <ng-container *ngFor="let chart of charts; let i = index">
+        <div class="chart" [class.right]="!!(i%2)">
+            <p><strong>{{chart.title}}</strong><br>{{chart.description}}</p>
+            <canvas baseChart [chartType]="'bar'" [datasets]="chart.chartData" [labels]="chartLabels" [options]="chartOptions"
+                [legend]="false" [colors]='chart.chartColors'>
+            </canvas>
+        </div>
+    </ng-container>
 </div>
