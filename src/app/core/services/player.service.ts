@@ -72,7 +72,7 @@ export class PlayerService {
 
         // Connect to the player!
         player.connect()
-        
+
         return player
       })
     )

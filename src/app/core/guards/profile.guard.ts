@@ -1,33 +1,33 @@
-import {Injectable} from '@angular/core'
-import {CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot} from '@angular/router'
-import {Observable, of} from 'rxjs'
-import {ApiService} from '@app/core/services/api.service'
-import {Store} from '@ngrx/store'
+import { Injectable } from '@angular/core'
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router'
+import { Observable, of } from 'rxjs'
+import { ApiService } from '@app/core/services/api.service'
+import { Store } from '@ngrx/store'
 import * as fromCore from '@app/core/store'
-import {catchError, filter, first, map, switchMap, tap} from 'rxjs/operators'
-import {LoadProfile} from '@app/core/store/profile.actions'
-import {LoadTrack} from '@app/core/store/track.actions'
-import {LoadFeatures} from "@app/core/store/features.actions";
+import { catchError, filter, first, map, switchMap, tap } from 'rxjs/operators'
+import { LoadProfile } from '@app/core/store/profile.actions'
+import { LoadTrack } from '@app/core/store/track.actions'
+import { LoadFeatures } from '@app/core/store/features.actions'
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProfileGuard implements CanActivate {
-  constructor(private api: ApiService, private store: Store<fromCore.State>) {
-  }
+  constructor(private api: ApiService, private store: Store<fromCore.State>) {}
 
-  canActivate(
-    next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean> {
-
+  canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
     return this.ensureProfileLoaded().pipe(
-      switchMap(() => this.ensureTracksLoaded().pipe(
-        switchMap(() => this.ensureFeaturesLoaded().pipe(
-          map(() => true),
+      switchMap(() =>
+        this.ensureTracksLoaded().pipe(
+          switchMap(() =>
+            this.ensureFeaturesLoaded().pipe(
+              map(() => true),
+              catchError(() => of(false))
+            )
+          ),
           catchError(() => of(false))
-        )),
-        catchError(() => of(false))
-      )),
+        )
+      ),
       catchError(() => of(false))
     )
   }
