@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core'
 import { FormBuilder, FormGroup } from '@angular/forms'
-import { debounceTime, tap, distinctUntilChanged, filter, take } from 'rxjs/operators'
+import { debounceTime, distinctUntilChanged, take } from 'rxjs/operators'
 import { Subject } from 'rxjs'
 import { Store, select } from '@ngrx/store'
 import * as fromStore from '@app/core/store'
@@ -22,7 +22,7 @@ export class FilterComponent implements OnInit, OnDestroy {
     speechiness: null,
     valence: null
   })
-
+  filter$ = this.store.pipe(select(fromStore.selectFilter))
   constructor(private fb: FormBuilder, private store: Store<fromStore.State>) {}
 
   ngOnInit() {

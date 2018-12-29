@@ -23,9 +23,7 @@ export const initialState: State = {
 export function reducer(state = initialState, action: FilterActions): State {
   switch (action.type) {
     case FilterActionTypes.UpdateFilter: {
-      return {
-        ...action.payload
-      }
+      return { ...action.payload }
     }
     default:
       return state

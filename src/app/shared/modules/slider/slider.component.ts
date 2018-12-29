@@ -1,11 +1,16 @@
-import { Component, Input, forwardRef, ChangeDetectionStrategy } from '@angular/core'
+import {
+  Component,
+  Input,
+  forwardRef,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef
+} from '@angular/core'
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms'
 
 @Component({
   selector: 'app-slider',
   templateUrl: './slider.component.html',
   styleUrls: ['./slider.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -22,7 +27,7 @@ export class SliderComponent implements ControlValueAccessor {
   }
 
   writeValue(range: any): void {
-    this.onChange(range)
+    this.range = range
   }
 
   registerOnChange(fn): void {
