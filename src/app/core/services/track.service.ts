@@ -45,7 +45,7 @@ export class TrackService {
               return i * 50
             })
           ).pipe(
-            mergeMap(offset => this.getData(this.urlMe(offset)), null, 10),
+            mergeMap(offset => this.getData(this.urlMe(offset)), null, 8),
             map(res => Object.values(res['items']).map(item => this.mapTrack(item['track'])))
           )
         } else {
@@ -67,7 +67,7 @@ export class TrackService {
               return i * 50
             })
           ).pipe(
-            mergeMap(offset => this.loadPlaylists(offset), null, 10),
+            mergeMap(offset => this.loadPlaylists(offset), null, 8),
             map(res => Object.values(res.items).map(item => item['tracks']))
           )
         } else {
@@ -91,12 +91,12 @@ export class TrackService {
             mergeMap(
               tracks => this.getData(this.urlPlaylistTracks(tracks['href'], tracks['offset'])),
               null,
-              10
+              8
             ),
             map(res => Object.values(res['items']).map(item => this.mapTrack(item['track'])))
           ),
         null,
-        10
+        8
       )
     )
   }
