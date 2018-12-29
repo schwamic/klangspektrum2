@@ -1,4 +1,3 @@
-import { Action } from '@ngrx/store'
 import { MetaActions, MetaActionTypes } from '@app/core/store/meta.actions'
 
 export interface State {

@@ -3,14 +3,14 @@
     <span class="account">
       <button mat-button [matMenuTriggerFor]="menu">
         <div class="account-avatar">
-          <div class="avatar-image" style="background-image: url('./assets/fink.jpg')"></div>
+          <div class="avatar-image" [style.background-image]="'url('+(user | async).images[0].url+')'"></div>
           <mat-icon>expand_more</mat-icon>
         </div>
       </button>
       <mat-menu #menu="matMenu">
         <button mat-menu-item>
           <mat-icon>highlight_off</mat-icon>
-          <a class="title" routerLink="/home" routerLinkActive="active">Logout</a>
+          <a class="title" (click)="logout()" routerLinkActive="active">Logout</a>
         </button>
       </mat-menu>
     </span>

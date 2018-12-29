@@ -61,7 +61,7 @@ export class ApiService {
               chunk =>
                 this.http.get(`https://api.spotify.com/v1/audio-features?ids=${join(chunk, ',')}`),
               null,
-              10
+              8
             ),
             scan((acc, features) => [...acc, ...features], [])
           )

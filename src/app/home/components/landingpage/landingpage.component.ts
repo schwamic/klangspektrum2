@@ -1,18 +1,13 @@
-import { Component, OnInit } from '@angular/core'
+import { Component } from '@angular/core'
 import { ApiService } from '@app/core/services/api.service'
 
 @Component({
-  selector: 'ks-landing-page',
+  selector: 'app-landing-page',
   templateUrl: './landingpage.component.html',
   styleUrls: ['./landingpage.component.scss']
 })
-export class LandingpageComponent implements OnInit {
-
-  constructor(private api: ApiService) {
-  }
-
-  ngOnInit() {
-  }
+export class LandingpageComponent {
+  constructor(private api: ApiService) {}
 
   login() {
     this.api.login()

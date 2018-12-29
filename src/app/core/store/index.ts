@@ -1,4 +1,3 @@
-import * as fromArtist from './artist.reducer'
 import * as fromFeatures from './features.reducer'
 import * as fromMeta from './meta.reducer'
 import * as fromProfile from './profile.reducer'
@@ -18,7 +17,7 @@ import { localStorageSync } from 'ngrx-store-localstorage'
 // + lifetime: https://github.com/btroncone/ngrx-store-localstorage/issues/83
 export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
   return localStorageSync({
-    keys: ['meta', 'profile', 'tracks', 'features', 'artists', 'filter'],
+    keys: ['meta', 'profile', 'tracks', 'features', 'filter'],
     rehydrate: true,
     storage: sessionStorage
   })(reducer)
@@ -29,7 +28,6 @@ export interface State {
   profile: fromProfile.State
   tracks: fromTrack.State
   features: fromFeatures.State
-  artists: fromArtist.State
   filter: fromFilter.State
 }
 
@@ -38,7 +36,6 @@ export const reducers: ActionReducerMap<State> = {
   profile: fromProfile.reducer,
   tracks: fromTrack.reducer,
   features: fromFeatures.reducer,
-  artists: fromArtist.reducer,
   filter: fromFilter.reducer
 }
 
@@ -75,13 +72,6 @@ export const selectFeatures = createFeatureSelector<fromFeatures.State>('feature
 export const selectFeaturesLoaded = createSelector(
   selectFeatures,
   fromFeatures.getLoaded
-)
-
-// Artists
-export const selectArtist = createFeatureSelector<fromArtist.State>('tracks')
-export const selectArtistLoaded = createSelector(
-  selectArtist,
-  fromArtist.getLoaded
 )
 
 // Filter
