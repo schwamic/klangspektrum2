@@ -14,7 +14,7 @@ import { UpdateFilter } from '@app/core/store/filter.actions'
 export class FilterComponent implements OnInit, OnDestroy {
   destroy = new Subject()
   filterForm: FormGroup = this.fb.group({
-    accousticness: null,
+    acousticness: null,
     danceability: null,
     energy: null,
     instrumentalness: null,
@@ -32,7 +32,7 @@ export class FilterComponent implements OnInit, OnDestroy {
         take(1)
       )
       .subscribe(f => {
-        this.filterForm.controls['accousticness'].setValue(f.accousticness, { onlySelf: true })
+        this.filterForm.controls['acousticness'].setValue(f.acousticness, { onlySelf: true })
         this.filterForm.controls['danceability'].setValue(f.danceability, { onlySelf: true })
         this.filterForm.controls['energy'].setValue(f.energy, { onlySelf: true })
         this.filterForm.controls['instrumentalness'].setValue(f.instrumentalness, {

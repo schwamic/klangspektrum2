@@ -2,7 +2,7 @@
 <div class="container">
     <div class="list">
         <div class="mask"></div>
-        <table mat-table [dataSource]="tracks$">
+        <table mat-table [dataSource]="dataSource">
             <!-- Index Column -->
             <ng-container matColumnDef="index">
                 <th mat-header-cell *matHeaderCellDef> # </th>
@@ -35,8 +35,11 @@
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="['index', 'tracks', 'duration_ms']; sticky: true;"></tr>
-            <tr class="table-track" mat-row *matRowDef="let row; columns: ['index', 'tracks', 'duration_ms']; let i = index"></tr>
+            <tr class="table-track" mat-row *matRowDef="let row; columns: ['index', 'tracks', 'duration_ms']; let i = index"
+                (click)="select(row)" [class.active]="selection.isSelected(row)">
+            </tr>
         </table>
+        <mat-paginator></mat-paginator>
     </div>
     <div class="sidenav">
         <mat-card class="player">

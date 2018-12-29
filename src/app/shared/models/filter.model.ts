@@ -1,5 +1,5 @@
 export interface Filter {
-  accousticness: []
+  acousticness: []
   danceability: []
   energy: []
   instrumentalness: []

@@ -45,6 +45,15 @@
 
         .table-track {
             cursor: pointer;
+            transition: all 250ms ease-out;
+
+            &:hover {
+                background: $white;
+            }
+
+            &.active {
+                background: white;
+            }
         }
     }
 }
@@ -64,6 +73,10 @@
         margin-top: 20px;
         top: 20px;
     }
+}
+
+.mat-paginator {
+    background: $light-gray;
 }
 
 // Overwrites

@@ -85,3 +85,39 @@ export const selectExtendedProfile = createSelector(
     return { ...profile, token }
   }
 )
+
+export const selectTracksWithFeatures = createSelector(
+  selectAllTracks,
+  selectFeatures,
+  (tracks, features, filter) => {
+    const tracksWithFeatures = tracks.map(track => {
+      return { ...track, features: features.entities[track.id] }
+    })
+    return tracksWithFeatures
+  }
+)
+
+export const selectFilteredTracks = createSelector(
+  selectTracksWithFeatures,
+  selectFilter,
+  (tracks, filter) => {
+    const data = tracks.filter(track => {
+      return (
+        !!track.features &&
+        (track.features.acousticness >= filter.acousticness[0] &&
+          track.features.acousticness <= filter.acousticness[1]) &&
+        (track.features.danceability >= filter.danceability[0] &&
+          track.features.danceability <= filter.danceability[1]) &&
+        (track.features.energy >= filter.energy[0] && track.features.energy <= filter.energy[1]) &&
+        (track.features.instrumentalness >= filter.instrumentalness[0] &&
+          track.features.instrumentalness <= filter.instrumentalness[1]) &&
+        (track.features.liveness >= filter.liveness[0] &&
+          track.features.liveness <= filter.liveness[1]) &&
+        (track.features.speechiness >= filter.speechiness[0] &&
+          track.features.speechiness <= filter.speechiness[1]) &&
+        (track.features.valence >= filter.valence[0] && track.features.valence <= filter.valence[1])
+      )
+    })
+    return data
+  }
+)
