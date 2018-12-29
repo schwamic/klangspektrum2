@@ -1,7 +1,7 @@
 import { FilterActionTypes, FilterActions } from './filter.actions'
 
 export interface State {
-  accousticness: number[]
+  acousticness: number[]
   danceability: number[]
   energy: number[]
   instrumentalness: number[]
@@ -11,7 +11,7 @@ export interface State {
 }
 
 export const initialState: State = {
-  accousticness: [0, 1],
+  acousticness: [0, 1],
   danceability: [0, 1],
   energy: [0, 1],
   instrumentalness: [0, 1],
