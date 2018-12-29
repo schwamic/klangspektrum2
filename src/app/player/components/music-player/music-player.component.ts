@@ -19,11 +19,11 @@ export class MusicPlayerComponent implements OnInit {
     //   // @ts-ignore
     //   console.log(window.Spotify)
     // })
-    this.playerService.isLoaded().then(() => {
-      this.playerService.isConnected().subscribe(player => {
-        this.player = player
-        // console.log({ player })
-      })
-    })
+    // this.playerService.isLoaded().then(() => {
+    //   this.playerService.isConnected().subscribe(player => {
+    //     this.player = player
+    //     // console.log({ player })
+    //   })
+    // })
   }
 }
