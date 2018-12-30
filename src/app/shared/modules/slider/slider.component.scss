@@ -1,20 +1,24 @@
 @import '../../../../styles/variables';
 
 nouislider {
-    width: calc(100% - 14px);
-    margin-left: 7px;
-    margin-right: 7px;
+    width: 100%;
+}
+
+::ng-deep .noUi-base {
+    border: 7px solid transparent;
+}
+
+::ng-deep .noUi-target {
+    height: 2px;
+    border: none;
+    box-shadow: none;
+    background: none;
 }
 
 ::ng-deep .noUi-connects {
     height: 2px;
     background: $gray;
     border-radius: 0;
-}
-
-::ng-deep .noUi-target {
-    height: 2px;
-    border: none;
 }
 
 ::ng-deep .noUi-connect {

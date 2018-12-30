@@ -21,7 +21,7 @@ export class ProfileGuard implements CanActivate {
         this.ensureTracksLoaded().pipe(
           switchMap(() =>
             this.ensureFeaturesLoaded().pipe(
-              tap(() => this.stateService.updateLoading(false)),
+              tap(() => this.stateService.setLoading(false)),
               map(() => true),
               catchError(() => of(false))
             )
@@ -37,7 +37,7 @@ export class ProfileGuard implements CanActivate {
     return this.store.select(fromCore.selectProfileLoaded).pipe(
       tap(loaded => {
         if (!loaded) {
-          this.stateService.updateLoading(true)
+          this.stateService.setLoading(true)
           this.store.dispatch(new LoadProfile())
         }
       }),
@@ -50,7 +50,7 @@ export class ProfileGuard implements CanActivate {
     return this.store.select(fromCore.selectTrackLoaded).pipe(
       tap(loaded => {
         if (!loaded) {
-          this.stateService.updateLoading(true)
+          this.stateService.setLoading(true)
           this.store.dispatch(new LoadTrack())
         }
       }),
@@ -63,7 +63,7 @@ export class ProfileGuard implements CanActivate {
     return this.store.select(fromCore.selectFeaturesLoaded).pipe(
       tap(loaded => {
         if (!loaded) {
-          this.stateService.updateLoading(true)
+          this.stateService.setLoading(true)
           this.store.dispatch(new LoadFeatures())
         }
       }),

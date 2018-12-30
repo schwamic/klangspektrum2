@@ -1,10 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core'
 import { FormBuilder, FormGroup } from '@angular/forms'
-import { debounceTime, distinctUntilChanged, take } from 'rxjs/operators'
-import { Subject } from 'rxjs'
-import { Store, select } from '@ngrx/store'
-import * as fromStore from '@app/core/store'
-import { UpdateFilter } from '@app/core/store/filter.actions'
+import { debounceTime } from 'rxjs/operators'
+import { Subscription } from 'rxjs'
+import { StateService } from '@app/core/services/state.service'
 
 @Component({
   selector: 'app-filter',
@@ -12,47 +10,26 @@ import { UpdateFilter } from '@app/core/store/filter.actions'
   styleUrls: ['./filter.component.scss']
 })
 export class FilterComponent implements OnInit, OnDestroy {
-  destroy = new Subject()
+  subscription: Subscription
   filterForm: FormGroup = this.fb.group({
-    acousticness: null,
-    danceability: null,
-    energy: null,
-    instrumentalness: null,
-    liveness: null,
-    speechiness: null,
-    valence: null
+    acousticness: [[0, 1]],
+    danceability: [[0, 1]],
+    energy: [[0, 1]],
+    instrumentalness: [[0, 1]],
+    liveness: [[0, 1]],
+    speechiness: [[0, 1]],
+    valence: [[0, 1]]
   })
-  filter$ = this.store.pipe(select(fromStore.selectFilter))
-  constructor(private fb: FormBuilder, private store: Store<fromStore.State>) {}
+  filter$ = this.stateService.getFilterSettings()
+  constructor(private fb: FormBuilder, private stateService: StateService) {}
 
   ngOnInit() {
-    this.store
-      .pipe(
-        select(fromStore.selectFilter),
-        take(1)
-      )
-      .subscribe(f => {
-        this.filterForm.controls['acousticness'].setValue(f.acousticness, { onlySelf: true })
-        this.filterForm.controls['danceability'].setValue(f.danceability, { onlySelf: true })
-        this.filterForm.controls['energy'].setValue(f.energy, { onlySelf: true })
-        this.filterForm.controls['instrumentalness'].setValue(f.instrumentalness, {
-          onlySelf: true
-        })
-        this.filterForm.controls['liveness'].setValue(f.liveness, { onlySelf: true })
-        this.filterForm.controls['speechiness'].setValue(f.speechiness, { onlySelf: true })
-        this.filterForm.controls['valence'].setValue(f.valence, { onlySelf: true })
-      })
-    this.filterForm.valueChanges
-      .pipe(
-        distinctUntilChanged(),
-        debounceTime(150)
-      )
-      .subscribe(form => {
-        this.store.dispatch(new UpdateFilter({ ...form }))
-      })
+    this.subscription = this.filterForm.valueChanges.pipe(debounceTime(150)).subscribe(form => {
+      this.stateService.setFilterSettings({ ...form })
+    })
   }
 
   ngOnDestroy() {
-    this.destroy.next(true)
+    this.subscription.unsubscribe()
   }
 }
