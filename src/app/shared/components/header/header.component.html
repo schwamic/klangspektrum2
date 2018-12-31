@@ -8,9 +8,9 @@
         </div>
       </button>
       <mat-menu #menu="matMenu">
-        <button mat-menu-item>
+        <button (click)="logout()" mat-menu-item>
           <mat-icon>highlight_off</mat-icon>
-          <a class="title" (click)="logout()" routerLinkActive="active">Logout</a>
+          <a class="title" routerLinkActive="active">Logout</a>
         </button>
       </mat-menu>
     </span>

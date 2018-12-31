@@ -2,25 +2,7 @@ import * as fromFeatures from './features.reducer'
 import * as fromMeta from './meta.reducer'
 import * as fromProfile from './profile.reducer'
 import * as fromTrack from './track.reducer'
-import {
-  ActionReducer,
-  ActionReducerMap,
-  MetaReducer,
-  createFeatureSelector,
-  createSelector
-} from '@ngrx/store'
-
-import { localStorageSync } from 'ngrx-store-localstorage'
-
-// + Use SessionStorage instead of LocalStorage
-// + lifetime: https://github.com/btroncone/ngrx-store-localstorage/issues/83
-export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
-  return localStorageSync({
-    keys: ['meta', 'profile', 'tracks', 'features'],
-    rehydrate: true,
-    storage: sessionStorage
-  })(reducer)
-}
+import { ActionReducerMap, MetaReducer, createFeatureSelector, createSelector } from '@ngrx/store'
 
 export interface State {
   meta: fromMeta.State
@@ -36,7 +18,7 @@ export const reducers: ActionReducerMap<State> = {
   features: fromFeatures.reducer
 }
 
-export const metaReducers: MetaReducer<State>[] = [localStorageSyncReducer]
+export const metaReducers: MetaReducer<State>[] = []
 
 // Meta
 export const selectMeta = createFeatureSelector<fromMeta.State>('meta')

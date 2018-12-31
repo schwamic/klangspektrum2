@@ -2,9 +2,30 @@ import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { Store } from '@ngrx/store'
 import * as fromStore from '@app/core/store'
-import { forkJoin, from, merge, Observable, of, throwError } from 'rxjs'
-import { catchError, mergeMap, map, switchMap, take, first, retry, scan, tap } from 'rxjs/operators'
+import { forkJoin, from, merge, Observable, of, throwError, empty } from 'rxjs'
+import {
+  catchError,
+  mergeMap,
+  map,
+  switchMap,
+  take,
+  first,
+  retry,
+  scan,
+  tap,
+  delay,
+  retryWhen
+} from 'rxjs/operators'
 import { Track } from '@app/shared/models/track.model'
+
+/**
+ * INFO: Store has no duplicates because ids from spotify are also used as id in ngrx-adapter
+ * https://stackoverflow.com/questions/43027201/is-there-a-way-to-manage-concurrency-with-rxjs
+ * mergeMap(concurrently:number) or merge(concurrently:number) -> ensure to load not too much in parallel
+ */
+
+// TODO
+// + error-handling + types
 
 @Injectable({
   providedIn: 'root'
@@ -16,16 +37,6 @@ export class TrackService {
   urlPlaylistTracks = (href, offset) => `${href}?limit=100&offset=${offset}`
 
   constructor(private http: HttpClient, private store: Store<fromStore.State>) {}
-
-  /**
-   * INFO: Store has no duplicates because ids from spotify are also used as id in ngrx-adapter
-   * https://stackoverflow.com/questions/43027201/is-there-a-way-to-manage-concurrency-with-rxjs
-   * mergeMap(concurrently:number) or merge(concurrently:number) -> ensure to load not too much in parallel
-   */
-
-  // TODO
-  // + in new ecma release-> save navigator available
-  // + error-handling + types
 
   getAllTracks(): Observable<any> {
     return forkJoin(
@@ -45,7 +56,7 @@ export class TrackService {
               return i * 50
             })
           ).pipe(
-            mergeMap(offset => this.getData(this.urlMe(offset)), null, 8),
+            mergeMap(offset => this.getData(this.urlMe(offset)), null, 4),
             map(res => Object.values(res['items']).map(item => this.mapTrack(item['track'])))
           )
         } else {
@@ -67,7 +78,7 @@ export class TrackService {
               return i * 50
             })
           ).pipe(
-            mergeMap(offset => this.loadPlaylists(offset), null, 8),
+            mergeMap(offset => this.loadPlaylists(offset), null, 4),
             map(res => Object.values(res.items).map(item => item['tracks']))
           )
         } else {
@@ -91,12 +102,12 @@ export class TrackService {
             mergeMap(
               tracks => this.getData(this.urlPlaylistTracks(tracks['href'], tracks['offset'])),
               null,
-              8
+              4
             ),
             map(res => Object.values(res['items']).map(item => this.mapTrack(item['track'])))
           ),
         null,
-        8
+        4
       )
     )
   }
@@ -118,9 +129,21 @@ export class TrackService {
    */
   getData(url) {
     return this.http.get(url).pipe(
-      retry(3),
+      retryWhen(errors =>
+        errors.pipe(
+          delay(1000),
+          tap(error => {
+            if (error.status !== 429) {
+              throw error
+            }
+          })
+        )
+      ),
       first(),
-      catchError(error => throwError(error))
+      catchError(error => {
+        console.log('handle error', error)
+        return empty()
+      })
     )
   }
 
