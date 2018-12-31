@@ -1,28 +1,26 @@
-<div style="background-image: url('assets/fink.jpg')" class="cover"></div>
+<div [style.background-image]="'url(' + track?.images[0].url + ')'" class="cover"></div>
 
 <div class="nav">
-  <button mat-button>
+  <button [disabled]="!(track)" (click)="onShuffle()" mat-button>
     <mat-icon class="nav-icon">shuffle</mat-icon>
-    <div class="dot"></div>
+    <div *ngIf="shuffleState" class="dot"></div>
   </button>
 
-  <button mat-button>
+  <button [disabled]="!track" (click)="onPrev()" mat-button>
     <mat-icon class="nav-icon">skip_previous</mat-icon>
   </button>
 
-  <button mat-button *ngIf="isPlaying">
-    <mat-icon class="nav-icon">pause</mat-icon>
-  </button>
-  <button mat-button *ngIf="!isPlaying">
-    <mat-icon class="nav-icon">play_arrow</mat-icon>
+  <button [disabled]="!track" (click)="toggle()" mat-button>
+    <mat-icon *ngIf="isPlaying$ | async" class="nav-icon">pause</mat-icon>
+    <mat-icon *ngIf="!(isPlaying$ | async)" class="nav-icon">play_arrow</mat-icon>
   </button>
 
-  <button mat-button>
+  <button [disabled]="!track" (click)="onNext()" mat-button>
     <mat-icon class="nav-icon">skip_next</mat-icon>
   </button>
 
-  <button mat-button>
+  <button [disabled]="!track" (click)="repeat()" mat-button>
     <mat-icon class="nav-icon">repeat</mat-icon>
-    <div class="dot"></div>
+    <div *ngIf="playerService.getRepeatState() | async" class="dot"></div>
   </button>
 </div>
