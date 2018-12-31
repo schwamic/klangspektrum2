@@ -5,8 +5,19 @@ import * as join from 'lodash/join'
 import * as qs from 'qs'
 import * as uuid from 'uuid'
 
-import { Observable, forkJoin, from, of, throwError } from 'rxjs'
-import { catchError, first, map, mergeMap, scan, switchMap } from 'rxjs/operators'
+import { Observable, forkJoin, from, of, throwError, empty } from 'rxjs'
+import {
+  catchError,
+  first,
+  map,
+  mergeMap,
+  scan,
+  switchMap,
+  tap,
+  retryWhen,
+  retry,
+  delay
+} from 'rxjs/operators'
 
 import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
@@ -14,6 +25,9 @@ import { Store } from '@ngrx/store'
 import { Track } from '@app/shared/models/track.model'
 import { TrackService } from '@app/core/services/track.service'
 import { environment } from '@env/environment'
+
+// TODO
+// + error-handling + types
 
 @Injectable({
   providedIn: 'root'
@@ -42,9 +56,10 @@ export class ApiService {
   }
 
   profile(): Observable<any> {
-    return this.http
-      .get('https://api.spotify.com/v1/me')
-      .pipe(catchError(error => throwError(error)))
+    return this.http.get('https://api.spotify.com/v1/me').pipe(
+      retry(3),
+      catchError(error => throwError(error))
+    )
   }
 
   tracks(): Observable<Track[]> {
@@ -58,10 +73,12 @@ export class ApiService {
         switchMap(tracks =>
           from(chunk(tracks.ids, 100)).pipe(
             mergeMap(
-              chunk =>
-                this.http.get(`https://api.spotify.com/v1/audio-features?ids=${join(chunk, ',')}`),
+              trackIds =>
+                this.getData(
+                  `https://api.spotify.com/v1/audio-features?ids=${join(trackIds, ',')}`
+                ),
               null,
-              8
+              4
             ),
             scan((acc, features) => [...acc, ...features], [])
           )
@@ -69,6 +86,30 @@ export class ApiService {
       )
     ).pipe(
       map(features => flatten(features[0].map(a => a.audio_features)).filter(feature => !!feature))
+    )
+  }
+
+  /**
+   * helper for simple request
+   * @param url
+   */
+  getData(url) {
+    return this.http.get(url).pipe(
+      retryWhen(errors =>
+        errors.pipe(
+          delay(1000),
+          tap(error => {
+            if (error.status !== 429) {
+              throw error
+            }
+          })
+        )
+      ),
+      first(),
+      catchError(error => {
+        console.log('hanlde error', error)
+        return empty()
+      })
     )
   }
 }
