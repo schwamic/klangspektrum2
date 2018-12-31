@@ -130,6 +130,6 @@ export class TrackService {
    */
   mapTrack(data): Track {
     const { album, available_markets, external_urls, external_ids, explicit, ...track } = data
-    return track
+    return { ...track, images: album.images }
   }
 }

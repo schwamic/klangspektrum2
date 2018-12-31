@@ -1,80 +1,124 @@
 import * as fromRoot from '../../core/store'
-
 import { Store, select } from '@ngrx/store'
-import { filter, map } from 'rxjs/operators'
-
+import { filter, map, tap } from 'rxjs/operators'
 import { Injectable } from '@angular/core'
-import { Observable } from 'rxjs'
+import { Observable, BehaviorSubject, Subject, of } from 'rxjs'
+import { HttpClient } from '@angular/common/http'
 
 @Injectable({
   providedIn: 'root'
 })
 export class PlayerService {
-  constructor(private store: Store<fromRoot.State>) {}
+  private player
+  private error = new BehaviorSubject(false)
+  private ready = new BehaviorSubject(false)
+  private state = new Subject()
+  private repeat = false
+  private playing = new BehaviorSubject(false)
+  public deviceID
+
+  constructor(private store: Store<fromRoot.State>, private http: HttpClient) {}
 
   /**
-   * Handles loading-process of script
-   * @returns {Promise<any>}
+   * Connect
    */
-  isLoaded(): Promise<any> {
-    return new Promise(resolve => {
-      // @ts-ignore
-      if (window.Spotify) {
-        resolve()
-      } else {
-        // @ts-ignore
-        window.onSpotifyWebPlaybackSDKReady = resolve
-      }
-    })
-  }
-
-  isConnected(): Observable<any> {
+  connect(): Observable<boolean> {
     return this.store.pipe(
-      // @ts-ignore
-      filter(() => window.Spotify),
+      filter(() => !!window['Spotify']),
       select(fromRoot.selectExtendedProfile),
       map(profile => {
-        // @ts-ignore
-        const player = new window.Spotify.Player({
-          name: 'Web Playback SDK Quick Start Player',
+        // If player exists, return
+        if (this.player) {
+          return true
+        }
+
+        // If player does not exists, create
+        this.player = new window['Spotify'].Player({
+          name: 'Klangspektrum',
           getOAuthToken: cb => {
             cb(profile.token)
           }
         })
         // Error handling
-        player.addListener('initialization_error', ({ message }) => {
+        /* tslint:disable no-console */
+        this.player.addListener('initialization_error', ({ message }) => {
           console.error(message)
+          this.error.next(true)
         })
-        player.addListener('authentication_error', ({ message }) => {
+        this.player.addListener('authentication_error', ({ message }) => {
           console.error(message)
+          this.error.next(true)
         })
-        player.addListener('account_error', ({ message }) => {
+        this.player.addListener('account_error', ({ message }) => {
           console.error(message)
+          this.error.next(true)
         })
-        player.addListener('playback_error', ({ message }) => {
+        this.player.addListener('playback_error', ({ message }) => {
           console.error(message)
+          this.error.next(true)
         })
 
         // Playback status updates
-        player.addListener('player_state_changed', state => {
-          console.log(state)
+        this.player.addListener('player_state_changed', state => {
+          this.state.next(state)
         })
 
         // Ready
-        player.addListener('ready', ({ device_id }) => {
-          console.log('Ready with Device ID', device_id)
+        this.player.addListener('ready', ({ device_id }) => {
+          this.deviceID = device_id
+          this.ready.next(true)
         })
 
         // Not Ready
-        player.addListener('not_ready', ({ device_id }) => {
-          console.log('Device ID has gone offline', device_id)
+        this.player.addListener('not_ready', ({ device_id }) => {
+          console.error('Device ID has gone offline', device_id)
+          this.deviceID = device_id
+          this.ready.next(false)
         })
 
         // Connect to the player!
-        player.connect()
-
-        return player
+        this.player.connect()
+        return true
       })
     )
+  }
+
+  isPlaying(): Observable<boolean> {
+    return this.playing.asObservable()
+  }
+  isReady(): Observable<boolean> {
+    return this.ready.asObservable()
+  }
+  hasError(): Observable<boolean> {
+    return this.error.asObservable()
+  }
+  stateChanges() {
+    return this.state.asObservable()
+  }
+
+  play(spotify_uri): Observable<any> {
+    this.playing.next(true)
+    return this.http.put(
+      `https://api.spotify.com/v1/me/player/play?device_id=${this.player._options.id}`,
+      JSON.stringify({ uris: [spotify_uri] })
+    )
+  }
+
+  pause(): void {
+    this.playing.next(false)
+    this.player.pause()
+  }
+
+  toggleRepeat(): Observable<any> {
+    this.repeat = !this.repeat
+    return this.http.put(
+      `https://api.spotify.com/v1/me/player/repeat?state=${this.repeat ? 'context' : 'off'}`,
+      {}
+    )
+  }
+
+  // Getter
+  getRepeatState() {
+    return of(this.repeat)
   }
 }

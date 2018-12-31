@@ -1,9 +1,9 @@
 export interface Filter {
-  acousticness: []
-  danceability: []
-  energy: []
-  instrumentalness: []
-  liveness: []
-  speechiness: []
-  valence: []
+  acousticness: number[]
+  danceability: number[]
+  energy: number[]
+  instrumentalness: number[]
+  liveness: number[]
+  speechiness: number[]
+  valence: number[]
 }

@@ -34,7 +34,7 @@ export class ApiService {
       redirect_uri: environment.redirectUri,
       scope:
         'streaming user-read-private user-read-birthdate user-read-email playlist-read-private playlist-read-collaborative user-library-read user-top-read',
-      state: state,
+      state,
       show_dialog: 'true'
     }
     const redirectUrl = `https://accounts.spotify.com/authorize?${qs.stringify(params)}`
