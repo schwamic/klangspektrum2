@@ -48,17 +48,23 @@ a {
 }
 
 // Overwrite
-.mat-menu-item {
-    display: flex;
-    align-items: center;
+::ng-deep .mat-menu-content {
+    padding: 0 !important;
+    background: $dark-gray !important;
 
-    .title {
-        color: $dark-gray;
-        text-decoration: none;
-    }
+    .mat-menu-item {
+        display: flex;
+        align-items: center;
 
-    .mat-icon {
-        margin-right: 6px;
-        margin-left: -3px;
+        .title {
+            color: white;
+            text-decoration: none;
+        }
+
+        .mat-icon {
+            color: white;
+            margin-right: 6px;
+            margin-left: -3px;
+        }
     }
 }
