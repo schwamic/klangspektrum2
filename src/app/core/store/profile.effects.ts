@@ -7,20 +7,12 @@ import {
   LoadProfileSuccess,
   ProfileActionTypes
 } from '@app/core/store/profile.actions'
-import * as fromCore from '@app/core/store'
-import { Store } from '@ngrx/store'
-import { catchError, map, switchMap, tap } from 'rxjs/operators'
+import { catchError, map, switchMap } from 'rxjs/operators'
 import { of } from 'rxjs'
-import { Router } from '@angular/router'
 
 @Injectable()
 export class ProfileEffects {
-  constructor(
-    private actions$: Actions,
-    private api: ApiService,
-    private store: Store<fromCore.State>,
-    private router: Router
-  ) {}
+  constructor(private actions$: Actions, private api: ApiService) {}
 
   @Effect()
   loadProfile$ = this.actions$.pipe(

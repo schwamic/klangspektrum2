@@ -4,8 +4,13 @@ import * as fromStore from '../store'
 import * as join from 'lodash/join'
 import * as qs from 'qs'
 import * as uuid from 'uuid'
-
-import { Observable, forkJoin, from, of, throwError, empty } from 'rxjs'
+import { HttpClient } from '@angular/common/http'
+import { Injectable } from '@angular/core'
+import { Store } from '@ngrx/store'
+import { Track } from '@app/shared/models/track.model'
+import { TrackService } from '@app/core/services/track.service'
+import { environment } from '@env/environment'
+import { Observable, forkJoin, from, throwError, empty } from 'rxjs'
 import {
   catchError,
   first,
@@ -18,13 +23,6 @@ import {
   retry,
   delay
 } from 'rxjs/operators'
-
-import { HttpClient } from '@angular/common/http'
-import { Injectable } from '@angular/core'
-import { Store } from '@ngrx/store'
-import { Track } from '@app/shared/models/track.model'
-import { TrackService } from '@app/core/services/track.service'
-import { environment } from '@env/environment'
 
 // TODO
 // + error-handling + types
@@ -107,6 +105,7 @@ export class ApiService {
       ),
       first(),
       catchError(error => {
+        /* tslint:disable no-console */
         console.log('hanlde error', error)
         return empty()
       })

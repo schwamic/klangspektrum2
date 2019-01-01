@@ -3,7 +3,6 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router'
 import { ErrorComponent } from '@app/shared/components/error/error.component'
 import { MetaGuard } from '@app/core/guards/meta.guard'
 import { NgModule } from '@angular/core'
-import { NotFoundComponent } from '@app/core/components/not-found/not-found.component'
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -17,7 +16,7 @@ const routes: Routes = [
     path: 'visualizer',
     loadChildren: './visualizer/visualizer.module#VisualizerModule'
   },
-  { path: '**', component: NotFoundComponent }
+  { path: '**', component: ErrorComponent }
 ]
 
 @NgModule({

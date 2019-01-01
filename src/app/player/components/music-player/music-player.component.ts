@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnDestroy, Output, EventEmitter } from '@angular/core'
+import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core'
 import { PlayerService } from '../../../core/services/player.service'
 import { shareReplay, first, switchMap, filter, tap } from 'rxjs/operators'
 import { StateService } from '@app/core/services/state.service'

@@ -2,7 +2,7 @@
 @import "../../../../styles/font";
 @import "../../../../styles/grid";
 
-:host{
+:host {
   display: block;
   height: 100%;
   width: 100%;
@@ -10,26 +10,28 @@
   color: white;
 }
 
-// todo big screen
-.container{
-  @include for-size(phone-only ){
+.container {
+  @include for-size(phone-only) {
     padding: 64px 16px 64px 16px;
     margin: 0;
     min-height: calc(100vh - 56px - 128px);
   }
-  @include for-size(tablet-portrait-up){
+
+  @include for-size(tablet-portrait-up) {
     padding: 96px 24px 96px 24px;
     min-height: calc(100vh - 64px - 192px);
     margin: 0 auto;
     max-width: 650px;
   }
-  @include for-size(tablet-landscape-up){
+
+  @include for-size(tablet-landscape-up) {
     padding: 120px 0 60px 0px;
     min-height: calc(100vh - 64px - 180px);
     margin: 0 auto;
     max-width: 720px;
   }
-  @include for-size(desktop-up ){
+
+  @include for-size(desktop-up) {
     padding: 120px 0 60px 240px;
     min-height: calc(100vh - 64px - 180px);
     margin: 0;
@@ -44,13 +46,16 @@ p {
 
 img {
   margin-bottom: 40px;
-  @include for-size(phone-only ){
+
+  @include for-size(phone-only) {
     max-width: 260px;
   }
-  @include for-size(tablet-portrait-up){
+
+  @include for-size(tablet-portrait-up) {
     max-width: 340px;
   }
-  @include for-size(tablet-landscape-up){
+
+  @include for-size(tablet-landscape-up) {
     max-width: 400px;
   }
 }
