@@ -11,6 +11,7 @@ import { StateService } from '@app/core/services/state.service'
 })
 export class FilterComponent implements OnInit, OnDestroy {
   subscription: Subscription
+  startValues
   filterForm: FormGroup = this.fb.group({
     acousticness: [[0, 1]],
     danceability: [[0, 1]],
@@ -24,6 +25,7 @@ export class FilterComponent implements OnInit, OnDestroy {
   constructor(private fb: FormBuilder, private stateService: StateService) {}
 
   ngOnInit() {
+    this.startValues = this.filterForm.value
     this.subscription = this.filterForm.valueChanges.pipe(debounceTime(150)).subscribe(form => {
       this.stateService.setFilterSettings({ ...form })
     })
@@ -31,5 +33,9 @@ export class FilterComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscription.unsubscribe()
+  }
+
+  resetFilter() {
+    this.filterForm.reset({ ...this.startValues })
   }
 }

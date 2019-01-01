@@ -7,6 +7,7 @@ import { PlayerGuard } from '@app/core/guards/player.guard'
 
 const routes: Routes = [
   { path: '', canActivate: [ProfileGuard, PlayerGuard], component: VisualizerComponent },
+  // { path: '', canActivate: [], component: VisualizerComponent },
   { path: '**', component: NotFoundComponent }
 ]
 

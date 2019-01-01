@@ -5,20 +5,11 @@ import { MaterialModule } from './modules/material/material.module'
 import { HeaderComponent } from './components/header/header.component'
 import { RouterModule } from '@angular/router'
 import { TimePipe } from './pipes/time.pipe'
-import { SliderModule } from './modules/slider/slider.module'
 import { RangePipe } from './pipes/range.pipe'
 
 @NgModule({
-  imports: [CommonModule, RouterModule, MaterialModule, SliderModule],
+  imports: [CommonModule, RouterModule, MaterialModule],
   declarations: [ErrorComponent, HeaderComponent, TimePipe, RangePipe],
-  exports: [
-    MaterialModule,
-    HeaderComponent,
-    ErrorComponent,
-    RouterModule,
-    TimePipe,
-    SliderModule,
-    RangePipe
-  ]
+  exports: [MaterialModule, HeaderComponent, ErrorComponent, RouterModule, TimePipe, RangePipe]
 })
 export class SharedModule {}
