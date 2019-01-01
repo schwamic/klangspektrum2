@@ -39,7 +39,7 @@ export class ApiService {
     private store: Store<fromStore.State>
   ) {}
 
-  login(): void {
+  login(showDialog = true): void {
     const state = uuid()
     localStorage.setItem('xsrf-token', state)
     const params = {
@@ -49,7 +49,7 @@ export class ApiService {
       scope:
         'streaming user-read-private user-read-birthdate user-read-email playlist-read-private playlist-read-collaborative user-library-read user-top-read',
       state,
-      show_dialog: 'true'
+      show_dialog: `${showDialog}`
     }
     const redirectUrl = `https://accounts.spotify.com/authorize?${qs.stringify(params)}`
     window.location.href = redirectUrl

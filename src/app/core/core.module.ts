@@ -12,12 +12,13 @@ import { FeaturesEffects } from '@app/core/store/features.effects'
 import { httpInterceptorProviders } from '@app/core/http-interceptors'
 import { environment } from '@env/environment'
 import { NotFoundComponent } from './components/not-found/not-found.component'
+import { MetaInfoEffects } from '@app/core/store/meta.effects'
 
 @NgModule({
   imports: [
     CommonModule,
     StoreModule.forRoot(reducers, { metaReducers }),
-    EffectsModule.forRoot([ProfileEffects, TrackEffects, FeaturesEffects]),
+    EffectsModule.forRoot([ProfileEffects, TrackEffects, FeaturesEffects, MetaInfoEffects]),
     !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
   declarations: [NotFoundComponent],

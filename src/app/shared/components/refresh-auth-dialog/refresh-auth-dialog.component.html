@@ -1,0 +1,6 @@
+<p class="text">
+  Sorry <strong>{{(profile$ | async).display_name | json}}</strong>, <br><br>
+  your session expired. If you want to continue, please click the button to refresh your authentication.
+</p>
+
+<button class="btn" mat-raised-button (click)="refresh()">Refresh</button>
