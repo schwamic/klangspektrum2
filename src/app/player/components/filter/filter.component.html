@@ -5,7 +5,7 @@
         <p class="yellow">Acousticness</p>
         <p class="yellow">{{filterForm.get('acousticness').value | range}}</p>
       </div>
-      <app-slider formControlName="acousticness"></app-slider>
+      <nouislider [connect]="true" [min]="0" [max]="1" [step]="0.0000001" [formControl]="filterForm.controls.acousticness"></nouislider>
     </div>
 
     <div class="slider">
@@ -13,7 +13,7 @@
         <p class="red">Danceability</p>
         <p class="red">{{filterForm.get('danceability').value | range}}</p>
       </div>
-      <app-slider formControlName="danceability"></app-slider>
+      <nouislider [connect]="true" [min]="0" [max]="1" [step]="0.0000001" [formControl]="filterForm.controls.danceability"></nouislider>
     </div>
 
     <div class="slider">
@@ -21,7 +21,7 @@
         <p class="purple">Energy</p>
         <p class="purple">{{filterForm.get('energy').value | range}}</p>
       </div>
-      <app-slider formControlName="energy"></app-slider>
+      <nouislider [connect]="true" [min]="0" [max]="1" [step]="0.0000001" [formControl]="filterForm.controls.energy"></nouislider>
     </div>
 
     <div class="slider">
@@ -29,7 +29,7 @@
         <p class="orange">Instrumentalness</p>
         <p class="orange">{{filterForm.get('instrumentalness').value | range}}</p>
       </div>
-      <app-slider formControlName="instrumentalness"></app-slider>
+      <nouislider [connect]="true" [min]="0" [max]="1" [step]="0.0000001" [formControl]="filterForm.controls.instrumentalness"></nouislider>
     </div>
 
     <div class="slider">
@@ -37,7 +37,7 @@
         <p class="blue">Liveness</p>
         <p class="blue">{{filterForm.get('liveness').value | range}}</p>
       </div>
-      <app-slider formControlName="liveness"></app-slider>
+      <nouislider [connect]="true" [min]="0" [max]="1" [step]="0.0000001" [formControl]="filterForm.controls.liveness"></nouislider>
     </div>
 
     <div class="slider">
@@ -45,7 +45,7 @@
         <p class="cyan">Speechiness</p>
         <p class="cyan">{{filterForm.get('speechiness').value | range}}</p>
       </div>
-      <app-slider formControlName="speechiness"></app-slider>
+      <nouislider [connect]="true" [min]="0" [max]="1" [step]="0.0000001" [formControl]="filterForm.controls.speechiness"></nouislider>
     </div>
 
     <div class="slider">
@@ -53,7 +53,8 @@
         <p class="green">Valence</p>
         <p class="green">{{filterForm.get('valence').value | range}}</p>
       </div>
-      <app-slider formControlName="valence"></app-slider>
+      <nouislider [connect]="true" [min]="0" [max]="1" [step]="0.0000001" [formControl]="filterForm.controls.valence"></nouislider>
     </div>
   </form>
+  <button class="reset-btn" (click)="resetFilter()" mat-button>Reset filter</button>
 </section>
