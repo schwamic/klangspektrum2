@@ -6,10 +6,20 @@ import { HeaderComponent } from './components/header/header.component'
 import { RouterModule } from '@angular/router'
 import { TimePipe } from './pipes/time.pipe'
 import { RangePipe } from './pipes/range.pipe'
+import { RefreshAuthDialogComponent } from './components/refresh-auth-dialog/refresh-auth-dialog.component'
 
 @NgModule({
   imports: [CommonModule, RouterModule, MaterialModule],
-  declarations: [ErrorComponent, HeaderComponent, TimePipe, RangePipe],
-  exports: [MaterialModule, HeaderComponent, ErrorComponent, RouterModule, TimePipe, RangePipe]
+  declarations: [ErrorComponent, HeaderComponent, TimePipe, RangePipe, RefreshAuthDialogComponent],
+  exports: [
+    MaterialModule,
+    HeaderComponent,
+    ErrorComponent,
+    RouterModule,
+    TimePipe,
+    RangePipe,
+    RefreshAuthDialogComponent
+  ],
+  entryComponents: [RefreshAuthDialogComponent]
 })
 export class SharedModule {}
