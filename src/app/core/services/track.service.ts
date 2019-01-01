@@ -2,15 +2,13 @@ import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { Store } from '@ngrx/store'
 import * as fromStore from '@app/core/store'
-import { forkJoin, from, merge, Observable, of, throwError, empty } from 'rxjs'
+import { forkJoin, from, merge, Observable, of, empty } from 'rxjs'
 import {
   catchError,
   mergeMap,
   map,
   switchMap,
-  take,
   first,
-  retry,
   scan,
   tap,
   delay,
@@ -57,11 +55,11 @@ export class TrackService {
             })
           ).pipe(
             mergeMap(offset => this.getData(this.urlMe(offset)), null, 4),
-            map(res => Object.values(res['items']).map(item => this.mapTrack(item['track'])))
+            map(data => Object.values(data['items']).map(item => this.mapTrack(item['track'])))
           )
         } else {
           return of(res).pipe(
-            map(res => Object.values(res['items']).map(item => this.mapTrack(item['track'])))
+            map(data => Object.values(data['items']).map(item => this.mapTrack(item['track'])))
           )
         }
       })
@@ -79,10 +77,10 @@ export class TrackService {
             })
           ).pipe(
             mergeMap(offset => this.loadPlaylists(offset), null, 4),
-            map(res => Object.values(res.items).map(item => item['tracks']))
+            map(data => Object.values(data.items).map(item => item['tracks']))
           )
         } else {
-          return of(res).pipe(map(res => Object.values(res.items).map(item => item['tracks'])))
+          return of(res).pipe(map(data => Object.values(data.items).map(item => item['tracks'])))
         }
       })
     )
@@ -104,7 +102,7 @@ export class TrackService {
               null,
               4
             ),
-            map(res => Object.values(res['items']).map(item => this.mapTrack(item['track'])))
+            map(data => Object.values(data['items']).map(item => this.mapTrack(item['track'])))
           ),
         null,
         4
@@ -141,6 +139,7 @@ export class TrackService {
       ),
       first(),
       catchError(error => {
+        /* tslint:disable no-console */
         console.log('handle error', error)
         return empty()
       })

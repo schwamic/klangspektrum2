@@ -16,7 +16,8 @@ export class PlayerGuard implements CanActivate {
       this.playerService.isReady(),
       this.playerService.hasError()
     ).pipe(
-      tap(([connected, ready, error]) => console.log({ error })), // todo handle-errors
+      /* tslint:disable no-console */
+      tap(([connected, ready, error]) => console.log({ error })), // todo handle-error
       filter(
         ([connected, ready, error]) => !!(!!window['Spotify'] && connected && ready && !error)
       ),

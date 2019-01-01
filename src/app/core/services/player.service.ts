@@ -39,7 +39,7 @@ export class PlayerService {
             cb(profile.token)
           }
         })
-        // Error handling
+        // todo handle errors
         /* tslint:disable no-console */
         this.player.addListener('initialization_error', ({ message }) => {
           console.error(message)
@@ -83,19 +83,9 @@ export class PlayerService {
     )
   }
 
-  isPlaying(): Observable<boolean> {
-    return this.playing.asObservable()
-  }
-  isReady(): Observable<boolean> {
-    return this.ready.asObservable()
-  }
-  hasError(): Observable<boolean> {
-    return this.error.asObservable()
-  }
-  stateChanges() {
-    return this.state.asObservable()
-  }
-
+  /**
+   * Interaction
+   */
   play(spotify_uri): Observable<any> {
     this.playing.next(true)
     return this.http.put(
@@ -117,7 +107,23 @@ export class PlayerService {
     )
   }
 
-  // Getter
+  /**
+   * Check states
+   */
+  stateChanges() {
+    return this.state.asObservable()
+  }
+
+  isPlaying(): Observable<boolean> {
+    return this.playing.asObservable()
+  }
+  isReady(): Observable<boolean> {
+    return this.ready.asObservable()
+  }
+  hasError(): Observable<boolean> {
+    return this.error.asObservable()
+  }
+
   getRepeatState() {
     return of(this.repeat)
   }

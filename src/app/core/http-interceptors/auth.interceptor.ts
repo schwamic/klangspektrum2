@@ -14,11 +14,11 @@ export class AuthInterceptor implements HttpInterceptor {
     return this.store.select(fromStore.selectAccessToken).pipe(
       first(),
       map(token => req.clone({ setHeaders: { Authorization: `Bearer ${token}` } })),
-      switchMap(req =>
-        next.handle(req).pipe(
+      switchMap(reqClone =>
+        next.handle(reqClone).pipe(
           catchError((err, source) => {
-            if (err.status == 401 || err.status == 403) {
-              this.router.navigate(['/home', { needsLogin: true }]) //todo: not working -> errorhandling in guards
+            if (err.status === 401 || err.status === 403) {
+              this.router.navigate(['/home', { needsLogin: true }]) // todo: better errorhandling
               return empty()
             } else {
               return throwError(err)

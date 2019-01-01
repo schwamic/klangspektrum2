@@ -10,7 +10,6 @@
   color: white;
 }
 
-// todo big screen
 .container {
   @include for-size(phone-only) {
     padding: 64px 16px 64px 16px;

@@ -8,12 +8,12 @@ import { DeactivateLoadingGuard } from '@app/core/guards/deactivate-loading-guar
 const routes: Routes = [
   {
     path: '',
+    canActivate: [DeactivateLoadingGuard],
     component: HomeComponent,
     children: [
       {
         path: '',
         pathMatch: 'full',
-        canActivate: [DeactivateLoadingGuard],
         component: LandingpageComponent
       },
       { path: 'about', component: AboutComponent },
