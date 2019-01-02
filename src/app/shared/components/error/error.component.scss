@@ -1,13 +1,13 @@
 @import '../../../../styles/mixins/container';
 
 ::ng-deep body {
-    background: #f44336;
+  background: #f44336;
 
-    p {
-        color: white;
-    }
+  p {
+    color: white;
+  }
 }
 
 .container {
-    @include container();
+  @include container();
 }

@@ -3,68 +3,68 @@
 @import "../../../../styles/grid";
 
 mat-toolbar {
-    position: relative;
-    justify-content: space-between;
+  position: relative;
+  justify-content: space-between;
 }
 
 .navigation,
 .account {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .account-avatar {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 
-    .avatar-image {
-        height: 50px;
-        width: 50px;
-        border-radius: 100%;
-        overflow: hidden;
-        background: $dark-gray;
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover;
-    }
+  .avatar-image {
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+    overflow: hidden;
+    background: $dark-gray;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
 
-    mat-icon {
-        color: $dark-gray;
-    }
+  mat-icon {
+    color: $dark-gray;
+  }
 }
 
 .logo {
-    height: 60%;
-    padding: 0 16px;
+  height: 60%;
+  padding: 0 16px;
 }
 
 a {
-    color: $gray;
+  color: $gray;
 
-    &.active {
-        color: $dark-gray;
-    }
+  &.active {
+    color: $dark-gray;
+  }
 }
 
 // Overwrite
 ::ng-deep .mat-menu-content {
-    padding: 0 !important;
-    background: $dark-gray !important;
+  padding: 0 !important;
+  background: $dark-gray !important;
 
-    .mat-menu-item {
-        display: flex;
-        align-items: center;
+  .mat-menu-item {
+    display: flex;
+    align-items: center;
 
-        .title {
-            color: white;
-            text-decoration: none;
-        }
-
-        .mat-icon {
-            color: white;
-            margin-right: 6px;
-            margin-left: -3px;
-        }
+    .title {
+      color: white;
+      text-decoration: none;
     }
+
+    .mat-icon {
+      color: white;
+      margin-right: 6px;
+      margin-left: -3px;
+    }
+  }
 }
