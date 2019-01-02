@@ -3,7 +3,7 @@
     <span class="account">
       <button mat-button [matMenuTriggerFor]="menu">
         <div class="account-avatar">
-          <div class="avatar-image" [style.background-image]="'url('+(user | async).images[0].url+')'"></div>
+          <div class="avatar-image" [style.background-image]="setProfileImage(user | async)"></div>
           <mat-icon>expand_more</mat-icon>
         </div>
       </button>

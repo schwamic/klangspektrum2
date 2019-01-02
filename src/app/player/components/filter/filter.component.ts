@@ -32,6 +32,7 @@ export class FilterComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    this.stateService.setFilterSettings({ ...this.startValues })
     this.subscription.unsubscribe()
   }
 
