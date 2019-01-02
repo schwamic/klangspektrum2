@@ -21,8 +21,8 @@
 }
 
 .list {
-    width: calc(64% - 10px);
-    margin-right: 10px;
+    width: calc(64% - 20px);
+    margin-right: 20px;
 
     table {
         width: 100%;
@@ -59,9 +59,9 @@
 }
 
 .sidenav {
-    width: calc(36% - 10px);
+    width: calc(36% - 20px);
     min-width: 360px;
-    margin-left: 10px;
+    margin-left: 20px;
 
     .player {
         padding: 0;
@@ -70,8 +70,9 @@
 
     .settings {
         position: sticky;
-        margin-top: 20px;
+        margin-top: 40px;
         top: 20px;
+        padding: 4px 24px 20px 24px;
     }
 }
 
