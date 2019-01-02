@@ -14,6 +14,6 @@ export class RangePipe implements PipeTransform {
         }
       })
       .toString()
-      .replace(/,/g, '—')
+      .replace(/,/g, ' - ')
   }
 }

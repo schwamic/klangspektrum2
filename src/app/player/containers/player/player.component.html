@@ -5,7 +5,7 @@
         <table mat-table [dataSource]="dataSource">
             <!-- Index Column -->
             <ng-container matColumnDef="index">
-                <th mat-header-cell *matHeaderCellDef> # </th>
+                <th mat-header-cell *matHeaderCellDef> No. </th>
                 <td mat-cell *matCellDef="let element; let i = index;">
                     <div class="table-item">
                         <p class="title">{{i+1}}</p>
@@ -15,7 +15,7 @@
 
             <!-- Track Column -->
             <ng-container matColumnDef="tracks">
-                <th mat-header-cell *matHeaderCellDef> Tracks </th>
+                <th mat-header-cell *matHeaderCellDef> Track </th>
                 <td mat-cell *matCellDef="let element">
                     <div class="table-item">
                         <p class="track">{{element.name}}</p>
@@ -26,7 +26,7 @@
 
             <!-- Time Column -->
             <ng-container matColumnDef="duration_ms">
-                <th mat-header-cell *matHeaderCellDef> Time </th>
+                <th mat-header-cell *matHeaderCellDef> Duration </th>
                 <td mat-cell *matCellDef="let element">
                     <div class="table-item">
                         <p class="title">{{element.duration_ms | time}}</p>
