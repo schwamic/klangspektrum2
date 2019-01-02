@@ -6,10 +6,24 @@
     "renovate"
   ],
   "packageRules": [{
-    "packagePatterns": [
-      "^@angular/",
-      "^@angular-devkit/"
-    ],
-    "groupName": "angular group"
-  }]
+      "packagePatterns": [
+        "^@angular/",
+        "^@angular-devkit/"
+      ],
+      "groupName": "angular group"
+    },
+    {
+      "packagePatterns": [
+        "^jasmine",
+        "^karma"
+      ],
+      "groupName": "karma jasmine group"
+    },
+    {
+      "packagePatterns": [
+        "^@types/"
+      ],
+      "groupName": "types group"
+    }
+  ]
 }
