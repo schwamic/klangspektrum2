@@ -2,6 +2,9 @@
   "extends": [
     "config:base"
   ],
+  "labels": [
+    "renovate"
+  ],
   "packageRules": [{
     "packagePatterns": [
       "^@angular/",
