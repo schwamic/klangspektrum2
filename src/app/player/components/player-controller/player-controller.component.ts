@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core'
 import { PlayerService } from '../../../core/services/player.service'
-import { shareReplay, first, tap } from 'rxjs/operators'
+import { shareReplay, first, tap, filter } from 'rxjs/operators'
 import { Subscription, combineLatest } from 'rxjs'
 import { Throttle } from 'lodash-decorators/throttle'
 import { DomSanitizer } from '@angular/platform-browser'
@@ -34,8 +34,16 @@ export class PlayerControllerComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.playerService.setCurrentTrack(null)
-    this.playerService.pause()
     this.sub.unsubscribe()
+    this.playerService
+      .isPlaying()
+      .pipe(
+        first(),
+        filter(playing => playing)
+      )
+      .subscribe(() => {
+        this.playerService.pause()
+      })
   }
 
   @Throttle(300)
