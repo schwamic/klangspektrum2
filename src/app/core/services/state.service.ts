@@ -9,7 +9,6 @@ import { Filter } from '@app/shared/models/filter.model'
 export class StateService {
   private loading = new BehaviorSubject<boolean>(false)
   private error = new BehaviorSubject<boolean>(false)
-  private currentTrack = new BehaviorSubject<boolean>(null)
   private filter = new BehaviorSubject<Filter>({
     acousticness: [0, 1],
     danceability: [0, 1],
@@ -32,10 +31,6 @@ export class StateService {
     this.filter.next(filter)
   }
 
-  setCurrentTrack(track: any) {
-    this.currentTrack.next(track)
-  }
-
   getLoadingState(): Observable<any> {
     return this.loading.asObservable().pipe(shareReplay(1))
   }
@@ -46,9 +41,5 @@ export class StateService {
 
   getFilterSettings(): Observable<any> {
     return this.filter.asObservable().pipe(shareReplay(1))
-  }
-
-  getCurrentTrack(): Observable<any> {
-    return this.currentTrack.asObservable().pipe(shareReplay(1))
   }
 }
