@@ -10,15 +10,15 @@ import { RefreshAuthDialogComponent } from './components/refresh-auth-dialog/ref
 
 @NgModule({
   imports: [CommonModule, RouterModule, MaterialModule],
-  declarations: [ErrorComponent, HeaderComponent, TimePipe, RangePipe, RefreshAuthDialogComponent],
+  declarations: [ErrorComponent, HeaderComponent, RefreshAuthDialogComponent, TimePipe, RangePipe],
   exports: [
     MaterialModule,
+    RouterModule,
     HeaderComponent,
     ErrorComponent,
-    RouterModule,
+    RefreshAuthDialogComponent,
     TimePipe,
-    RangePipe,
-    RefreshAuthDialogComponent
+    RangePipe
   ],
   entryComponents: [RefreshAuthDialogComponent]
 })
