@@ -6,7 +6,8 @@ import { combineLatest, Subscription } from 'rxjs'
 import { StateService } from '@app/core/services/state.service'
 import { SelectionModel } from '@angular/cdk/collections'
 import { map, first } from 'rxjs/operators'
-import { MusicPlayerComponent } from '@app/player/components/music-player/music-player.component'
+import { Throttle } from 'lodash-decorators/throttle'
+import { PlayerService } from '@app/core/services/player.service'
 
 @Component({
   selector: 'app-player',
@@ -15,13 +16,16 @@ import { MusicPlayerComponent } from '@app/player/components/music-player/music-
 })
 export class PlayerComponent implements OnInit, OnDestroy {
   @ViewChild(MatPaginator) paginator: MatPaginator
-  @ViewChild(MusicPlayerComponent) musicPlayerComponent: MusicPlayerComponent
   dataSource
   selection = new SelectionModel(true, [])
   sub = new Subscription()
   track
-  shuffleState = false
-  constructor(private store: Store<fromRoot.State>, private stateService: StateService) {}
+  shuffleState$ = this.playerService.getShuffleState()
+  constructor(
+    private store: Store<fromRoot.State>,
+    private stateService: StateService,
+    private playerService: PlayerService
+  ) {}
 
   ngOnInit() {
     this.sub.add(
@@ -59,7 +63,7 @@ export class PlayerComponent implements OnInit, OnDestroy {
     )
 
     this.sub.add(
-      this.stateService
+      this.playerService
         .getCurrentTrack()
         .pipe(first())
         .subscribe(track => (this.track = track))
@@ -70,43 +74,41 @@ export class PlayerComponent implements OnInit, OnDestroy {
     this.sub.unsubscribe()
   }
   /**
-   * Select item in table
+   * Select item in table and set new track
    * @param row
    */
+  @Throttle(300)
   select(row) {
     this.selection.clear()
     this.selection.select(row)
-    this.stateService.setCurrentTrack(row)
+    this.playerService.setCurrentTrack(row)
+    this.playerService
+      .play(row.uri)
+      .pipe(first())
+      .subscribe()
   }
 
-  next() {
+  selectData(state: string) {
     const selected = this.selection.selected[0]
     const index = this.dataSource.data.indexOf(selected)
-    if (this.shuffleState) {
-      const random = this.getRandomIntInclusive(0, this.dataSource.data.length)
-      this.select(this.dataSource.data[random])
-    } else {
-      this.select(this.dataSource.data[index + 1])
-    }
-  }
-
-  prev() {
-    const selected = this.selection.selected[0]
-    const index = this.dataSource.data.indexOf(selected)
-    if (this.shuffleState) {
-      const random = this.getRandomIntInclusive(0, this.dataSource.data.length)
-      this.select(this.dataSource.data[random])
-    } else {
-      this.select(this.dataSource.data[index - 1])
-    }
-  }
-
-  shuffle(state) {
-    this.shuffleState = state
+    this.playerService
+      .getShuffleState()
+      .pipe(first())
+      .subscribe(shuffleState => {
+        if (shuffleState) {
+          const random = this.getRandomIntInclusive(0, this.dataSource.data.length)
+          this.select(this.dataSource.data[random])
+        } else {
+          let newIndex = state === 'next' ? index + 1 : index - 1
+          newIndex = newIndex < 0 ? 0 : newIndex
+          newIndex = newIndex > this.dataSource.data.length ? this.dataSource.data.length : newIndex
+          this.select(this.dataSource.data[newIndex])
+        }
+      })
   }
 
   /**
-   * The maximum is inclusive and the minimum is inclusive
+   * The maximum and minimum are inclusive
    */
   getRandomIntInclusive(min, max) {
     min = Math.ceil(min)

@@ -1,6 +1,6 @@
 import * as fromRoot from '../../core/store'
 import { Store, select } from '@ngrx/store'
-import { filter, map, tap } from 'rxjs/operators'
+import { filter, map, shareReplay, first, switchMap, tap } from 'rxjs/operators'
 import { Injectable } from '@angular/core'
 import { Observable, BehaviorSubject, Subject, of } from 'rxjs'
 import { HttpClient } from '@angular/common/http'
@@ -10,12 +10,14 @@ import { HttpClient } from '@angular/common/http'
 })
 export class PlayerService {
   private player
+  public deviceID
+  private state = new Subject()
   private error = new BehaviorSubject(false)
   private ready = new BehaviorSubject(false)
-  private state = new Subject()
-  private repeat = false
+  private repeat = new BehaviorSubject(false)
+  private shuffle = new BehaviorSubject(false)
   private playing = new BehaviorSubject(false)
-  public deviceID
+  private currentTrack = new BehaviorSubject<boolean>(null)
 
   constructor(private store: Store<fromRoot.State>, private http: HttpClient) {}
 
@@ -39,6 +41,7 @@ export class PlayerService {
             cb(profile.token)
           }
         })
+
         // todo handle errors
         /* tslint:disable no-console */
         this.player.addListener('initialization_error', ({ message }) => {
@@ -100,31 +103,56 @@ export class PlayerService {
   }
 
   toggleRepeat(): Observable<any> {
-    this.repeat = !this.repeat
-    return this.http.put(
-      `https://api.spotify.com/v1/me/player/repeat?state=${this.repeat ? 'context' : 'off'}`,
-      {}
+    return this.getRepeatState().pipe(
+      first(),
+      tap(state => this.repeat.next(!state)),
+      switchMap(repeat =>
+        this.http.put(
+          `https://api.spotify.com/v1/me/player/repeat?state=${!repeat ? 'context' : 'off'}`,
+          {}
+        )
+      )
     )
   }
 
+  toggleShuffle(): void {
+    this.getShuffleState()
+      .pipe(first())
+      .subscribe(state => {
+        this.shuffle.next(!state)
+      })
+  }
+
   /**
-   * Check states
+   * Getter/Setter
    */
+  setCurrentTrack(track: any) {
+    this.currentTrack.next(track)
+  }
+
   stateChanges() {
-    return this.state.asObservable()
+    return this.state.asObservable().pipe(shareReplay(1))
   }
 
   isPlaying(): Observable<boolean> {
-    return this.playing.asObservable()
+    return this.playing.asObservable().pipe(shareReplay(1))
   }
   isReady(): Observable<boolean> {
-    return this.ready.asObservable()
+    return this.ready.asObservable().pipe(shareReplay(1))
   }
   hasError(): Observable<boolean> {
-    return this.error.asObservable()
+    return this.error.asObservable().pipe(shareReplay(1))
   }
 
-  getRepeatState() {
-    return of(this.repeat)
+  getShuffleState(): Observable<boolean> {
+    return this.shuffle.asObservable().pipe(shareReplay(1))
+  }
+
+  getRepeatState(): Observable<boolean> {
+    return this.repeat.asObservable().pipe(shareReplay(1))
+  }
+
+  getCurrentTrack(): Observable<any> {
+    return this.currentTrack.asObservable().pipe(shareReplay(1))
   }
 }

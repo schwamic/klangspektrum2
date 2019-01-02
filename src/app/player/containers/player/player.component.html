@@ -43,7 +43,7 @@
     </div>
     <div class="sidenav">
         <mat-card class="player">
-            <app-music-player (next)="next()" (prev)="prev()" (shuffle)="shuffle($event)"></app-music-player>
+            <app-player-controller (next)="selectData('next')" (prev)="selectData('prev')"></app-player-controller>
         </mat-card>
         <mat-card class="settings">
             <app-filter></app-filter>
