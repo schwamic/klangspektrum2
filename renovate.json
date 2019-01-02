@@ -1,5 +1,12 @@
 {
   "extends": [
     "config:base"
-  ]
+  ],
+  "packageRules": [{
+    "packagePatterns": [
+      "^@angular/",
+      "^@angular-devkit/"
+    ],
+    "groupName": "angular group"
+  }]
 }
