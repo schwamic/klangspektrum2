@@ -1,6 +1,11 @@
 @import './../variables';
 
 @mixin container {
-    width: calc(100% - 120px);
-    margin: 60px;
+  width: calc(100% - 120px);
+  margin: 60px;
 }
+
+
+@mixin containerLeft {}
+
+@mixin containerCenter {}

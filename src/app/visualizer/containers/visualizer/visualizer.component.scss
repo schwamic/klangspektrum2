@@ -1,19 +1,19 @@
 @import '../../../../styles/mixins/container';
 
 ::ng-deep body {
-    background-color: $light-gray;
+  background-color: $light-gray;
 }
 
 .chart {
-    width: calc(50% - 2rem);
-    padding: 1rem;
-    float: left;
+  width: calc(50% - 2rem);
+  padding: 1rem;
+  float: left;
 }
 
 .right {
-    float: right;
+  float: right;
 }
 
 .container {
-    @include container();
+  @include container();
 }
