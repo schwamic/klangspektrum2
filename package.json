@@ -2,6 +2,7 @@
   "name": "klangspektrum2",
   "version": "1.0.0",
   "author": "schwamic",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/schwamic/klangspektrum2.git"
@@ -74,6 +75,5 @@
     "web-animations-js": "2.3.1",
     "yargs": "12.0.5",
     "zone.js": "0.8.26"
-  },
-  "license": "UNLICENSED"
+  }
 }
