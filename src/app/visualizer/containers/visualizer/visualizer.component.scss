@@ -1,19 +1,24 @@
 @import '../../../../styles/mixins/container';
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins/breakpoints';
 
 ::ng-deep body {
-  background-color: $light-gray;
-}
-
-.chart {
-  width: calc(50% - 2rem);
-  padding: 1rem;
-  float: left;
-}
-
-.right {
-  float: right;
+  background: $light-gray;
 }
 
 .container {
-  @include container();
+  @include containerLeft();
+}
+
+.chart {
+  width: 100%;
+  margin-bottom: 60px;
+
+  @include for-size(phone-only) {
+    margin-bottom: 30px;
+  }
+}
+
+.info {
+  margin-top: 0;
 }

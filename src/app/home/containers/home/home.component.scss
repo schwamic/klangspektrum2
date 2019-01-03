@@ -1,26 +1,11 @@
 @import "../../../../styles/variables";
-@import "../../../../styles/font";
-@import "../../../../styles/grid";
+@import "../../../../styles/mixins/breakpoints";
+@import "../../../../styles/mixins/menu-header";
 
 ::ng-deep body {
   background: $dark-gray;
 }
 
-mat-toolbar {
-  position: relative;
-  z-index: 4;
-  background: $dark-gray;
-  color: white;
-
-  @include for-size(phone-only) {
-    padding: 0;
-  }
-}
-
-a {
-  color: $gray;
-
-  &.active {
-    color: $white;
-  }
+.menu {
+  @include menu-header(dark);
 }

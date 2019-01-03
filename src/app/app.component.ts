@@ -3,7 +3,10 @@ import { StateService } from './core/services/state.service'
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html'
+  template: `
+    <p *ngIf="(loading$ | async)" style="margin: 40px 32px;">...loading</p>
+    <router-outlet></router-outlet>
+  `
 })
 export class AppComponent {
   loading$ = this.stateService.getLoadingState()

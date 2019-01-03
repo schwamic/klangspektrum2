@@ -1,13 +1,19 @@
 @import '../../../../styles/variables';
 @import '../../../../styles/mixins/container';
+@import '../../../../styles/mixins/breakpoints';
 
 ::ng-deep body {
-  background-color: $light-gray;
+  background: $light-gray;
 }
 
 .container {
   display: flex;
-  @include container();
+  flex-direction: column-reverse;
+  @include containerCenter();
+
+  @include for-size(tablet-landscape-up) {
+    flex-direction: row;
+  }
 }
 
 .mask {
@@ -21,8 +27,12 @@
 }
 
 .list {
-  width: calc(64% - 20px);
-  margin-right: 20px;
+  width: 100%;
+
+  @include for-size(tablet-landscape-up) {
+    width: calc(64% - 20px);
+    margin-right: 20px;
+  }
 
   table {
     width: 100%;
@@ -52,27 +62,35 @@
       }
 
       &.active {
-        background: white;
+        background: $white;
       }
     }
   }
 }
 
 .sidenav {
-  width: calc(36% - 20px);
-  min-width: 360px;
-  margin-left: 20px;
+  width: 100%;
+
+  @include for-size(tablet-landscape-up) {
+    width: calc(36% - 20px);
+    min-width: 360px;
+    margin-left: 20px;
+  }
 
   .player {
     padding: 0;
     overflow: hidden;
   }
 
-  .settings {
-    position: sticky;
-    margin-top: 40px;
-    top: 20px;
+  .filter {
+    margin-top: 32px;
+    margin-bottom: 32px;
     padding: 4px 24px 20px 24px;
+
+    @include for-size(tablet-landscape-up) {
+      position: sticky;
+      top: 20px;
+    }
   }
 }
 
