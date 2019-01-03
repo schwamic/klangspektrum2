@@ -9,8 +9,7 @@ p {
   font-size: 16px;
   line-height: 26px;
   font-weight: normal;
-  // letter-spacing: 0.3px;
-  letter-spacing: 0.5px; //-> todo auf grau
+  letter-spacing: 0.5px;
 
   &.white {
     color: $white;
@@ -21,6 +20,5 @@ a {
   font-size: 16px;
   line-height: 26px;
   font-weight: 500;
-  // letter-spacing: 0.3px;
-  letter-spacing: 0.5px; //-> todo auf grau
+  letter-spacing: 0.5px;
 }
