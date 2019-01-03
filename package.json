@@ -63,7 +63,7 @@
     "lodash-decorators": "6.0.1",
     "ng2-charts": "1.6.0",
     "ng2-nouislider": "1.7.13",
-    "normalize.css": "^8.0.1",
+    "normalize.css": "8.0.1",
     "nouislider": "12.1.0",
     "protractor": "5.4.2",
     "rxjs": "6.3.3",
