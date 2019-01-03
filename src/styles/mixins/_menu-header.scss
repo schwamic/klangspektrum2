@@ -1,0 +1,29 @@
+@import "./breakpoints";
+@import "./../variables";
+
+@mixin menu-item($default, $active) {
+  .menu-item {
+    font-size: 16px;
+    color: $default;
+
+    &.active {
+      color: $active;
+    }
+  }
+}
+
+@mixin menu-header($color) {
+  @include for-size(phone-only) {
+    padding: 0;
+  }
+
+  @if $color==light {
+    background: $light-gray;
+    @include menu-item($gray, $dark-gray)
+  }
+
+  @else if $color==dark {
+    background: $dark-gray;
+    @include menu-item($gray, $white)
+  }
+}

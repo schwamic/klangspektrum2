@@ -27,7 +27,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles/index.scss"
+              "./node_modules/normalize.css/normalize.css",
+              "./src/styles/index.scss"
             ],
             "scripts": [
               "./node_modules/chart.js/dist/Chart.min.js"

@@ -22,19 +22,27 @@
   background-color: rgba(245, 245, 245, 0.9);
   margin-top: -64px;
 
-  .dot-wrapper {
-    position: relative;
+  &-icon {
+    color: $dark-gray;
   }
+}
 
-  .dot {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 10px;
-    height: 4px;
-    width: 4px;
-    margin: 0 auto;
-    border-radius: 100%;
-    background-color: $black;
+// nav - disabled
+.mat-button:disabled {
+  .nav-icon {
+    color: $gray;
   }
+}
+
+.dot {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 10px;
+  height: 4px;
+  width: 4px;
+  margin: 0 auto;
+  border-radius: 100%;
+  background-color: $dark-gray;
+  ;
 }

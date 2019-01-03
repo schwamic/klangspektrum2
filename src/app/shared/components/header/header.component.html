@@ -1,21 +1,21 @@
-<mat-toolbar class="mat-elevation-z2">
-  <span class="navigation">
-    <span class="account">
+<mat-toolbar class="menu mat-elevation-z2">
+  <span class="menu-item-group">
+    <span class="user">
       <button mat-button [matMenuTriggerFor]="menu">
-        <div class="account-avatar">
+        <div class="user-avatar">
           <div class="avatar-image" [style.background-image]="setProfileImage(user | async)"></div>
-          <mat-icon>expand_more</mat-icon>
+          <mat-icon class="avatar-icon">expand_more</mat-icon>
         </div>
       </button>
-      <mat-menu #menu="matMenu">
+      <mat-menu #menu="matMenu" class="user-logout">
         <button (click)="logout()" mat-menu-item>
-          <mat-icon>highlight_off</mat-icon>
-          <a class="title" routerLinkActive="active">Logout</a>
+          <mat-icon class="logout-icon">highlight_off</mat-icon>
+          <a class="logout-title" routerLinkActive="active">Logout</a>
         </button>
       </mat-menu>
     </span>
-    <a mat-button routerLink="/player" routerLinkActive="active">Player</a>
-    <a mat-button routerLink="/visualizer" routerLinkActive="active">Visualizer</a>
+    <a class="menu-item" mat-button routerLink="/player" routerLinkActive="active">Player</a>
+    <a class="menu-item" mat-button routerLink="/visualizer" routerLinkActive="active">Visualizer</a>
   </span>
   <img class="logo" src="assets/logo/klangspektrumLogo.svg" />
 </mat-toolbar>

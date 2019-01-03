@@ -1,20 +1,25 @@
 @import "../../../../styles/variables";
-@import "../../../../styles/font";
-@import "../../../../styles/grid";
+@import "../../../../styles/mixins/breakpoints";
+@import "../../../../styles/mixins/menu-header";
 
+.menu {
+  @include menu-header(light);
+}
+
+// Menu - toolbar-overwrite
 mat-toolbar {
   position: relative;
   justify-content: space-between;
 }
 
-.navigation,
-.account {
+.menu-item-group,
+.user {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.account-avatar {
+.user-avatar {
   display: flex;
   align-items: center;
 
@@ -29,42 +34,38 @@ mat-toolbar {
     background-size: cover;
   }
 
-  mat-icon {
+  .avatar-icon {
     color: $dark-gray;
   }
+}
+
+::ng-deep .user-logout {
+  display: flex;
+  align-items: center;
+
+  .logout-title {
+    color: $white;
+    text-decoration: none;
+  }
+
+  .logout-icon {
+    color: $white;
+    margin-right: 6px !important;
+    margin-left: -3px;
+  }
+}
+
+// Logout - mat-overwrite 
+::ng-deep .mat-menu-content {
+  padding: 0 !important;
+  background: $dark-gray !important;
 }
 
 .logo {
   height: 60%;
   padding: 0 16px;
-}
 
-a {
-  color: $gray;
-
-  &.active {
-    color: $dark-gray;
-  }
-}
-
-// Overwrite
-::ng-deep .mat-menu-content {
-  padding: 0 !important;
-  background: $dark-gray !important;
-
-  .mat-menu-item {
-    display: flex;
-    align-items: center;
-
-    .title {
-      color: white;
-      text-decoration: none;
-    }
-
-    .mat-icon {
-      color: white;
-      margin-right: 6px;
-      margin-left: -3px;
-    }
+  @media (max-width: 420px) {
+    display: none;
   }
 }
