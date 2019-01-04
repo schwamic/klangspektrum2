@@ -18,7 +18,11 @@ export class VisualizerComponent implements OnInit, OnDestroy {
 
   // Chart options
   chartOptions = {
-    responsive: true
+    responsive: true,
+    tooltips: {
+      backgroundColor: 'rgba(93,93,93,0.9)',
+      displayColors: false
+    }
   }
 
   // Chart labels - must fit with chartData
@@ -28,7 +32,7 @@ export class VisualizerComponent implements OnInit, OnDestroy {
   ngOnInit() {
     // Update Font
     Chart.defaults.global.defaultFontFamily = 'Roboto'
-    Chart.defaults.global.defaultFontColor = '#000'
+    Chart.defaults.global.defaultFontColor = '#616161'
 
     // Map features-data for charts
     this.subscription = this.store
@@ -62,8 +66,8 @@ export class VisualizerComponent implements OnInit, OnDestroy {
    * @param number
    */
   getIndex(number) {
-    const index = Math.trunc(number * 10)
-    return index <= 10 && index >= 0 ? index : index < 0 ? 0 : 1
+    const index = Math.round(number * 10)
+    return index <= 10 && index >= 0 ? index : index < 0 ? 0 : 10
   }
 
   /**

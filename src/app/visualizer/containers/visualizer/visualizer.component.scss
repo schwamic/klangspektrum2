@@ -10,15 +10,20 @@
   @include containerLeft();
 }
 
-.chart {
+.intro,
+.chart-info {
+  margin-top: 0;
+}
+
+.section {
   width: 100%;
-  margin-bottom: 60px;
+  margin-bottom: 50px;
 
   @include for-size(phone-only) {
     margin-bottom: 30px;
   }
-}
 
-.info {
-  margin-top: 0;
+  @include for-size(desktop-up) {
+    margin-bottom: 70px;
+  }
 }
