@@ -22,12 +22,12 @@ export const chartsData = [
     chartData: [{ data: new Array(11).fill(0), label: 'Tracks' }],
     chartColors: [
       {
-        borderColor: '#E82C4F',
+        borderColor: '#EB6617',
         backgroundColor: 'transparent',
-        pointBackgroundColor: '#E82C4F',
-        pointBorderColor: '#E82C4F',
-        pointHoverBackgroundColor: '#E82C4F',
-        pointHoverBorderColor: '#E82C4F'
+        pointBackgroundColor: '#EB6617',
+        pointBorderColor: '#EB6617',
+        pointHoverBackgroundColor: '#EB6617',
+        pointHoverBorderColor: '#EB6617'
       }
     ]
   },
@@ -38,12 +38,12 @@ export const chartsData = [
     chartData: [{ data: new Array(11).fill(0), label: 'Tracks' }],
     chartColors: [
       {
-        borderColor: '#62509C',
+        borderColor: '#E82C4F',
         backgroundColor: 'transparent',
-        pointBackgroundColor: '#62509C',
-        pointBorderColor: '#62509C',
-        pointHoverBackgroundColor: '#62509C',
-        pointHoverBorderColor: '#62509C'
+        pointBackgroundColor: '#E82C4F',
+        pointBorderColor: '#E82C4F',
+        pointHoverBackgroundColor: '#E82C4F',
+        pointHoverBorderColor: '#E82C4F'
       }
     ]
   },
@@ -54,12 +54,12 @@ export const chartsData = [
     chartData: [{ data: new Array(11).fill(0), label: 'Tracks' }],
     chartColors: [
       {
-        borderColor: '#EB6617',
+        borderColor: '#62509C',
         backgroundColor: 'transparent',
-        pointBackgroundColor: '#EB6617',
-        pointBorderColor: '#EB6617',
-        pointHoverBackgroundColor: '#EB6617',
-        pointHoverBorderColor: '#EB6617'
+        pointBackgroundColor: '#62509C',
+        pointBorderColor: '#62509C',
+        pointHoverBackgroundColor: '#62509C',
+        pointHoverBorderColor: '#62509C'
       }
     ]
   },
