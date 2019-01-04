@@ -8,14 +8,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', loadChildren: './home/home.module#HomeModule' },
   { path: 'callback', canActivate: [MetaGuard], component: ErrorComponent },
-  {
-    path: 'player',
-    loadChildren: './player/player.module#PlayerModule'
-  },
-  {
-    path: 'visualizer',
-    loadChildren: './visualizer/visualizer.module#VisualizerModule'
-  },
+  { path: 'profile', loadChildren: './profile/profile.module#ProfileModule' },
   { path: '**', component: ErrorComponent }
 ]
 
