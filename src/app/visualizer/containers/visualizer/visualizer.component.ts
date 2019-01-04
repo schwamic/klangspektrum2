@@ -22,18 +22,7 @@ export class VisualizerComponent implements OnInit, OnDestroy {
   }
 
   // Chart labels - must fit with chartData
-  chartLabels = [
-    '0 - 0.1',
-    '0.1 - 0.2',
-    '0.2 - 0.3',
-    '0.3 - 0.4',
-    '0.4 - 0.5',
-    '0.5 - 0.6',
-    '0.6 - 0.7',
-    '0.7 - 0.8',
-    '0.8 - 0.9',
-    '0.9 - 1'
-  ]
+  chartLabels = ['0', '0.1', '0.2', '0.3', '0.4', '0.5', '0.6', '0.7', '0.8', '0.9', '1']
   constructor(private store: Store<fromRoot.State>) {}
 
   ngOnInit() {
@@ -64,6 +53,7 @@ export class VisualizerComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    this.charts.forEach(chart => (chart.chartData[0].data = new Array(11).fill(0)))
     this.subscription.unsubscribe()
   }
 
@@ -73,7 +63,7 @@ export class VisualizerComponent implements OnInit, OnDestroy {
    */
   getIndex(number) {
     const index = Math.trunc(number * 10)
-    return index < 10 && index >= 0 ? index : index < 0 ? 0 : 9
+    return index <= 10 && index >= 0 ? index : index < 0 ? 0 : 1
   }
 
   /**

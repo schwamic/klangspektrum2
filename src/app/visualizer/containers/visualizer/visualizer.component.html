@@ -3,7 +3,7 @@
   <ng-container *ngFor="let chart of charts">
     <div class="chart">
       <p class="info"><strong>{{chart.title}}</strong><br>{{chart.description}}</p>
-      <canvas baseChart [chartType]="'bar'" [datasets]="chart.chartData" [labels]="chartLabels" [options]="chartOptions"
+      <canvas baseChart [chartType]="'line'" [datasets]="chart.chartData" [labels]="chartLabels" [options]="chartOptions"
         [legend]="false" [colors]='chart.chartColors'>
       </canvas>
     </div>
