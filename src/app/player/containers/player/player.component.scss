@@ -6,7 +6,7 @@
   background: $light-gray;
 }
 
-.container {
+.container--center {
   display: flex;
   flex-direction: column-reverse;
   @include containerCenter();
@@ -14,6 +14,10 @@
   @include for-size(tablet-landscape-up) {
     flex-direction: row;
   }
+}
+
+.container--left {
+  @include containerLeft();
 }
 
 .mask {
