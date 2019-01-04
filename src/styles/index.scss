@@ -2,5 +2,9 @@
 @import "./font";
 @import "./variables";
 
+[hidden] {
+  display: none !important;
+}
+
 // Third-Party-Slider
 @import "~nouislider/distribute/nouislider.min.css";
