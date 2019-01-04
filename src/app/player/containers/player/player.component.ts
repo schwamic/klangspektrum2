@@ -21,6 +21,8 @@ export class PlayerComponent implements OnInit, OnDestroy {
   sub = new Subscription()
   track
   shuffleState$ = this.playerService.getShuffleState()
+  profile$ = this.store.pipe(select(fromRoot.selectProfile))
+
   constructor(
     private store: Store<fromRoot.State>,
     private stateService: StateService,

@@ -1,4 +1,4 @@
-<div class="container">
+<div *ngIf="(profile$ | async).product === 'premium'; else authInfo" class="container--center">
   <div class="list">
     <div class="mask"></div>
     <table mat-table [dataSource]="dataSource">
@@ -49,3 +49,14 @@
     </mat-card>
   </div>
 </div>
+
+<ng-template #authInfo>
+  <div class="container--left">
+    <p>
+      <strong>
+        Authenticated users must have a valid Spotify Premium subscription to stream music.
+        However, you can view the data analysis in the Visualizer.
+      </strong>
+    </p>
+  </div>
+</ng-template>
