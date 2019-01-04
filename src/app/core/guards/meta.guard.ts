@@ -19,7 +19,7 @@ export class MetaGuard implements CanActivate {
         const valid = this.isValid(meta)
         if (valid) {
           this.store.dispatch(new AddMeta({ ...meta }))
-          this.router.navigate(['player'])
+          this.router.navigate(['profile/player'])
         }
         return !valid
       }),
