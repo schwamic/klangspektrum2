@@ -114,3 +114,7 @@ th.mat-header-cell:first-of-type {
   min-width: 40px;
   max-width: 60px;
 }
+
+::ng-deep .mat-tooltip-panel {
+  display: none;
+}
