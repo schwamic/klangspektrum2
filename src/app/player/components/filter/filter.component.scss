@@ -2,42 +2,60 @@
 @import "../../../../styles/font";
 @import "../../../../styles/mixins/breakpoints";
 
-.slider {
+@mixin slider-color($color) {
+
+  .title-categorie,
+  .title-value {
+    color: $color;
+  }
+
+  .noUi-connect {
+    background: $color;
+  }
+
+  .noUi-horizontal .noUi-handle {
+    background: $color;
+  }
+}
+
+::ng-deep .slider {
   margin-bottom: 20px;
-}
 
-.slider-title {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: -24px;
-}
+  .slider-title {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: -24px;
+  }
 
-.yellow {
-  color: $yellow;
-}
+  @include slider-color($dark-gray);
 
-.cyan {
-  color: $cyan;
-}
+  &--yellow {
+    @include slider-color($yellow);
+  }
 
-.blue {
-  color: $blue;
-}
+  &--cyan {
+    @include slider-color($cyan);
+  }
 
-.red {
-  color: $red;
-}
+  &--blue {
+    @include slider-color($blue);
+  }
 
-.orange {
-  color: $orange;
-}
+  &--red {
+    @include slider-color($red);
+  }
 
-.green {
-  color: $green;
-}
+  &--orange {
+    @include slider-color($orange);
+  }
 
-.purple {
-  color: $purple;
+  &--green {
+    @include slider-color($green);
+  }
+
+  &--purple {
+    @include slider-color($purple);
+  }
 }
 
 .reset-btn {
@@ -70,9 +88,9 @@ nouislider {
   border-radius: 0;
 }
 
-::ng-deep .noUi-connect {
-  background: $dark-gray;
-}
+// ::ng-deep .noUi-connect {
+//   background -> for each categorie
+// }
 
 // Hanlde
 ::ng-deep .noUi-handle:after {
@@ -84,7 +102,7 @@ nouislider {
 }
 
 ::ng-deep .noUi-horizontal .noUi-handle {
-  background: $dark-gray;
+  // background -> for each categorie
   box-shadow: none;
   border: none;
   left: 0;
