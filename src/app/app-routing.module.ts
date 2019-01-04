@@ -7,8 +7,11 @@ import { NgModule } from '@angular/core'
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', loadChildren: './home/home.module#HomeModule' },
-  { path: 'callback', canActivate: [MetaGuard], component: ErrorComponent },
-  { path: 'profile', loadChildren: './profile/profile.module#ProfileModule' },
+  {
+    path: 'profile',
+    canActivate: [MetaGuard],
+    loadChildren: './profile/profile.module#ProfileModule'
+  },
   { path: '**', component: ErrorComponent }
 ]
 
