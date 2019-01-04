@@ -3,7 +3,7 @@ export const chartsData = [
     title: 'Acousticness',
     description:
       'Measures whether a track is acoustic, with 1 representing high acoustic characteristic.',
-    chartData: [{ data: new Array(11).fill(0), label: 'All' }],
+    chartData: [{ data: new Array(11).fill(0), label: 'Tracks' }],
     chartColors: [
       {
         borderColor: '#F9B127',
@@ -19,7 +19,7 @@ export const chartsData = [
     title: 'Danceability',
     description:
       'Describes how suitable a track is for dancing based on musical elements including tempo, rhythm stability, beat strength, and overall regularity. A value of 0 is least danceable and 1 is most danceable.',
-    chartData: [{ data: new Array(11).fill(0), label: 'All' }],
+    chartData: [{ data: new Array(11).fill(0), label: 'Tracks' }],
     chartColors: [
       {
         borderColor: '#E82C4F',
@@ -35,7 +35,7 @@ export const chartsData = [
     title: 'Energy',
     description:
       'Represents a perceptual measure of intensity and activity. Typically, energetic tracks feel fast, loud, and noisy. Perceptual features include dynamic range, perceived loudness, timbre, onset rate, and general entropy.',
-    chartData: [{ data: new Array(11).fill(0), label: 'All' }],
+    chartData: [{ data: new Array(11).fill(0), label: 'Tracks' }],
     chartColors: [
       {
         borderColor: '#62509C',
@@ -51,7 +51,7 @@ export const chartsData = [
     title: 'Instrumentalness',
     description:
       'Predicts whether a track contains no vocals. “Ooh” and “aah” sounds are treated as instrumental in this context. The closer the instrumentalness value is to 1, the greater likelihood the track contains no vocal content.',
-    chartData: [{ data: new Array(11).fill(0), label: 'All' }],
+    chartData: [{ data: new Array(11).fill(0), label: 'Tracks' }],
     chartColors: [
       {
         borderColor: '#EB6617',
@@ -67,7 +67,7 @@ export const chartsData = [
     title: 'Liveness',
     description:
       'Detects the presence of an audience in the recording. Higher liveness values represent an increased probability that the track was performed live.',
-    chartData: [{ data: new Array(11).fill(0), label: 'All' }],
+    chartData: [{ data: new Array(11).fill(0), label: 'Tracks' }],
     chartColors: [
       {
         borderColor: '#2884C7',
@@ -83,7 +83,7 @@ export const chartsData = [
     title: 'Speechiness',
     description:
       'It detects the presence of spoken words in a track. The more exclusively speech-like the recording (e.g. talk show, audio book, poetry), the closer to 1 the attribute value.',
-    chartData: [{ data: new Array(11).fill(0), label: 'All' }],
+    chartData: [{ data: new Array(11).fill(0), label: 'Tracks' }],
     chartColors: [
       {
         borderColor: '#26A69A',
@@ -99,7 +99,7 @@ export const chartsData = [
     title: 'Valence',
     description:
       'A measure from 0 to 1 describing the musical positiveness conveyed by a track. Tracks with high valence sound more positive (e.g. happy, cheerful, euphoric), while tracks with low valence sound more negative (e.g. sad, depressed, angry).',
-    chartData: [{ data: new Array(11).fill(0), label: 'All' }],
+    chartData: [{ data: new Array(11).fill(0), label: 'Tracks' }],
     chartColors: [
       {
         borderColor: '#66BB6A',
