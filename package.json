@@ -16,7 +16,8 @@
     "ng": "ng",
     "env": "ts-node ./set-env.ts",
     "dev": "ng serve --port 8020 --host 0.0.0.0 --aot",
-    "build": "yarn env --environment=prod  && ng build --configuration production",
+    "stats": "webpack-bundle-analyzer dist/klangspektrum2/stats.json",
+    "build": "yarn env --environment=prod  && ng build --prod --stats-json",
     "test": "ng test --watch=false",
     "test:watch": "ng test",
     "lint": "ng lint",
@@ -73,6 +74,7 @@
     "tslint": "5.12.0",
     "typescript": "3.1.6",
     "web-animations-js": "2.3.1",
+    "webpack-bundle-analyzer": "^3.0.3",
     "yargs": "12.0.5",
     "zone.js": "0.8.26"
   }
