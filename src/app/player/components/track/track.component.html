@@ -1,0 +1,9 @@
+<mat-chip-list>
+  <mat-chip [disableRipple]="true" [selectable]="false" class="chip chip--yellow">{{roundTo2(track.features.acousticness)}}</mat-chip>
+  <mat-chip [disableRipple]="true" [selectable]="false" class="chip chip--orange">{{roundTo2(track.features.danceability)}}</mat-chip>
+  <mat-chip [disableRipple]="true" [selectable]="false" class="chip chip--red">{{roundTo2(track.features.energy)}}</mat-chip>
+  <mat-chip [disableRipple]="true" [selectable]="false" class="chip chip--purple">{{roundTo2(track.features.instrumentalness)}}</mat-chip>
+  <mat-chip [disableRipple]="true" [selectable]="false" class="chip chip--blue">{{roundTo2(track.features.liveness)}}</mat-chip>
+  <mat-chip [disableRipple]="true" [selectable]="false" class="chip chip--cyan">{{roundTo2(track.features.speechiness)}}</mat-chip>
+  <mat-chip [disableRipple]="true" [selectable]="false" class="chip chip--green">{{roundTo2(track.features.valence)}}</mat-chip>
+</mat-chip-list>

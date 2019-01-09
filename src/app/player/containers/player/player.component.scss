@@ -31,6 +31,7 @@
 }
 
 .list {
+  margin-top: -4px;
   width: 100%;
 
   @include for-size(tablet-landscape-up) {
@@ -81,24 +82,27 @@
     margin-left: 20px;
   }
 
-  .player {
-    padding: 0;
-    overflow: hidden;
-  }
-
-  .filter {
-    margin-top: 32px;
-    margin-bottom: 32px;
-    padding: 4px 24px 20px 24px;
-
+  &-content {
     @include for-size(tablet-landscape-up) {
       position: sticky;
       top: 20px;
+    }
+
+    .player {
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .filter {
+      margin-top: 32px;
+      margin-bottom: 32px;
+      padding: 4px 24px 20px 24px;
     }
   }
 }
 
 .mat-paginator {
+  margin-bottom: -20px;
   background: $light-gray;
 }
 

@@ -1,0 +1,54 @@
+@import "../../../../styles/variables";
+
+.track {
+  margin: 0;
+  color: $dark-gray;
+}
+
+.artist {
+  font-size: 12px;
+  line-height: 14px;
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: $dark-gray;
+}
+
+.chip {
+  font-weight: normal;
+  letter-spacing: 0.5px;
+
+  &--yellow {
+    background: $yellow;
+    color: white;
+  }
+
+  &--cyan {
+    background: $cyan;
+    color: white;
+  }
+
+  &--blue {
+    background: $blue;
+    color: white;
+  }
+
+  &--red {
+    background: $red;
+    color: white;
+  }
+
+  &--orange {
+    background: $orange;
+    color: white;
+  }
+
+  &--green {
+    background: $green;
+    color: white;
+  }
+
+  &--purple {
+    background: $purple;
+    color: white;
+  }
+}

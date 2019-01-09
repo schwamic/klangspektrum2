@@ -1,9 +1,8 @@
 import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core'
 import { PlayerService } from '../../../core/services/player.service'
-import { shareReplay, first, tap, filter } from 'rxjs/operators'
+import { first, filter } from 'rxjs/operators'
 import { Subscription, combineLatest } from 'rxjs'
 import { Throttle } from 'lodash-decorators/throttle'
-import { DomSanitizer } from '@angular/platform-browser'
 
 @Component({
   selector: 'app-player-controller',
@@ -17,10 +16,9 @@ export class PlayerControllerComponent implements OnInit, OnDestroy {
   shuffle$ = this.playerService.getShuffleState()
   isPlaying$ = this.playerService.isPlaying()
   sub = new Subscription()
-  track$ = this.playerService.getCurrentTrack().pipe(tap(track => this.setCover(track)))
-  cover
+  track$ = this.playerService.getCurrentTrack()
 
-  constructor(public playerService: PlayerService, private sanitizer: DomSanitizer) {}
+  constructor(public playerService: PlayerService) {}
 
   ngOnInit() {
     this.sub.add(
@@ -83,14 +81,5 @@ export class PlayerControllerComponent implements OnInit, OnDestroy {
   @Throttle(300)
   onShuffle() {
     this.playerService.toggleShuffle()
-  }
-
-  /**
-   * helper to set cover
-   */
-  setCover(track) {
-    if (!!track) {
-      this.cover = this.sanitizer.bypassSecurityTrustStyle(`url( ${track.images[0].url})`)
-    }
   }
 }

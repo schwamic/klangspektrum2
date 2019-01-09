@@ -41,12 +41,14 @@
     <mat-paginator></mat-paginator>
   </div>
   <div class="sidenav">
-    <mat-card class="player">
-      <app-player-controller (next)="selectData('next')" (prev)="selectData('prev')"></app-player-controller>
-    </mat-card>
-    <mat-card class="filter">
-      <app-filter></app-filter>
-    </mat-card>
+    <div class="sidenav-content">
+      <mat-card class="player">
+        <app-player-controller (next)="selectData('next')" (prev)="selectData('prev')"></app-player-controller>
+      </mat-card>
+      <mat-card class="filter">
+        <app-filter></app-filter>
+      </mat-card>
+    </div>
   </div>
 </div>
 
