@@ -1,4 +1,7 @@
-<div [style.background-image]="cover" class="cover"></div>
+<ng-container *ngIf="(track$ | async) as track">
+  <app-track class="track-info" [track]="track"></app-track>
+</ng-container>
+
 <div class="nav">
   <button [disabled]="!(track$ | async)" (click)="onShuffle()" mat-button>
     <mat-icon class="nav-icon">shuffle</mat-icon>

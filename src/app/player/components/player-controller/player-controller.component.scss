@@ -4,13 +4,10 @@
   overflow: hidden;
 }
 
-.cover {
-  background-color: $dark-gray;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 280px;
-  width: 100%;
+.track-info {
+  display: block;
+  padding: 20px 24px;
+  background-color: white;
 }
 
 .nav {
@@ -19,8 +16,7 @@
   justify-content: center;
   width: 100%;
   height: 64px;
-  background-color: rgba(245, 245, 245, 0.9);
-  margin-top: -64px;
+  background-color: $white;
 
   &-icon {
     color: $dark-gray;

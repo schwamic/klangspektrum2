@@ -19,7 +19,7 @@ export class PlayerComponent implements OnInit, OnDestroy {
   dataSource
   selection = new SelectionModel(true, [])
   sub = new Subscription()
-  track
+  track$ = this.playerService.getCurrentTrack()
   shuffleState$ = this.playerService.getShuffleState()
   profile$ = this.store.pipe(select(fromRoot.selectProfile))
 
@@ -62,13 +62,6 @@ export class PlayerComponent implements OnInit, OnDestroy {
           this.dataSource = new MatTableDataSource(tracks)
           this.dataSource.paginator = this.paginator
         })
-    )
-
-    this.sub.add(
-      this.playerService
-        .getCurrentTrack()
-        .pipe(first())
-        .subscribe(track => (this.track = track))
     )
   }
 

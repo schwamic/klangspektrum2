@@ -9,7 +9,8 @@ import {
   MatSidenavModule,
   MatTableModule,
   MatToolbarModule,
-  MatTooltipModule
+  MatTooltipModule,
+  MatChipsModule
 } from '@angular/material'
 
 import { NgModule } from '@angular/core'
@@ -26,7 +27,8 @@ import { NgModule } from '@angular/core'
     MatSidenavModule,
     MatTableModule,
     MatToolbarModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatChipsModule
   ],
   exports: [
     MatButtonModule,
@@ -39,7 +41,8 @@ import { NgModule } from '@angular/core'
     MatSidenavModule,
     MatTableModule,
     MatToolbarModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatChipsModule
   ],
   declarations: []
 })
