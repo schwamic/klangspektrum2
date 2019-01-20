@@ -5,7 +5,7 @@
 <div class="nav">
   <button [disabled]="!(track$ | async)" (click)="onShuffle()" mat-button>
     <mat-icon class="nav-icon">shuffle</mat-icon>
-    <div *ngIf="shuffle$ | async" class="dot"></div>
+    <div *ngIf="(shuffle$ | async)" class="dot"></div>
   </button>
 
   <button [disabled]="!(track$ | async)" (click)="onPrev()" mat-button>
@@ -13,7 +13,7 @@
   </button>
 
   <button [disabled]="!(track$ | async)" (click)="toggle()" mat-button>
-    <mat-icon *ngIf="isPlaying$ | async" class="nav-icon">pause</mat-icon>
+    <mat-icon *ngIf="(isPlaying$ | async)" class="nav-icon">pause</mat-icon>
     <mat-icon *ngIf="!(isPlaying$ | async)" class="nav-icon">play_arrow</mat-icon>
   </button>
 
@@ -23,6 +23,6 @@
 
   <button [disabled]="!(track$ | async)" (click)="repeat()" mat-button>
     <mat-icon class="nav-icon">repeat</mat-icon>
-    <div *ngIf="playerService.getRepeatState() | async" class="dot"></div>
+    <div *ngIf="(playerService.getRepeatState() | async)" class="dot"></div>
   </button>
 </div>

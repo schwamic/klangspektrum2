@@ -1,7 +1,7 @@
-import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core'
+import { Component, OnDestroy, Output, EventEmitter } from '@angular/core'
 import { PlayerService } from '../../../core/services/player.service'
 import { first, filter } from 'rxjs/operators'
-import { Subscription, combineLatest } from 'rxjs'
+import { combineLatest } from 'rxjs'
 import { Throttle } from 'lodash-decorators/throttle'
 
 @Component({
@@ -9,30 +9,18 @@ import { Throttle } from 'lodash-decorators/throttle'
   templateUrl: './player-controller.component.html',
   styleUrls: ['./player-controller.component.scss']
 })
-export class PlayerControllerComponent implements OnInit, OnDestroy {
+export class PlayerControllerComponent implements OnDestroy {
   @Output() next = new EventEmitter()
   @Output() prev = new EventEmitter()
   playerReady = false
   shuffle$ = this.playerService.getShuffleState()
   isPlaying$ = this.playerService.isPlaying()
-  sub = new Subscription()
   track$ = this.playerService.getCurrentTrack()
 
   constructor(public playerService: PlayerService) {}
 
-  ngOnInit() {
-    this.sub.add(
-      this.playerService.stateChanges().subscribe(state => {
-        if ((state as any).paused) {
-          this.playerService.pause()
-        }
-      })
-    )
-  }
-
   ngOnDestroy() {
     this.playerService.setCurrentTrack(null)
-    this.sub.unsubscribe()
     this.playerService
       .isPlaying()
       .pipe(

@@ -2,7 +2,7 @@ import * as fromRoot from '../../core/store'
 import { Store, select } from '@ngrx/store'
 import { filter, map, shareReplay, first, switchMap, tap } from 'rxjs/operators'
 import { Injectable } from '@angular/core'
-import { Observable, BehaviorSubject, Subject, of } from 'rxjs'
+import { Observable, BehaviorSubject } from 'rxjs'
 import { HttpClient } from '@angular/common/http'
 
 @Injectable({
@@ -11,7 +11,6 @@ import { HttpClient } from '@angular/common/http'
 export class PlayerService {
   private player
   public deviceID
-  private state = new Subject()
   private error = new BehaviorSubject(false)
   private ready = new BehaviorSubject(false)
   private repeat = new BehaviorSubject(false)
@@ -63,7 +62,11 @@ export class PlayerService {
 
         // Playback status updates
         this.player.addListener('player_state_changed', state => {
-          this.state.next(state)
+          if ((state as any).paused) {
+            this.playing.next(false)
+          } else {
+            this.playing.next(true)
+          }
         })
 
         // Ready
@@ -128,10 +131,6 @@ export class PlayerService {
    */
   setCurrentTrack(track: any) {
     this.currentTrack.next(track)
-  }
-
-  stateChanges() {
-    return this.state.asObservable().pipe(shareReplay(1))
   }
 
   isPlaying(): Observable<boolean> {
