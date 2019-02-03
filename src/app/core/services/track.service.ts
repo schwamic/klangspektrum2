@@ -55,11 +55,19 @@ export class TrackService {
             })
           ).pipe(
             mergeMap(offset => this.getData(this.urlMe(offset)), null, 4),
-            map(data => Object.values(data['items']).map(item => this.mapTrack(item['track'])))
+            map(data =>
+              Object.values(data['items'])
+                .filter(item => !!item['track'])
+                .map(item => this.mapTrack(item['track']))
+            )
           )
         } else {
           return of(res).pipe(
-            map(data => Object.values(data['items']).map(item => this.mapTrack(item['track'])))
+            map(data =>
+              Object.values(data['items'])
+                .filter(item => !!item['track'])
+                .map(item => this.mapTrack(item['track']))
+            )
           )
         }
       })
@@ -102,7 +110,11 @@ export class TrackService {
               null,
               4
             ),
-            map(data => Object.values(data['items']).map(item => this.mapTrack(item['track'])))
+            map(data =>
+              Object.values(data['items'])
+                .filter(item => !!item['track'])
+                .map(item => this.mapTrack(item['track']))
+            )
           ),
         null,
         4
@@ -138,11 +150,7 @@ export class TrackService {
         )
       ),
       first(),
-      catchError(error => {
-        /* tslint:disable no-console */
-        console.log('handle error', error)
-        return empty()
-      })
+      catchError(() => empty())
     )
   }
 
