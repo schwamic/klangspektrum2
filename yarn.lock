@@ -4831,10 +4831,10 @@ ng2-charts@1.6.0:
   dependencies:
     chart.js "^2.6.0"
 
-ng2-nouislider@1.7.13:
-  version "1.7.13"
-  resolved "https://registry.yarnpkg.com/ng2-nouislider/-/ng2-nouislider-1.7.13.tgz#65ad53f34f3efc39bb654f1ae85aa1d8b458a718"
-  integrity sha512-qMJwh3xpAeY6NlZ0tuz4rMJ+fBy5Bcwp5Blt+n9XRedjfbNGT6OsJkk/7iFa6TxNJpZUE4IcoWM7F9Wt+UpqhA==
+ng2-nouislider@1.8.2:
+  version "1.8.2"
+  resolved "https://registry.yarnpkg.com/ng2-nouislider/-/ng2-nouislider-1.8.2.tgz#4d4aab402d307020415da1714a5e9f46817fe97c"
+  integrity sha512-apCpRxwX/3VapLuPozZkUfM3HAE1unuCm2UdRMDvAHbbY6CLobaZcsWUYQ6b02VzxccyV4G1z0xsq2un8J2Lqw==
 
 nice-try@^1.0.4:
   version "1.0.5"
