@@ -51,7 +51,7 @@
     "@types/node": "8.9.5",
     "chart.js": "2.7.3",
     "codelyzer": "4.5.0",
-    "core-js": "2.6.1",
+    "core-js": "2.6.9",
     "dotenv": "6.2.0",
     "hammerjs": "2.0.8",
     "jasmine-core": "2.99.1",
