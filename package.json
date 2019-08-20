@@ -70,7 +70,7 @@
     "protractor": "5.4.2",
     "rxjs": "6.3.3",
     "ts-node": "7.0.1",
-    "tslib": "1.9.3",
+    "tslib": "1.10.0",
     "tslint": "5.12.0",
     "typescript": "3.1.6",
     "web-animations-js": "2.3.1",
