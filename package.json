@@ -46,7 +46,7 @@
     "@ngrx/store": "7.0.0",
     "@ngrx/store-devtools": "7.0.0",
     "@tresmo/config-tslint": "0.5.1",
-    "@types/jasmine": "2.8.14",
+    "@types/jasmine": "3.4.2",
     "@types/jasminewd2": "2.0.6",
     "@types/node": "8.9.5",
     "chart.js": "2.7.3",
