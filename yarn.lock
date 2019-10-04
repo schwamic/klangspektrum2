@@ -363,13 +363,13 @@
     semver "5.5.1"
     semver-intersect "1.4.0"
 
-"@tresmo/config-tslint@0.5.1":
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/@tresmo/config-tslint/-/config-tslint-0.5.1.tgz#4a3d3434f5920c688efc4c31b0ee34187806d0a7"
-  integrity sha512-SYwJDcROEbgrXMmGbVCBfHQnCTPiUhP3N4DMJtDDnj5KhTj/y1FS5hzbIQjYrplFzQG0i8AUyspAyPd32E9K3w==
+"@tresmo/config-tslint@0.5.4":
+  version "0.5.4"
+  resolved "https://registry.yarnpkg.com/@tresmo/config-tslint/-/config-tslint-0.5.4.tgz#1dc9af71e3b99e6d12d303a7ebb2c5ce9e1f676b"
+  integrity sha512-1rXd3x5eO5IfVdv1WCLaqgjYKAs5Jsz/VP+uu6WhNsGzpR8K0P6oigW5PjKyd3/HzIalo0vI8S7jSufccWR49g==
   dependencies:
-    tslint-angular "^1.1.0"
-    tslint-config-prettier "^1.13.0"
+    tslint-angular "2.0.3"
+    tslint-config-prettier "1.18.0"
 
 "@types/jasmine@*":
   version "3.3.5"
@@ -1617,7 +1617,7 @@ code-point-at@^1.0.0:
   resolved "https://registry.yarnpkg.com/code-point-at/-/code-point-at-1.1.0.tgz#0d070b4d043a5bea33a2f1a40e2edb3d9a4ccf77"
   integrity sha1-DQcLTQQ6W+ozovGkDi7bPZpMz3c=
 
-codelyzer@4.5.0, codelyzer@^4.0.2:
+codelyzer@4.5.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/codelyzer/-/codelyzer-4.5.0.tgz#a65ddeeeca2894653253a89bfa229118ff9f59b1"
   integrity sha512-oO6vCkjqsVrEsmh58oNlnJkRXuA30hF8cdNAQV9DytEalDwyOFRvHMnlKFzmOStNerOmPGZU9GAHnBo4tGvtiQ==
@@ -7138,20 +7138,17 @@ tslib@1.9.3, tslib@^1.7.1, tslib@^1.8.0, tslib@^1.8.1, tslib@^1.9.0, tslib@^1.9.
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.9.3.tgz#d7e4dd79245d85428c4d7e4822a79917954ca286"
   integrity sha512-4krF8scpejhaOgqzBEcGM7yDIEfi0/8+8zDRZhNZZ2kjmHJ4hv3zCbQWxoJGz1iw5U0Jl0nma13xzHXcncMavQ==
 
-tslint-angular@^1.1.0:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/tslint-angular/-/tslint-angular-1.1.2.tgz#5ce7020968e3b9dc7a40b6d15dadd6da34787309"
-  integrity sha512-YDLdgQXBSFcVdDZH3mThx21fKzRctIgmCWpuwmppFLc7QHV3tdWDaFnD5lwUmgvLH8W0o+KsXhSzZ2uIsFJ+YA==
-  dependencies:
-    codelyzer "^4.0.2"
-    tslint "^5.8.0"
+tslint-angular@2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/tslint-angular/-/tslint-angular-2.0.3.tgz#a8e187c951683d32ec56d4d981a7efd2dd9b6faf"
+  integrity sha512-Ml2RDWx/kTyilJbnH013fNiWlYka9AbaYomyMxx/BS1A6Cq3XTEDKF1eZqAe8rwfLnaJzpNd/8IUcLMmpxXPLg==
 
-tslint-config-prettier@^1.13.0:
-  version "1.17.0"
-  resolved "https://registry.yarnpkg.com/tslint-config-prettier/-/tslint-config-prettier-1.17.0.tgz#946ed6117f98f3659a65848279156d87628c33dc"
-  integrity sha512-NKWNkThwqE4Snn4Cm6SZB7lV5RMDDFsBwz6fWUkTxOKGjMx8ycOHnjIbhn7dZd5XmssW3CwqUjlANR6EhP9YQw==
+tslint-config-prettier@1.18.0:
+  version "1.18.0"
+  resolved "https://registry.yarnpkg.com/tslint-config-prettier/-/tslint-config-prettier-1.18.0.tgz#75f140bde947d35d8f0d238e0ebf809d64592c37"
+  integrity sha512-xPw9PgNPLG3iKRxmK7DWr+Ea/SzrvfHtjFt5LBl61gk2UBG/DB9kCXRjv+xyIU1rUtnayLeMUVJBcMX8Z17nDg==
 
-tslint@5.12.0, tslint@^5.8.0:
+tslint@5.12.0:
   version "5.12.0"
   resolved "https://registry.yarnpkg.com/tslint/-/tslint-5.12.0.tgz#47f2dba291ed3d580752d109866fb640768fca36"
   integrity sha512-CKEcH1MHUBhoV43SA/Jmy1l24HJJgI0eyLbBNSRyFlsQvb9v6Zdq+Nz2vEOH00nC5SUx4SneJ59PZUS/ARcokQ==
