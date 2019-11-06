@@ -21,6 +21,7 @@
 		"test": "ng test --watch=false",
 		"test:watch": "ng test",
 		"lint": "ng lint",
+		"lint:fix": "ng lint --fix",
 		"e2e": "ng e2e"
 	},
 	"dependencies": {},
