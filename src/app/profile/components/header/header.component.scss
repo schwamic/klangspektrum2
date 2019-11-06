@@ -3,69 +3,73 @@
 @import "../../../../styles/mixins/menu-header";
 
 .menu {
-  @include menu-header(light);
+	@include menu-header(light);
 }
 
 // Menu - toolbar-overwrite
 mat-toolbar {
-  position: relative;
-  justify-content: space-between;
+	position: relative;
+	justify-content: space-between;
 }
 
 .menu-item-group,
 .user {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .user-avatar {
-  display: flex;
-  align-items: center;
+	display: flex;
+	align-items: center;
 
-  .avatar-image {
-    height: 50px;
-    width: 50px;
-    border-radius: 100%;
-    overflow: hidden;
-    background: $dark-gray;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-  }
+	.avatar-image {
+		height: 50px;
+		width: 50px;
+		border-radius: 100%;
+		overflow: hidden;
+		background: $dark-gray;
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: cover;
+	}
 
-  .avatar-icon {
-    color: $dark-gray;
-  }
+	.avatar-icon {
+		color: $dark-gray;
+	}
 }
 
 ::ng-deep .user-logout {
-  display: flex;
-  align-items: center;
+	display: flex;
+	align-items: center;
 
-  .logout-title {
-    color: $white;
-    text-decoration: none;
-  }
+	.logout-title {
+		color: $white;
+		text-decoration: none;
+	}
 
-  .logout-icon {
-    color: $white;
-    margin-right: 6px !important;
-    margin-left: -3px;
-  }
+	.logout-icon {
+		color: $white;
+		margin-right: 6px !important;
+		margin-left: -3px;
+	}
 }
 
-// Logout - mat-overwrite 
+// Logout - mat-overwrite
+::ng-deep .mat-menu-panel {
+	min-height: 48px !important;
+	background: $dark-gray !important;
+}
+
 ::ng-deep .mat-menu-content {
-  padding: 0 !important;
-  background: $dark-gray !important;
+	padding: 0 !important;
 }
 
 .logo {
-  height: 60%;
-  padding: 0 16px;
+	height: 60%;
+	padding: 0 16px;
 
-  @media (max-width: 420px) {
-    display: none;
-  }
+	@media (max-width: 420px) {
+		display: none;
+	}
 }
