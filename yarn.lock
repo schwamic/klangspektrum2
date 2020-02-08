@@ -933,12 +933,12 @@
     semver "6.3.0"
     semver-intersect "1.4.0"
 
-"@tresmo/config-tslint@0.5.4":
-  version "0.5.4"
-  resolved "https://registry.yarnpkg.com/@tresmo/config-tslint/-/config-tslint-0.5.4.tgz#1dc9af71e3b99e6d12d303a7ebb2c5ce9e1f676b"
-  integrity sha512-1rXd3x5eO5IfVdv1WCLaqgjYKAs5Jsz/VP+uu6WhNsGzpR8K0P6oigW5PjKyd3/HzIalo0vI8S7jSufccWR49g==
+"@tresmo/config-tslint@0.5.5":
+  version "0.5.5"
+  resolved "https://registry.yarnpkg.com/@tresmo/config-tslint/-/config-tslint-0.5.5.tgz#58d6346ce4c14d12f1372295d2a7cc2ddac2c3f9"
+  integrity sha512-nihBU8E/u1a/EqYp5P2GhLCy82FNYmJfU04KTA4o3egdn8b5dxclQXze0j0/dvOiRTU+0gL5HkLxX8JbdGqx3g==
   dependencies:
-    tslint-angular "2.0.3"
+    tslint-angular "3.0.2"
     tslint-config-prettier "1.18.0"
 
 "@types/chart.js@^2.7.48":
@@ -7500,10 +7500,10 @@ tslib@1.10.0, tslib@^1.7.1, tslib@^1.8.0, tslib@^1.8.1, tslib@^1.9.0, tslib@^1.9
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.10.0.tgz#c3c19f95973fb0a62973fb09d90d961ee43e5c8a"
   integrity sha512-qOebF53frne81cf0S9B41ByenJ3/IuH8yJKngAX35CmiZySA0khhkovshKK+jGCaMnVomla7gVlIcc3EvKPbTQ==
 
-tslint-angular@2.0.3:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/tslint-angular/-/tslint-angular-2.0.3.tgz#a8e187c951683d32ec56d4d981a7efd2dd9b6faf"
-  integrity sha512-Ml2RDWx/kTyilJbnH013fNiWlYka9AbaYomyMxx/BS1A6Cq3XTEDKF1eZqAe8rwfLnaJzpNd/8IUcLMmpxXPLg==
+tslint-angular@3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/tslint-angular/-/tslint-angular-3.0.2.tgz#6f7480cc34f26fcc03df18d7ec3d5ce364b65064"
+  integrity sha512-UgeGO776Z7VvzCnW6pOsbL3qs7PwzZatKkk2OzQO45H9Zf4T+bNBz87nFkB96W/swyCHmpK2M0vl61n0biFVTQ==
 
 tslint-config-prettier@1.18.0:
   version "1.18.0"
