@@ -24,7 +24,7 @@
 		"lint:fix": "ng lint --fix",
 		"e2e": "ng e2e"
 	},
-	"devDependencies": {
+	"dependencies": {
 		"@angular-devkit/build-angular": "0.900.4",
 		"@angular/animations": "9.0.4",
 		"@angular/cdk": "9.1.0",
