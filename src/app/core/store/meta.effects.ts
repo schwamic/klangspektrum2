@@ -4,7 +4,7 @@ import { AddMeta, MetaActionTypes } from '@app/core/store/meta.actions'
 import { switchMap, map, tap } from 'rxjs/operators'
 import { timer } from 'rxjs'
 import { RefreshAuthDialogComponent } from '@app/shared/components/refresh-auth-dialog/refresh-auth-dialog.component'
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog'
 
 @Injectable()
 export class MetaInfoEffects {
