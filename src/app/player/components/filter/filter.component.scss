@@ -1,9 +1,8 @@
-@import "../../../../styles/variables";
-@import "../../../../styles/font";
-@import "../../../../styles/mixins/breakpoints";
+@import '../../../../styles/variables';
+@import '../../../../styles/font';
+@import '../../../../styles/mixins/breakpoints';
 
 @mixin slider-color($color) {
-
   .title-categorie,
   .title-value {
     color: $color;
@@ -105,8 +104,7 @@ nouislider {
   // background -> for each categorie
   box-shadow: none;
   border: none;
-  left: 0;
-  right: -7px !important;
+  right: -6px !important;
   top: -6px;
   width: 14px;
   height: 14px;
@@ -128,6 +126,5 @@ nouislider {
   &:focus {
     outline: 0;
     transform: scale(1.3);
-
   }
 }
