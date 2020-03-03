@@ -31,7 +31,7 @@ export class VisualizerComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     // Update Font
-    Chart.defaults.global.defaultFontFamily = 'Roboto'
+    Chart.defaults.global.defaultFontFamily = 'Roboto, Arial, sans-serif'
     Chart.defaults.global.defaultFontColor = '#616161'
 
     // Map features-data for charts
