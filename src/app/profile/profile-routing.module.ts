@@ -11,11 +11,11 @@ const routes: Routes = [
       { path: '', redirectTo: 'player', pathMatch: 'full' },
       {
         path: 'player',
-        loadChildren: './../player/player.module#PlayerModule'
+        loadChildren: () => import('./../player/player.module').then(m => m.PlayerModule)
       },
       {
         path: 'visualizer',
-        loadChildren: './../visualizer/visualizer.module#VisualizerModule'
+        loadChildren: () => import('./../visualizer/visualizer.module').then(m => m.VisualizerModule)
       }
     ]
   },
