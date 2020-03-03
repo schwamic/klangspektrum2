@@ -6,11 +6,11 @@ import { NgModule } from '@angular/core'
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', loadChildren: './home/home.module#HomeModule' },
+  { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomeModule) },
   {
     path: 'profile',
     canActivate: [MetaGuard],
-    loadChildren: './profile/profile.module#ProfileModule'
+    loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule)
   },
   { path: '**', component: ErrorComponent }
 ]
