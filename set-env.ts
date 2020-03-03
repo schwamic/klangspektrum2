@@ -1,8 +1,3 @@
-import { writeFile } from 'fs'
-import { argv } from 'yargs'
-// tslint:disable-next-line
-require('dotenv').config()
-
 /**
  * Generates dynamic environment.ts file from .env or local exported variables and
  * saves it in the angular environments folder.
@@ -14,7 +9,9 @@ require('dotenv').config()
  * - It is recommended to add environment.ts to your.gitignore file, otherwise your keys will not be secure.
  */
 
-const isProd = argv.environment === 'prod'
+require('dotenv').config()
+
+const isProd = require('yargs').argv.environment === 'prod'
 const targetPath = isProd
   ? './src/environments/environment.prod.ts'
   : './src/environments/environment.ts'
@@ -25,7 +22,7 @@ export const environment = {
   redirectUri: '${process.env.REDIRECT_URI}' 
 }
 `
-writeFile(targetPath, envConfigFile, function(err) {
+require('fs').writeFile(targetPath, envConfigFile, function(err) {
   if (err) {
     // tslint:disable-next-line
     console.log(err)
