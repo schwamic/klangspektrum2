@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core'
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material'
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Store, select } from '@ngrx/store'
 import * as fromCore from '@app/core/store'
 import { ApiService } from '@app/core/services/api.service'
