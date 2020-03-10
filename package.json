@@ -46,7 +46,7 @@
 		"@ngrx/store": "9.0.0",
 		"@ngrx/store-devtools": "9.0.0",
 		"@tresmo/config-tslint": "0.5.5",
-		"@types/jasmine": "3.5.7",
+		"@types/jasmine": "3.5.8",
 		"@types/jasminewd2": "2.0.8",
 		"@types/node": "12.12.29",
 		"@types/yargs": "15.0.4",
