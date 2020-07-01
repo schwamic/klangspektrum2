@@ -5182,6 +5182,11 @@ lodash-decorators@6.0.1:
   dependencies:
     tslib "^1.9.2"
 
+lodash-es@^4.17.11:
+  version "4.17.15"
+  resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.15.tgz#21bd96839354412f23d7a10340e5eac6ee455d78"
+  integrity sha512-rlrc3yU3+JNOpZ9zj5pQtxnx2THmvRykwL4Xlxoa8I9lHBlVbbyPhgyPMioxVZ4NqyxaVVtaJnzsyOidQIhyyQ==
+
 lodash.clonedeep@^4.5.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/lodash.clonedeep/-/lodash.clonedeep-4.5.0.tgz#e23f3f9c4f8fbdde872529c1071857a086e5ccef"
@@ -5659,13 +5664,13 @@ neo-async@^2.5.0, neo-async@^2.6.0, neo-async@^2.6.1:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.1.tgz#ac27ada66167fa8849a6addd837f6b189ad2081c"
   integrity sha512-iyam8fBuCUpWeKPGpaNMetEocMt364qkCsfL9JuhjXX6dRnguRVOfk2GZaDpPjcOKiiXCPINZC1GczQ7iTq3Zw==
 
-ng2-charts@2.3.0:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/ng2-charts/-/ng2-charts-2.3.0.tgz#e4dd1f7fe12dc2635d5e8c4f101a8d4c4f433754"
-  integrity sha512-D5K7OqF0m5lOBYvNOsraoEo4OPHja9zfGNj+HWy2nUcP0LP2s+Y/QaQlkG/1rHlwXq9HPm8rLxzSutA0eLHxGQ==
+ng2-charts@2.3.2:
+  version "2.3.2"
+  resolved "https://registry.yarnpkg.com/ng2-charts/-/ng2-charts-2.3.2.tgz#206de368e58f9655e167b6791c9d2a804191ef99"
+  integrity sha512-T0rPivwZITKtEtFRVodRCO+kIczWIP6V4YLZvf6Kg1jqc8jYGZ37H5ywT0Q7N0Rt5dJGhC5z1/38nWFBVFx5iw==
   dependencies:
     "@types/chart.js" "^2.7.48"
-    lodash "^4.17.11"
+    lodash-es "^4.17.11"
     tslib "^1.9.0"
 
 ng2-nouislider@1.8.2:
