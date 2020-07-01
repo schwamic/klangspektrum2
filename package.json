@@ -75,7 +75,7 @@
 		"typescript": "3.7.5",
 		"tslib": "1.11.1",
 		"web-animations-js": "2.3.2",
-		"webpack-bundle-analyzer": "3.6.0",
+		"webpack-bundle-analyzer": "3.8.0",
 		"yargs": "15.3.0",
 		"zone.js": "0.10.2"
 	}
