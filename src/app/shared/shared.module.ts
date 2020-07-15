@@ -16,8 +16,7 @@ import { RefreshAuthDialogComponent } from './components/refresh-auth-dialog/ref
     ErrorComponent,
     RefreshAuthDialogComponent,
     TimePipe,
-    RangePipe
+    RangePipe,
   ],
-  entryComponents: [RefreshAuthDialogComponent]
 })
 export class SharedModule {}
