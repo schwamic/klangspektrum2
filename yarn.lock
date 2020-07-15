@@ -127,10 +127,12 @@
   dependencies:
     tslib "^2.0.0"
 
-"@angular/cdk@9.1.0":
-  version "9.1.0"
-  resolved "https://registry.yarnpkg.com/@angular/cdk/-/cdk-9.1.0.tgz#da88568aed9efc39b160a0ac18cfca25f4961441"
-  integrity sha512-qKpAudJx9z0MD+ADptS0OZViJBTA49+JCKym0hPQUkcB9Po4Al6gu6oZ1VSXV5Ln3T84z9aAw/AhUGP/YCFNSQ==
+"@angular/cdk@10.0.2":
+  version "10.0.2"
+  resolved "https://registry.yarnpkg.com/@angular/cdk/-/cdk-10.0.2.tgz#9d2770fc4ed6ccdaf1088cc8c68bcb9d28cb4c9c"
+  integrity sha512-ZvZkeh7qXllAGSOFvWSYurCslflTmB0JD3gonmUKOBl/O/AcOTPntP+iOrUaC3+eR3ohsfL5SswxChW0NF+oHQ==
+  dependencies:
+    tslib "^2.0.0"
   optionalDependencies:
     parse5 "^5.0.0"
 
@@ -222,10 +224,12 @@
   resolved "https://registry.yarnpkg.com/@angular/language-service/-/language-service-10.0.4.tgz#fe61e5a82c494a3aaabcca4997aff94fa891d12e"
   integrity sha512-m5dWL1Lg9M4kDA/kjpdyKsrx9arbIebrgsSzr/QG7cPon6SQMRs9ECZBM+3GalkQghrPO1mLgnrUwFBUH2QNPw==
 
-"@angular/material@9.1.0":
-  version "9.1.0"
-  resolved "https://registry.yarnpkg.com/@angular/material/-/material-9.1.0.tgz#550cbf7f6a9ce679b77435278faebfc4f2a3b2ed"
-  integrity sha512-KjA1ARoZ1vBg4jUH1y39muynxAFvkD8QZFGKH8Nh4zXW5pOP/7NyjokxXsNx5qSBCq/6ac2xBxCrCYJN7HmoDw==
+"@angular/material@10.0.2":
+  version "10.0.2"
+  resolved "https://registry.yarnpkg.com/@angular/material/-/material-10.0.2.tgz#a240d6324c29508f716e1b61d005b0f8aca0bb47"
+  integrity sha512-xG8lCG+QS+r61aDoBauH6RyNuOHai4yxhn3e8cb2ua86liarJmF9jqlW0tB49tE1ZLz9U/+ybJKkos2kX1eF1Q==
+  dependencies:
+    tslib "^2.0.0"
 
 "@angular/platform-browser-dynamic@10.0.4":
   version "10.0.4"
@@ -4406,11 +4410,6 @@ gzip-size@^5.0.0:
   dependencies:
     duplexer "^0.1.1"
     pify "^4.0.1"
-
-hammerjs@2.0.8:
-  version "2.0.8"
-  resolved "https://registry.yarnpkg.com/hammerjs/-/hammerjs-2.0.8.tgz#04ef77862cff2bb79d30f7692095930222bf60f1"
-  integrity sha1-BO93hiz/K7edMPdpIJWTAiK/YPE=
 
 handle-thing@^2.0.0:
   version "2.0.0"
