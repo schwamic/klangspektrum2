@@ -2548,7 +2548,7 @@ color@^3.0.0:
     color-convert "^1.9.1"
     color-string "^1.5.2"
 
-colors@^1.4.0:
+colors@1.4.0, colors@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/colors/-/colors-1.4.0.tgz#c50491479d4c1bdaed2c9ced32cf7c7dc2360f78"
   integrity sha512-a+UqTh4kgZg/SlGvfbzDHpgRu7AAQOmmqRHJnxhRZICKFUT91brVhNNt58CMWU9PsBbv3PDCZUHbVxuDiH2mtA==
@@ -4993,10 +4993,12 @@ jasmine-core@~2.8.0:
   resolved "https://registry.yarnpkg.com/jasmine-core/-/jasmine-core-2.8.0.tgz#bcc979ae1f9fd05701e45e52e65d3a5d63f1a24e"
   integrity sha1-vMl5rh+f0FcB5F5S5l06XWPxok4=
 
-jasmine-spec-reporter@5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/jasmine-spec-reporter/-/jasmine-spec-reporter-5.0.0.tgz#7357ddc398de517a7975ea47d7256c5176cc948e"
-  integrity sha512-L+PCPtk7PPPhHYzDAfFPdRsDUEd+DoxbJwIeyOnbmlt/wWNOuwKE39W9eQYqUlZW/YqunIZaT9sqH8O7Kiurkw==
+jasmine-spec-reporter@5.0.2:
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/jasmine-spec-reporter/-/jasmine-spec-reporter-5.0.2.tgz#b61288ab074ad440dc2477c4d42840b0e74a6b95"
+  integrity sha512-6gP1LbVgJ+d7PKksQBc2H0oDGNRQI3gKUsWlswKaQ2fif9X5gzhQcgM5+kiJGCQVurOG09jqNhk7payggyp5+g==
+  dependencies:
+    colors "1.4.0"
 
 jasmine@2.8.0:
   version "2.8.0"
@@ -5134,10 +5136,10 @@ karma-chrome-launcher@3.1.0:
   dependencies:
     which "^1.2.1"
 
-karma-coverage-istanbul-reporter@3.0.2:
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/karma-coverage-istanbul-reporter/-/karma-coverage-istanbul-reporter-3.0.2.tgz#b7f3393b13c7e3dafa5410a68d98d327ae21e807"
-  integrity sha512-pg23tKKF867UIJUIZF252cNbiBnuMIPOMkeiULzjysr9K267Js2O/SoQBL1PCPctJVzvhOkE47yQPUKrWtyl6w==
+karma-coverage-istanbul-reporter@3.0.3:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/karma-coverage-istanbul-reporter/-/karma-coverage-istanbul-reporter-3.0.3.tgz#f3b5303553aadc8e681d40d360dfdc19bc7e9fe9"
+  integrity sha512-wE4VFhG/QZv2Y4CdAYWDbMmcAHeS926ZIji4z+FkB2aF/EposRb6DP6G5ncT/wXhqUfAb/d7kZrNKPonbvsATw==
   dependencies:
     istanbul-lib-coverage "^3.0.0"
     istanbul-lib-report "^3.0.0"
@@ -5145,15 +5147,15 @@ karma-coverage-istanbul-reporter@3.0.2:
     istanbul-reports "^3.0.2"
     minimatch "^3.0.4"
 
-karma-jasmine-html-reporter@1.5.0:
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/karma-jasmine-html-reporter/-/karma-jasmine-html-reporter-1.5.0.tgz#bbc2aa47ecc3fbd51633d73b84250c7063489e44"
-  integrity sha512-bN4XQf+PRLV7nKQ+a0nxmCPP11sKRbZMnr7TtqLMIL7FXltBBepiEF/+VI4rO0EPaMPb3sozv5dGTC2giXiJAw==
+karma-jasmine-html-reporter@1.5.4:
+  version "1.5.4"
+  resolved "https://registry.yarnpkg.com/karma-jasmine-html-reporter/-/karma-jasmine-html-reporter-1.5.4.tgz#669f33d694d88fce1b0ccfda57111de716cb0192"
+  integrity sha512-PtilRLno5O6wH3lDihRnz0Ba8oSn0YUJqKjjux1peoYGwo0AQqrWRbdWk/RLzcGlb+onTyXAnHl6M+Hu3UxG/Q==
 
-karma-jasmine@3.3.0:
-  version "3.3.0"
-  resolved "https://registry.yarnpkg.com/karma-jasmine/-/karma-jasmine-3.3.0.tgz#31ddbf7152420d4104844780767fbf1164d49f2a"
-  integrity sha512-bLO5rI7MzOMQcXIflqGxUZZNNPSp+uZk0QpD6GnbupUfYvsBFkrqoZqeQamuqat6vvPAowzm9FzUcU6aR/KmaA==
+karma-jasmine@3.3.1:
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/karma-jasmine/-/karma-jasmine-3.3.1.tgz#c01b1a2ec973e1531c1f6535e1d7d66b8e4275c2"
+  integrity sha512-Nxh7eX9mOQMyK0VSsMxdod+bcqrR/ikrmEiWj5M6fwuQ7oI+YEF1FckaDsWfs6TIpULm9f0fTKMjF7XcrvWyqQ==
   dependencies:
     jasmine-core "^3.5.0"
 
