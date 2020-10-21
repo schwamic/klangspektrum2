@@ -50,7 +50,7 @@
 		"@types/jasminewd2": "2.0.8",
 		"@types/node": "14.0.23",
 		"@types/yargs": "15.0.5",
-		"chart.js": "2.9.3",
+		"chart.js": "2.9.4",
 		"codelyzer": "6.0.0",
 		"core-js": "3.6.5",
 		"dotenv": "8.2.0",
