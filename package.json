@@ -68,7 +68,7 @@
 		"normalize.css": "8.0.1",
 		"nouislider": "14.6.0",
 		"protractor": "7.0.0",
-		"rxjs": "6.6.0",
+		"rxjs": "6.6.7",
 		"ts-node": "8.10.2",
 		"tslib": "2.0.0",
 		"tslint": "6.1.2",
