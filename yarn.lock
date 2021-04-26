@@ -5922,10 +5922,10 @@ normalize.css@8.0.1:
   resolved "https://registry.yarnpkg.com/normalize.css/-/normalize.css-8.0.1.tgz#9b98a208738b9cc2634caacbc42d131c97487bf3"
   integrity sha512-qizSNPO93t1YUuUhP22btGOo3chcvDFqFaj2TRybP0DMxkHOCTYwp3n34fel4a31ORXy4m1Xq0Gyqpb5m33qIg==
 
-nouislider@14.6.0:
-  version "14.6.0"
-  resolved "https://registry.yarnpkg.com/nouislider/-/nouislider-14.6.0.tgz#10c409e4f9d5d0e72a3b1c2adcf827e9c3054e39"
-  integrity sha512-KY0jH2pU4G/55wpoS5Ynyrc5xpOMZ10/Xr51sMYG/JxmYoPJGy3fG8mOMio0MJXerKp5Go3elwcODk3lX6mFMQ==
+nouislider@14.7.0:
+  version "14.7.0"
+  resolved "https://registry.yarnpkg.com/nouislider/-/nouislider-14.7.0.tgz#a71db0587c92567b6da1df57d251d3696d942362"
+  integrity sha512-4RtQ1+LHJKesDCNJrXkQcwXAWCrC2aggdLYMstS/G5fEWL+fXZbUA9pwVNHFghMGuFGRATlDLNInRaPeRKzpFQ==
 
 npm-bundled@^1.0.1:
   version "1.1.1"
