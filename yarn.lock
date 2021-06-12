@@ -1065,35 +1065,45 @@
     merge-source-map "^1.1.0"
     schema-utils "^2.6.4"
 
-"@ngrx/effects@9.2.0":
-  version "9.2.0"
-  resolved "https://registry.yarnpkg.com/@ngrx/effects/-/effects-9.2.0.tgz#155bfcfd528aa993fd19f60f9536385984a80910"
-  integrity sha512-8V09zDIPehGpzgfcgyczelovsVYJvDQhN9wHt37K5A+YCG0CI8nj8FmKokHATwv/S62YqFrOVnr/TZacxpDhBw==
+"@ngrx/effects@12.1.0":
+  version "12.1.0"
+  resolved "https://registry.yarnpkg.com/@ngrx/effects/-/effects-12.1.0.tgz#316e60950a5e2c8ca2ecb3119397281affe3a286"
+  integrity sha512-DcVovaJB9hZ8qo5UNjRS0KqLaMX8YreuR3EtRPUysB0aePBuoWQiN8HUic8DgmI2cN3KcZxOsRKj/1VaVArLJw==
+  dependencies:
+    tslib "^2.0.0"
 
-"@ngrx/entity@9.2.0":
-  version "9.2.0"
-  resolved "https://registry.yarnpkg.com/@ngrx/entity/-/entity-9.2.0.tgz#4acdd74edf72f7ab061ca9295ee323d1978a4329"
-  integrity sha512-xSnS4EmksfvIobl2KMpljE1RMYuJGq7j5cCb9TnlsXkEc7cUa0TyGviSsxceSpk9WKtKARPR/AcVrVCESucF6Q==
+"@ngrx/entity@12.1.0":
+  version "12.1.0"
+  resolved "https://registry.yarnpkg.com/@ngrx/entity/-/entity-12.1.0.tgz#01c76487ab6043aea21d9d787ead238107ff45e8"
+  integrity sha512-2EsWBMUyXsdXqFsB3kwtr+i2aSwbXKjdao7fLh9337Zzfx/LF7FDcqS+CU0aN0dJzTluJV+HbH7W7e88dS1c3Q==
+  dependencies:
+    tslib "^2.0.0"
 
-"@ngrx/router-store@9.2.0":
-  version "9.2.0"
-  resolved "https://registry.yarnpkg.com/@ngrx/router-store/-/router-store-9.2.0.tgz#e84bb25b3480d06605d1006fd50983dd541c7c5d"
-  integrity sha512-thu6aU9YWM64oNEk4Srx/mNSeQ2SPJKlTji8MSzfr06qgCMyPSXZBYlfs8HqY+af3eB7XBEhb/4ew4JJ6xC9zw==
+"@ngrx/router-store@12.1.0":
+  version "12.1.0"
+  resolved "https://registry.yarnpkg.com/@ngrx/router-store/-/router-store-12.1.0.tgz#926707e39dd8007d277af187e34b45e906c94a7c"
+  integrity sha512-VjuDJDU2w2TlJUp82snjvgIPEHZO4q4BfOLLVEzWEME1q71VNSxx6eArW6Wk1PGWRqQ48YAI11pXC9PUi8ZI8A==
+  dependencies:
+    tslib "^2.0.0"
 
-"@ngrx/schematics@9.2.0":
-  version "9.2.0"
-  resolved "https://registry.yarnpkg.com/@ngrx/schematics/-/schematics-9.2.0.tgz#db2630875393f7a13373b8b9ef8fff193322334a"
-  integrity sha512-jO3NNh2CJOxMaMyoBg/BqH/zyAeKZJFh97p14DojkfXx7Kc6NuIG04t+4xNe8X3sbdV2LIr6tr9P8nHAYHgMpA==
+"@ngrx/schematics@12.1.0":
+  version "12.1.0"
+  resolved "https://registry.yarnpkg.com/@ngrx/schematics/-/schematics-12.1.0.tgz#6478fc376840a9f9c4d44a40d513e8aa3463779c"
+  integrity sha512-cUL+pzy5jtFUq81B+kETJmca9/KqWatMxNXofdML2dyGGpk/yfs6bV8L/NQWyUxsyc01J+WswocWmFjNde0FYQ==
 
-"@ngrx/store-devtools@9.2.0":
-  version "9.2.0"
-  resolved "https://registry.yarnpkg.com/@ngrx/store-devtools/-/store-devtools-9.2.0.tgz#298b86b0c4ea483313b67d64a68b2d3376a5a04f"
-  integrity sha512-/FvgcpjO4IvwNFnRVoHGikAvckr6fxKf4NgYoTQ9giI8xavolLvuQUHxzH20legi5dgZz34ii2m2g1Q7OxEV8w==
+"@ngrx/store-devtools@12.1.0":
+  version "12.1.0"
+  resolved "https://registry.yarnpkg.com/@ngrx/store-devtools/-/store-devtools-12.1.0.tgz#b547edb6ff9fd3ade4fd303088dbed627484b41d"
+  integrity sha512-O+GfUsYPUrlbGHHcCH0WNkfnWD2TLQmXm2xhR1CkMTr+7YkdOKUZ1a0RwPM4VWuCu5QNVHS8bRS5V3IviiP9tQ==
+  dependencies:
+    tslib "^2.0.0"
 
-"@ngrx/store@9.2.0":
-  version "9.2.0"
-  resolved "https://registry.yarnpkg.com/@ngrx/store/-/store-9.2.0.tgz#39f663f98b5332b33c8d197be3ab08bafd85bc88"
-  integrity sha512-V8AI3mxbMztVpbZpALkLZYlGkofKcu9GaOCY5e+sZ1VcJ90oxhFjBpnmd6MuVdmhep1XAHALb1B8ZbBFn+xsgQ==
+"@ngrx/store@12.1.0":
+  version "12.1.0"
+  resolved "https://registry.yarnpkg.com/@ngrx/store/-/store-12.1.0.tgz#5e3516f0e6333c7ef49a560df786d4aa87b44a22"
+  integrity sha512-HrNs7bs/MNkLxFnvGx7uPIvEP3RWqGMewVaFjqUxq6sDefn6D6TQ/Sv/8KsNNxuG7r7pKGw+U/tClunJhmRfpw==
+  dependencies:
+    tslib "^2.0.0"
 
 "@ngtools/webpack@10.0.2":
   version "10.0.2"
