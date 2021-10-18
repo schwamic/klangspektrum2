@@ -1164,10 +1164,10 @@
     tslint-angular "3.0.2"
     tslint-config-prettier "1.18.0"
 
-"@types/chart.js@^2.7.48":
-  version "2.9.23"
-  resolved "https://registry.yarnpkg.com/@types/chart.js/-/chart.js-2.9.23.tgz#5de713e801f5aff4d042c7d49ab9691489c11848"
-  integrity sha512-4QQNE/b+digosu3mnj4E7aNQGKnlpzXa9JvQYPtexpO7v9gnDeqwc1DxF8vLJWLDCNoO6hH0EgO8K/7PtJl8wg==
+"@types/chart.js@^2.9.24":
+  version "2.9.34"
+  resolved "https://registry.yarnpkg.com/@types/chart.js/-/chart.js-2.9.34.tgz#d41fb6b74b72a56bac70255bb4ed087386b66ed6"
+  integrity sha512-CtZVk+kh1IN67dv+fB0CWmCLCRrDJgqOj15qPic2B1VCMovNO6B7Vhf/TgPpNscjhAL1j+qUntDMWb9A4ZmPTg==
   dependencies:
     moment "^2.10.2"
 
@@ -5331,10 +5331,10 @@ lodash-decorators@6.0.1:
   dependencies:
     tslib "^1.9.2"
 
-lodash-es@^4.17.11:
-  version "4.17.15"
-  resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.15.tgz#21bd96839354412f23d7a10340e5eac6ee455d78"
-  integrity sha512-rlrc3yU3+JNOpZ9zj5pQtxnx2THmvRykwL4Xlxoa8I9lHBlVbbyPhgyPMioxVZ4NqyxaVVtaJnzsyOidQIhyyQ==
+lodash-es@^4.17.15:
+  version "4.17.21"
+  resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.21.tgz#43e626c46e6591b7750beb2b50117390c609e3ee"
+  integrity sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==
 
 lodash.clonedeep@^4.5.0:
   version "4.5.0"
@@ -5808,14 +5808,14 @@ next-tick@~1.0.0:
   resolved "https://registry.yarnpkg.com/next-tick/-/next-tick-1.0.0.tgz#ca86d1fe8828169b0120208e3dc8424b9db8342c"
   integrity sha1-yobR/ogoFpsBICCOPchCS524NCw=
 
-ng2-charts@2.3.2:
-  version "2.3.2"
-  resolved "https://registry.yarnpkg.com/ng2-charts/-/ng2-charts-2.3.2.tgz#206de368e58f9655e167b6791c9d2a804191ef99"
-  integrity sha512-T0rPivwZITKtEtFRVodRCO+kIczWIP6V4YLZvf6Kg1jqc8jYGZ37H5ywT0Q7N0Rt5dJGhC5z1/38nWFBVFx5iw==
+ng2-charts@2.4.3:
+  version "2.4.3"
+  resolved "https://registry.yarnpkg.com/ng2-charts/-/ng2-charts-2.4.3.tgz#e1de6cb55fe04248a5f92d342cf6423507fa532d"
+  integrity sha512-tPrhHSS2DfVyipXQ0gykOPc8zFNnj2b7sAebUVty392vHnEGYCwsP6YbFfpr1iXu4yBSRm4Gt5lffR5w0uyYSw==
   dependencies:
-    "@types/chart.js" "^2.7.48"
-    lodash-es "^4.17.11"
-    tslib "^1.9.0"
+    "@types/chart.js" "^2.9.24"
+    lodash-es "^4.17.15"
+    tslib "^2.0.0"
 
 ng2-nouislider@1.8.2:
   version "1.8.2"
