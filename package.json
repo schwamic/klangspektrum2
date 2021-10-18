@@ -63,7 +63,7 @@
 		"karma-jasmine-html-reporter": "1.5.4",
 		"lodash": "4.17.19",
 		"lodash-decorators": "6.0.1",
-		"ng2-charts": "2.3.2",
+		"ng2-charts": "2.4.3",
 		"ng2-nouislider": "1.8.2",
 		"normalize.css": "8.0.1",
 		"nouislider": "14.6.0",
