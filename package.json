@@ -76,6 +76,6 @@
 		"web-animations-js": "2.3.2",
 		"webpack-bundle-analyzer": "3.8.0",
 		"yargs": "15.4.1",
-		"zone.js": "0.10.3"
+		"zone.js": "0.12.0"
 	}
 }
